@@ -11,7 +11,7 @@
     "react-icons": "^5.5.0",
     "react-scripts": "5.0.1"
   },
-  "homepage": "https://kodanda1.github.io/portfolio",
+  "homepage": "https://kodanda1.github.io/Portfolio",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
