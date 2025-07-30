@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaEnvelope, FaDownload } from 'react-icons/fa';
+import { FaEnvelope, FaDownload, FaGithub, FaLinkedin } from 'react-icons/fa';
 import './Hero.css';
 
 // Icon wrapper component to handle type issues
