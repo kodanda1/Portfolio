@@ -24,8 +24,6 @@ const Hero: React.FC = () => {
     return () => clearInterval(interval);
   }, [roles.length]);
 
-  const floatingElements = [];
-
   return (
     <section className="hero">
       <div className="hero-container">
