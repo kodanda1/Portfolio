@@ -176,9 +176,8 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 For questions or support, please reach out:
 - **Email**: kodandapuramvaruntej@gmail.com
-- **LinkedIn**: [Your LinkedIn Profile]
-- **GitHub**: [Your GitHub Profile]
+- **LinkedIn**: https://www.linkedin.com/in/varuntejk/
 
 ---
 
-Built with ❤️ by VARUNTEJ KODANDAPURAM
+Built by VARUNTEJ KODANDAPURAM
