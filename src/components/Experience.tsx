@@ -323,6 +323,34 @@ const Experience: React.FC = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
             >
+              {/* Floating Tech Stack */}
+              <motion.div
+                className="floating-tech-stack"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: index * 0.2 + 0.3 }}
+              >
+                {exp.technologies.slice(0, 4).map((tech, techIndex) => {
+                  const TechIcon = techStackIcons[tech] || techStackIcons["default"];
+                  return (
+                    <motion.div
+                      key={techIndex}
+                      className="floating-tech-item"
+                      initial={{ opacity: 0, x: index % 2 === 0 ? 20 : -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ 
+                        duration: 0.4, 
+                        delay: index * 0.2 + 0.5 + techIndex * 0.1 
+                      }}
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <IconWrapper icon={TechIcon} />
+                      <span>{tech}</span>
+                    </motion.div>
+                  );
+                })}
+              </motion.div>
+
               <div className="timeline-content">
                 <motion.div
                   className="timeline-header"

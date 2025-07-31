@@ -5,7 +5,7 @@
 /* Timeline */
 .timeline {
   position: relative;
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto 80px;
   padding: 40px 0;
 }
@@ -34,6 +34,70 @@
 
 .timeline-item.right {
   padding-left: 50%;
+}
+
+/* Floating Tech Stack */
+.floating-tech-stack {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 10;
+}
+
+.timeline-item.left .floating-tech-stack {
+  right: -80px;
+  align-items: flex-start;
+}
+
+.timeline-item.right .floating-tech-stack {
+  left: -80px;
+  align-items: flex-end;
+}
+
+.floating-tech-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  background: rgba(100, 255, 218, 0.1);
+  border: 1px solid rgba(100, 255, 218, 0.3);
+  border-radius: 15px;
+  color: #64ffda;
+  font-size: 0.7rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(0);
+}
+
+.timeline-item.left .floating-tech-item {
+  transform: translateX(20px);
+}
+
+.timeline-item.right .floating-tech-item {
+  transform: translateX(-20px);
+}
+
+.floating-tech-item.animate {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.floating-tech-item svg {
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.floating-tech-item:hover {
+  background: rgba(100, 255, 218, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(100, 255, 218, 0.2);
+  border-color: rgba(100, 255, 218, 0.5);
 }
 
 .timeline-content {
@@ -296,6 +360,33 @@
   .timeline-item.right .timeline-connector {
     left: 20px;
     right: auto;
+  }
+  
+  .floating-tech-stack {
+    position: relative;
+    top: auto;
+    transform: none;
+    margin-top: 15px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .timeline-item.left .floating-tech-stack,
+  .timeline-item.right .floating-tech-stack {
+    right: auto;
+    left: auto;
+    align-items: center;
+  }
+  
+  .floating-tech-item {
+    opacity: 1;
+    transform: none;
+  }
+  
+  .timeline-item.left .floating-tech-item,
+  .timeline-item.right .floating-tech-item {
+    transform: none;
   }
 }
 
