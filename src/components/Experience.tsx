@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useMemo } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { 
   FaBriefcase, 
@@ -248,189 +248,6 @@ const techStackIcons: { [key: string]: any } = {
   "default": FaCode
 };
 
-// Floating Tech Stack Component
-const FloatingTechStack: React.FC<{ 
-  technologies: string[], 
-  cardRef: React.RefObject<HTMLDivElement>,
-  index: number 
-}> = ({ technologies, cardRef, index }) => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas || !cardRef.current) return;
-
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    const card = cardRef.current;
-    
-    // Function to resize canvas
-    const resizeCanvas = () => {
-      const cardRect = card.getBoundingClientRect();
-      canvas.width = cardRect.width;
-      canvas.height = cardRect.height;
-      canvas.style.width = `${cardRect.width}px`;
-      canvas.style.height = `${cardRect.height}px`;
-    };
-
-    // Initial resize
-    resizeCanvas();
-
-    // Tech item class
-    class TechItem {
-      x: number;
-      y: number;
-      vx: number;
-      vy: number;
-      size: number;
-      opacity: number;
-      tech: string;
-      icon: any;
-      angle: number;
-      angleSpeed: number;
-
-      constructor(tech: string) {
-        this.tech = tech;
-        this.icon = techStackIcons[tech] || techStackIcons["default"];
-        
-        // Start position within card boundaries
-        this.x = Math.random() * (canvas.width - 100) + 50;
-        this.y = Math.random() * (canvas.height - 100) + 50;
-        
-        // Gentle floating movement
-        this.vx = (Math.random() - 0.5) * 0.5;
-        this.vy = (Math.random() - 0.5) * 0.5;
-        
-        this.size = Math.random() * 25 + 20;
-        this.opacity = Math.random() * 0.4 + 0.3;
-        this.angle = Math.random() * Math.PI * 2;
-        this.angleSpeed = (Math.random() - 0.5) * 0.03;
-      }
-
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
-        this.angle += this.angleSpeed;
-
-        // Bounce off card boundaries
-        if (this.x < 40 || this.x > canvas.width - 40) {
-          this.vx *= -1;
-          this.x = Math.max(40, Math.min(canvas.width - 40, this.x));
-        }
-        if (this.y < 40 || this.y > canvas.height - 40) {
-          this.vy *= -1;
-          this.y = Math.max(40, Math.min(canvas.height - 40, this.y));
-        }
-
-        // Keep within bounds
-        this.x = Math.max(40, Math.min(canvas.width - 40, this.x));
-        this.y = Math.max(40, Math.min(canvas.height - 40, this.y));
-      }
-
-      draw() {
-        if (!ctx) return;
-        
-        ctx.save();
-        ctx.translate(this.x, this.y);
-        ctx.rotate(this.angle);
-        
-        // Draw background circle
-        ctx.beginPath();
-        ctx.arc(0, 0, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(100, 255, 218, ${this.opacity * 0.2})`;
-        ctx.fill();
-        ctx.strokeStyle = `rgba(100, 255, 218, ${this.opacity * 0.8})`;
-        ctx.lineWidth = 2;
-        ctx.stroke();
-        
-        // Draw tech name
-        ctx.fillStyle = `rgba(100, 255, 218, ${this.opacity})`;
-        ctx.font = `bold ${this.size * 0.35}px Arial`;
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillText(this.tech, 0, 0);
-        
-        ctx.restore();
-      }
-    }
-
-    // Create tech items
-    const techItems: TechItem[] = technologies.map(tech => new TechItem(tech));
-
-    // Animation loop
-    let animationId: number;
-    const animate = () => {
-      if (!ctx || !canvas) return;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      // Update and draw tech items
-      techItems.forEach(item => {
-        item.update();
-        item.draw();
-      });
-
-      // Draw connections between nearby items
-      techItems.forEach((item, i) => {
-        techItems.slice(i + 1).forEach(otherItem => {
-          const dx = item.x - otherItem.x;
-          const dy = item.y - otherItem.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-
-          if (distance < 100) {
-            ctx.beginPath();
-            ctx.moveTo(item.x, item.y);
-            ctx.lineTo(otherItem.x, otherItem.y);
-            ctx.strokeStyle = `rgba(100, 255, 218, ${0.15 * (1 - distance / 100)})`;
-            ctx.lineWidth = 1;
-            ctx.stroke();
-          }
-        });
-      });
-
-      animationId = requestAnimationFrame(animate);
-    };
-
-    // Start animation
-    animate();
-
-    // Handle window resize
-    const handleResize = () => {
-      resizeCanvas();
-      // Recreate tech items with new positions
-      techItems.length = 0;
-      technologies.forEach(tech => techItems.push(new TechItem(tech)));
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    // Cleanup
-    return () => {
-      window.removeEventListener('resize', handleResize);
-      if (animationId) {
-        cancelAnimationFrame(animationId);
-      }
-    };
-  }, [technologies, cardRef, index]);
-
-  return (
-    <canvas
-      ref={canvasRef}
-      className="floating-tech-canvas"
-      style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        pointerEvents: 'none',
-        zIndex: 2,
-        borderRadius: '20px'
-      }}
-    />
-  );
-};
-
 const Experience: React.FC = () => {
   const experiences = [
     {
@@ -496,15 +313,6 @@ const Experience: React.FC = () => {
     }
   ];
 
-  // Create refs for each experience card
-  const cardRef0 = React.useRef<HTMLDivElement>(null);
-  const cardRef1 = React.useRef<HTMLDivElement>(null);
-  const cardRef2 = React.useRef<HTMLDivElement>(null);
-  const cardRef3 = React.useRef<HTMLDivElement>(null);
-  const cardRef4 = React.useRef<HTMLDivElement>(null);
-  
-  const cardRefs = [cardRef0, cardRef1, cardRef2, cardRef3, cardRef4];
-
   return (
     <section className="experience section">
       <div className="container">
@@ -526,13 +334,41 @@ const Experience: React.FC = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
             >
-              <div className="timeline-content" ref={cardRefs[index]}>
-                <FloatingTechStack 
-                  technologies={exp.technologies} 
-                  cardRef={cardRefs[index]}
-                  index={index}
-                />
-                
+              {/* Tech Stack Cards */}
+              <motion.div
+                className="tech-stack-section"
+                initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 + 0.3 }}
+              >
+                <h4>Tech Stack</h4>
+                <div className="tech-stack-grid">
+                  {exp.technologies.map((tech, techIndex) => {
+                    const TechIcon = techStackIcons[tech] || techStackIcons["default"];
+                    return (
+                      <motion.div
+                        key={techIndex}
+                        className="tech-card"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ 
+                          duration: 0.4, 
+                          delay: index * 0.2 + 0.5 + techIndex * 0.1 
+                        }}
+                        whileHover={{ scale: 1.05 }}
+                      >
+                        <div className="tech-icon">
+                          <IconWrapper icon={TechIcon} />
+                        </div>
+                        <span className="tech-name">{tech}</span>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              </motion.div>
+
+              {/* Experience Card */}
+              <div className="timeline-content">
                 <motion.div
                   className="timeline-header"
                   whileHover={{ scale: 1.02 }}
@@ -577,35 +413,6 @@ const Experience: React.FC = () => {
             </motion.div>
           ))}
         </div>
-
-        <motion.div
-          className="experience-summary"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1 }}
-        >
-          <div className="summary-card">
-            <h3>Career Highlights</h3>
-            <div className="summary-stats">
-              <div className="stat">
-                <span className="stat-number">5+</span>
-                <span className="stat-label">Years Experience</span>
-              </div>
-              <div className="stat">
-                <span className="stat-number">10+</span>
-                <span className="stat-label">Technologies</span>
-              </div>
-              <div className="stat">
-                <span className="stat-number">15+</span>
-                <span className="stat-label">Major Projects</span>
-              </div>
-              <div className="stat">
-                <span className="stat-number">60%</span>
-                <span className="stat-label">Efficiency Gains</span>
-              </div>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
