@@ -395,6 +395,14 @@
     padding-left: 0;
     padding-right: 0;
     width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .timeline-content {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
   }
 
   .timeline-item.left .timeline-content::before,
@@ -467,25 +475,31 @@
 @media (max-width: 480px) {
   .timeline-item.left,
   .timeline-item.right {
-    padding-left: 60px;
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0 10px;
   }
   
-  .timeline-item.left .timeline-connector,
-  .timeline-item.right .timeline-connector {
-    left: 10px;
+  .timeline-content {
+    padding: 20px;
+    margin: 0;
+    border-radius: 15px;
   }
   
   .timeline-info h3 {
     font-size: 1.2rem;
+    text-align: center;
   }
   
   .company {
     font-size: 1rem;
+    text-align: center;
   }
   
   .meta {
     flex-direction: column;
     gap: 5px;
+    align-items: center;
   }
   
   .summary-stats {
@@ -508,11 +522,6 @@
     touch-action: manipulation;
   }
   
-  .timeline-content {
-    padding: 15px;
-    margin: 0 5px;
-  }
-  
   .achievements li {
     font-size: 0.9rem;
     line-height: 1.5;
@@ -521,6 +530,7 @@
   /* Mobile tech stack adjustments */
   .mobile-tech-grid {
     gap: 6px;
+    justify-content: center;
   }
   
   .mobile-tech-tag {
@@ -530,6 +540,16 @@
   
   .mobile-tech-tag svg {
     font-size: 0.7rem;
+  }
+  
+  /* Center mobile tech stack heading */
+  .mobile-tech-stack h4 {
+    text-align: center;
+  }
+  
+  /* Center achievements heading */
+  .achievements h4 {
+    text-align: center;
   }
 }
 

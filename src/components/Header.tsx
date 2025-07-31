@@ -119,6 +119,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection, onSectionChange, isMobil
               <div className="logo-circle">
                 <span className="logo-v">V</span>
                 <span className="logo-k">K</span>
+                <div className="logo-glow"></div>
               </div>
             </div>
             <button className="mobile-close-btn" onClick={toggleMobileMenu}>
