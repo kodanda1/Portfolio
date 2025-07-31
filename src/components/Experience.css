@@ -40,6 +40,13 @@
 .floating-tech-canvas {
   border-radius: 20px;
   overflow: hidden;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 2 !important;
+  pointer-events: none !important;
 }
 
 .timeline-content {
@@ -51,6 +58,7 @@
   position: relative;
   transition: all 0.3s ease;
   overflow: hidden;
+  min-height: 200px;
 }
 
 .timeline-content::before {

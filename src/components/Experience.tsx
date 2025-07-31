@@ -264,11 +264,18 @@ const FloatingTechStack: React.FC<{
     if (!ctx) return;
 
     const card = cardRef.current;
-    const cardRect = card.getBoundingClientRect();
     
-    // Set canvas size to match card dimensions
-    canvas.width = cardRect.width;
-    canvas.height = cardRect.height;
+    // Function to resize canvas
+    const resizeCanvas = () => {
+      const cardRect = card.getBoundingClientRect();
+      canvas.width = cardRect.width;
+      canvas.height = cardRect.height;
+      canvas.style.width = `${cardRect.width}px`;
+      canvas.style.height = `${cardRect.height}px`;
+    };
+
+    // Initial resize
+    resizeCanvas();
 
     // Tech item class
     class TechItem {
@@ -292,13 +299,13 @@ const FloatingTechStack: React.FC<{
         this.y = Math.random() * (canvas.height - 100) + 50;
         
         // Gentle floating movement
-        this.vx = (Math.random() - 0.5) * 0.3;
-        this.vy = (Math.random() - 0.5) * 0.3;
+        this.vx = (Math.random() - 0.5) * 0.5;
+        this.vy = (Math.random() - 0.5) * 0.5;
         
-        this.size = Math.random() * 20 + 15;
-        this.opacity = Math.random() * 0.3 + 0.2;
+        this.size = Math.random() * 25 + 20;
+        this.opacity = Math.random() * 0.4 + 0.3;
         this.angle = Math.random() * Math.PI * 2;
-        this.angleSpeed = (Math.random() - 0.5) * 0.02;
+        this.angleSpeed = (Math.random() - 0.5) * 0.03;
       }
 
       update() {
@@ -307,18 +314,18 @@ const FloatingTechStack: React.FC<{
         this.angle += this.angleSpeed;
 
         // Bounce off card boundaries
-        if (this.x < 30 || this.x > canvas.width - 30) {
+        if (this.x < 40 || this.x > canvas.width - 40) {
           this.vx *= -1;
-          this.x = Math.max(30, Math.min(canvas.width - 30, this.x));
+          this.x = Math.max(40, Math.min(canvas.width - 40, this.x));
         }
-        if (this.y < 30 || this.y > canvas.height - 30) {
+        if (this.y < 40 || this.y > canvas.height - 40) {
           this.vy *= -1;
-          this.y = Math.max(30, Math.min(canvas.height - 30, this.y));
+          this.y = Math.max(40, Math.min(canvas.height - 40, this.y));
         }
 
         // Keep within bounds
-        this.x = Math.max(30, Math.min(canvas.width - 30, this.x));
-        this.y = Math.max(30, Math.min(canvas.height - 30, this.y));
+        this.x = Math.max(40, Math.min(canvas.width - 40, this.x));
+        this.y = Math.max(40, Math.min(canvas.height - 40, this.y));
       }
 
       draw() {
@@ -331,15 +338,15 @@ const FloatingTechStack: React.FC<{
         // Draw background circle
         ctx.beginPath();
         ctx.arc(0, 0, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(100, 255, 218, ${this.opacity * 0.3})`;
+        ctx.fillStyle = `rgba(100, 255, 218, ${this.opacity * 0.2})`;
         ctx.fill();
-        ctx.strokeStyle = `rgba(100, 255, 218, ${this.opacity * 0.6})`;
-        ctx.lineWidth = 1;
+        ctx.strokeStyle = `rgba(100, 255, 218, ${this.opacity * 0.8})`;
+        ctx.lineWidth = 2;
         ctx.stroke();
         
         // Draw tech name
         ctx.fillStyle = `rgba(100, 255, 218, ${this.opacity})`;
-        ctx.font = `${this.size * 0.4}px Arial`;
+        ctx.font = `bold ${this.size * 0.35}px Arial`;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillText(this.tech, 0, 0);
@@ -352,6 +359,7 @@ const FloatingTechStack: React.FC<{
     const techItems: TechItem[] = technologies.map(tech => new TechItem(tech));
 
     // Animation loop
+    let animationId: number;
     const animate = () => {
       if (!ctx || !canvas) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -369,25 +377,39 @@ const FloatingTechStack: React.FC<{
           const dy = item.y - otherItem.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
 
-          if (distance < 80) {
+          if (distance < 100) {
             ctx.beginPath();
             ctx.moveTo(item.x, item.y);
             ctx.lineTo(otherItem.x, otherItem.y);
-            ctx.strokeStyle = `rgba(100, 255, 218, ${0.1 * (1 - distance / 80)})`;
+            ctx.strokeStyle = `rgba(100, 255, 218, ${0.15 * (1 - distance / 100)})`;
             ctx.lineWidth = 1;
             ctx.stroke();
           }
         });
       });
 
-      requestAnimationFrame(animate);
+      animationId = requestAnimationFrame(animate);
     };
 
+    // Start animation
     animate();
+
+    // Handle window resize
+    const handleResize = () => {
+      resizeCanvas();
+      // Recreate tech items with new positions
+      techItems.length = 0;
+      technologies.forEach(tech => techItems.push(new TechItem(tech)));
+    };
+
+    window.addEventListener('resize', handleResize);
 
     // Cleanup
     return () => {
-      // Animation will stop when component unmounts
+      window.removeEventListener('resize', handleResize);
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+      }
     };
   }, [technologies, cardRef, index]);
 
@@ -402,7 +424,8 @@ const FloatingTechStack: React.FC<{
         width: '100%',
         height: '100%',
         pointerEvents: 'none',
-        zIndex: 1
+        zIndex: 2,
+        borderRadius: '20px'
       }}
     />
   );
