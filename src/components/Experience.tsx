@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { 
   FaBriefcase, 
@@ -473,6 +473,15 @@ const Experience: React.FC = () => {
     }
   ];
 
+  // Create refs for each experience card
+  const cardRef0 = React.useRef<HTMLDivElement>(null);
+  const cardRef1 = React.useRef<HTMLDivElement>(null);
+  const cardRef2 = React.useRef<HTMLDivElement>(null);
+  const cardRef3 = React.useRef<HTMLDivElement>(null);
+  const cardRef4 = React.useRef<HTMLDivElement>(null);
+  
+  const cardRefs = [cardRef0, cardRef1, cardRef2, cardRef3, cardRef4];
+
   return (
     <section className="experience section">
       <div className="container">
@@ -486,68 +495,64 @@ const Experience: React.FC = () => {
         </motion.h2>
 
         <div className="timeline">
-          {experiences.map((exp, index) => {
-            const cardRef = React.useRef<HTMLDivElement>(null);
-            
-            return (
-              <motion.div
-                key={index}
-                className={`timeline-item ${index % 2 === 0 ? 'left' : 'right'}`}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-              >
-                <div className="timeline-content" ref={cardRef}>
-                  <FloatingTechStack 
-                    technologies={exp.technologies} 
-                    cardRef={cardRef}
-                    index={index}
-                  />
-                  
-                  <motion.div
-                    className="timeline-header"
-                    whileHover={{ scale: 1.02 }}
-                  >
-                    <div className="timeline-icon">
-                      <IconWrapper icon={FaBriefcase} />
-                    </div>
-                    <div className="timeline-info">
-                      <h3>{exp.title}</h3>
-                      <div className="company-info">
-                        <span className="company">{exp.company}</span>
-                        <div className="meta">
-                          <span className="period">
-                            <IconWrapper icon={FaCalendar} />
-                            {exp.period}
-                          </span>
-                          <span className="location">
-                            <IconWrapper icon={FaMapMarkerAlt} />
-                            {exp.location}
-                          </span>
-                        </div>
+          {experiences.map((exp, index) => (
+            <motion.div
+              key={index}
+              className={`timeline-item ${index % 2 === 0 ? 'left' : 'right'}`}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+            >
+              <div className="timeline-content" ref={cardRefs[index]}>
+                <FloatingTechStack 
+                  technologies={exp.technologies} 
+                  cardRef={cardRefs[index]}
+                  index={index}
+                />
+                
+                <motion.div
+                  className="timeline-header"
+                  whileHover={{ scale: 1.02 }}
+                >
+                  <div className="timeline-icon">
+                    <IconWrapper icon={FaBriefcase} />
+                  </div>
+                  <div className="timeline-info">
+                    <h3>{exp.title}</h3>
+                    <div className="company-info">
+                      <span className="company">{exp.company}</span>
+                      <div className="meta">
+                        <span className="period">
+                          <IconWrapper icon={FaCalendar} />
+                          {exp.period}
+                        </span>
+                        <span className="location">
+                          <IconWrapper icon={FaMapMarkerAlt} />
+                          {exp.location}
+                        </span>
                       </div>
                     </div>
-                  </motion.div>
-
-                  <div className="achievements">
-                    <h4>Key Achievements:</h4>
-                    <ul>
-                      {exp.achievements.map((achievement, achievementIndex) => (
-                        <motion.li
-                          key={achievementIndex}
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.4, delay: index * 0.2 + 0.4 + achievementIndex * 0.1 }}
-                        >
-                          {achievement}
-                        </motion.li>
-                      ))}
-                    </ul>
                   </div>
+                </motion.div>
+
+                <div className="achievements">
+                  <h4>Key Achievements:</h4>
+                  <ul>
+                    {exp.achievements.map((achievement, achievementIndex) => (
+                      <motion.li
+                        key={achievementIndex}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.4, delay: index * 0.2 + 0.4 + achievementIndex * 0.1 }}
+                      >
+                        {achievement}
+                      </motion.li>
+                    ))}
+                  </ul>
                 </div>
-              </motion.div>
-            );
-          })}
+              </div>
+            </motion.div>
+          ))}
         </div>
 
         <motion.div
