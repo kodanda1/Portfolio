@@ -330,7 +330,7 @@ const Experience: React.FC = () => {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: index * 0.2 + 0.3 }}
               >
-                {exp.technologies.slice(0, 4).map((tech, techIndex) => {
+                {exp.technologies.map((tech, techIndex) => {
                   const TechIcon = techStackIcons[tech] || techStackIcons["default"];
                   return (
                     <motion.div
@@ -376,25 +376,6 @@ const Experience: React.FC = () => {
                     </div>
                   </div>
                 </motion.div>
-
-                <div className="technologies">
-                  {exp.technologies.map((tech, techIndex) => {
-                    const TechIcon = techStackIcons[tech] || techStackIcons["default"];
-                    return (
-                      <motion.div
-                        key={techIndex}
-                        className="tech-tag"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.3, delay: index * 0.2 + techIndex * 0.1 }}
-                        whileHover={{ scale: 1.1 }}
-                      >
-                        <IconWrapper icon={TechIcon} />
-                        <span>{tech}</span>
-                      </motion.div>
-                    );
-                  })}
-                </div>
 
                 <div className="achievements">
                   <h4>Key Achievements:</h4>
