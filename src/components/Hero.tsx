@@ -124,7 +124,7 @@ const Hero: React.FC = () => {
             <div className="profile-card">
               <div className="profile-image">
                 <img 
-                  src="/profile_pic.HEIC" 
+                  src="/profile_pic.jpg" 
                   alt="Varuntej Kodandapuram" 
                   className="profile-picture"
                 />
