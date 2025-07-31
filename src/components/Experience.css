@@ -457,6 +457,22 @@
     text-align: center;
   }
   
+  .timeline-info {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .timeline-info h3 {
+    text-align: center !important;
+    width: 100%;
+    display: block;
+  }
+  
+  .company-info {
+    text-align: center;
+    width: 100%;
+  }
+  
   .timeline-icon {
     margin: 0 auto;
   }
