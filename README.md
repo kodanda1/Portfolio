@@ -23,7 +23,6 @@ A modern, innovative, and stylish personal portfolio website built with React, T
 - **React Icons** - Beautiful icon library
 - **CSS3** - Modern styling with gradients and animations
 - **Canvas API** - Particle background animation
-- **EmailJS** - Contact form email functionality
 
 ## 📁 Project Structure
 
@@ -82,26 +81,18 @@ cd personal-website
 npm install
 ```
 
-3. Configure EmailJS (Optional - for contact form functionality):
-   - Follow the setup guide in `EMAILJS_SETUP.md`
-   - Update the EmailJS configuration in `src/components/Contact.tsx`
-
-4. Start the development server:
+3. Start the development server:
 ```bash
 npm start
 ```
 
-5. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+4. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ### Building for Production
 
 ```bash
 npm run build
 ```
-
-### Deployment
-
-The website is configured for deployment at `http://varunportfolio.com`. Update the `homepage` field in `package.json` if deploying to a different domain.
 
 ## 📱 Responsive Design
 
@@ -146,11 +137,10 @@ The website is fully responsive and optimized for:
 - Skill level indicators
 
 ### 6. Contact Section
-- Functional contact form with email integration
+- Contact form
 - Contact information
 - Social media links
 - Resume download
-- Email notifications to kodandapuramvaruntej@gmail.com
 
 ## 🔧 Customization
 

@@ -6,11 +6,16 @@
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
   color: #ffffff;
   overflow-x: hidden;
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
 }
 
 .App {
@@ -156,6 +161,9 @@ body {
   display: inline-block;
   position: relative;
   overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  user-select: none;
 }
 
 .btn::before {
@@ -193,13 +201,33 @@ body {
 }
 
 /* Responsive Design */
+@media (max-width: 1200px) {
+  .section {
+    padding: 70px 20px;
+  }
+  
+  .section-title {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 968px) {
+  .section {
+    padding: 65px 18px;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+}
+
 @media (max-width: 768px) {
   .section {
     padding: 60px 15px;
   }
   
   .section-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
   
   .card {
@@ -210,36 +238,33 @@ body {
   .grid-3 {
     grid-template-columns: 1fr;
   }
-  
-  /* Touch-friendly improvements */
-  .btn {
-    min-height: 44px;
-    padding: 12px 25px;
-  }
-  
-  /* Prevent zoom on input focus */
-  input, textarea, select {
-    font-size: 16px;
-  }
 }
 
 @media (max-width: 480px) {
   .section {
-    padding: 40px 10px;
+    padding: 50px 12px;
   }
   
   .section-title {
-    font-size: 1.8rem;
-    margin-bottom: 40px;
+    font-size: 1.6rem;
   }
   
   .card {
     padding: 15px;
   }
+}
+
+@media (max-width: 360px) {
+  .section {
+    padding: 40px 10px;
+  }
   
-  .btn {
-    padding: 10px 20px;
-    font-size: 0.9rem;
+  .section-title {
+    font-size: 1.4rem;
+  }
+  
+  .card {
+    padding: 12px;
   }
 }
 

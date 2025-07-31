@@ -1,145 +1,123 @@
-# Deployment Guide for varunportfolio.com
+# Deployment Guide
 
-## Overview
-This guide will help you deploy your portfolio website to `http://varunportfolio.com`.
+This guide will help you deploy your portfolio website to various platforms.
 
 ## Prerequisites
-- Domain name: `varunportfolio.com`
-- Web hosting service (recommended options below)
-- Git repository access
+
+1. Make sure all changes are committed to your Git repository
+2. Ensure EmailJS is properly configured (see EMAILJS_SETUP.md)
+3. Test the website locally: `npm start`
 
 ## Deployment Options
 
-### Option 1: Netlify (Recommended)
-1. **Connect Repository**
-   - Go to [Netlify](https://netlify.com)
-   - Sign up/Login with your GitHub account
-   - Click "New site from Git"
-   - Select your repository: `kodanda1/Portfolio`
+### Option 1: GitHub Pages (Recommended)
 
-2. **Configure Build Settings**
-   - Build command: `npm run build`
-   - Publish directory: `build`
-   - Base directory: `personal-website`
+1. **Install gh-pages package:**
+   ```bash
+   npm install --save-dev gh-pages
+   ```
 
-3. **Custom Domain Setup**
-   - Go to Site settings → Domain management
-   - Add custom domain: `varunportfolio.com`
-   - Follow DNS configuration instructions
+2. **Build the project:**
+   ```bash
+   npm run build
+   ```
 
-4. **Environment Variables** (Optional - for EmailJS)
-   - Go to Site settings → Environment variables
-   - Add your EmailJS configuration if needed
-
-### Option 2: Vercel
-1. **Connect Repository**
-   - Go to [Vercel](https://vercel.com)
-   - Sign up/Login with your GitHub account
-   - Click "New Project"
-   - Import your repository
-
-2. **Configure Project**
-   - Framework Preset: Create React App
-   - Root Directory: `personal-website`
-   - Build Command: `npm run build`
-   - Output Directory: `build`
-
-3. **Custom Domain**
-   - Go to Project settings → Domains
-   - Add domain: `varunportfolio.com`
-   - Configure DNS as instructed
-
-### Option 3: GitHub Pages
-1. **Update Repository Settings**
-   - Go to repository settings
-   - Navigate to Pages section
-   - Source: Deploy from a branch
-   - Branch: `gh-pages`
-   - Folder: `/ (root)`
-
-2. **Deploy**
+3. **Deploy to GitHub Pages:**
    ```bash
    npm run deploy
    ```
 
-3. **Custom Domain**
-   - Add `varunportfolio.com` to custom domain field
-   - Create CNAME file in public folder with domain name
+4. **Configure GitHub Pages:**
+   - Go to your repository settings
+   - Navigate to "Pages" section
+   - Select "gh-pages" branch as source
+   - Set custom domain to `varunportfolio.com` if needed
 
-## DNS Configuration
+### Option 2: Netlify
 
-### For Netlify/Vercel:
-```
-Type: CNAME
-Name: @
-Value: your-site.netlify.app (or vercel.app)
-```
+1. **Connect your GitHub repository to Netlify**
+2. **Build settings:**
+   - Build command: `npm run build`
+   - Publish directory: `build`
+   - Node version: 18 (or latest LTS)
 
-### For GitHub Pages:
-```
-Type: CNAME
-Name: @
-Value: kodanda1.github.io
-```
+3. **Environment variables (if needed):**
+   - Add any required environment variables in Netlify dashboard
 
-## SSL Certificate
-- Netlify and Vercel provide automatic SSL certificates
-- GitHub Pages also provides SSL for custom domains
-- Ensure HTTPS is enabled for security
+4. **Custom domain:**
+   - Add `varunportfolio.com` in domain settings
+   - Configure DNS records as instructed
+
+### Option 3: Vercel
+
+1. **Connect your GitHub repository to Vercel**
+2. **Build settings:**
+   - Framework preset: Create React App
+   - Build command: `npm run build`
+   - Output directory: `build`
+
+3. **Custom domain:**
+   - Add `varunportfolio.com` in domain settings
+   - Configure DNS records as instructed
 
 ## Post-Deployment Checklist
 
-1. **Test Website**
-   - Visit `http://varunportfolio.com`
-   - Test all sections and functionality
-   - Verify mobile responsiveness
-   - Test contact form (if EmailJS is configured)
-
-2. **SEO Optimization**
-   - Meta tags are already configured
-   - Verify Google Analytics (if needed)
-   - Submit sitemap to search engines
-
-3. **Performance**
-   - Run Lighthouse audit
-   - Optimize images if needed
-   - Check Core Web Vitals
+- [ ] Test all sections of the website
+- [ ] Verify contact form functionality
+- [ ] Check mobile responsiveness
+- [ ] Test on different browsers (Chrome, Firefox, Safari, Edge)
+- [ ] Verify all links work correctly
+- [ ] Check loading performance
+- [ ] Test download functionality for resume
 
 ## Troubleshooting
 
-### Build Issues
-- Ensure all dependencies are installed: `npm install`
-- Check for TypeScript errors: `npm run build`
-- Verify package.json configuration
+### Common Issues
 
-### Domain Issues
-- DNS propagation can take up to 48 hours
-- Check DNS settings with tools like `nslookup`
-- Verify SSL certificate status
+1. **Build fails:**
+   - Check for TypeScript errors: `npm run build`
+   - Ensure all dependencies are installed: `npm install`
 
-### EmailJS Issues
-- Follow the setup guide in `EMAILJS_SETUP.md`
-- Check browser console for errors
-- Verify EmailJS service configuration
+2. **Contact form not working:**
+   - Verify EmailJS configuration
+   - Check browser console for errors
+   - Ensure EmailJS credentials are correct
 
-## Maintenance
+3. **Mobile issues:**
+   - Test on actual mobile devices
+   - Check viewport meta tag
+   - Verify responsive CSS is working
 
-### Regular Updates
-- Keep dependencies updated: `npm update`
-- Monitor for security vulnerabilities: `npm audit`
-- Update content and projects as needed
+4. **Performance issues:**
+   - Optimize images
+   - Enable compression on hosting platform
+   - Consider using CDN for static assets
 
-### Backup
-- Repository serves as backup
-- Consider regular backups of custom configurations
-- Document any custom changes
+### Performance Optimization
 
-## Support
-For deployment issues:
-- Check hosting provider documentation
-- Review build logs for errors
-- Contact hosting provider support
+1. **Image optimization:**
+   - Compress images using tools like TinyPNG
+   - Use WebP format where possible
+   - Implement lazy loading for images
 
----
+2. **Code splitting:**
+   - Consider implementing React.lazy() for components
+   - Split large bundles if needed
 
-**Note**: The website is now configured for `http://varunportfolio.com` in `package.json`. Make sure your hosting provider supports this domain configuration. 
+3. **Caching:**
+   - Configure proper cache headers
+   - Use service workers if needed
+
+## Monitoring
+
+- Set up Google Analytics for traffic monitoring
+- Configure error tracking (e.g., Sentry)
+- Monitor website performance with tools like Lighthouse
+- Set up uptime monitoring
+
+## Security
+
+- Enable HTTPS (automatic with most hosting platforms)
+- Keep dependencies updated
+- Use environment variables for sensitive data
+- Implement Content Security Policy if needed 

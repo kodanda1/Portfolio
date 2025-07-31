@@ -5,7 +5,6 @@ import {
   FaCalendar, 
   FaMapMarkerAlt,
   FaPython,
-  FaAws,
   FaGithub,
   FaDocker,
   FaDatabase,
