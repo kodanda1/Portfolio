@@ -332,9 +332,9 @@ const Experience: React.FC = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
             >
-              {/* Tech Stack Cards */}
+              {/* Tech Stack Cards - Desktop Only */}
               <motion.div
-                className="tech-stack-section"
+                className="tech-stack-section desktop-only"
                 initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.2 + 0.3 }}
@@ -391,6 +391,31 @@ const Experience: React.FC = () => {
                     </div>
                   </div>
                 </motion.div>
+
+                {/* Mobile Tech Stack - Inside Card */}
+                <div className="mobile-tech-stack">
+                  <h4>Tech Stack:</h4>
+                  <div className="mobile-tech-grid">
+                    {exp.technologies.map((tech, techIndex) => {
+                      const TechIcon = techStackIcons[tech] || techStackIcons["default"];
+                      return (
+                        <motion.span
+                          key={techIndex}
+                          className="mobile-tech-tag"
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ 
+                            duration: 0.3, 
+                            delay: index * 0.2 + 0.5 + techIndex * 0.05 
+                          }}
+                        >
+                          <IconWrapper icon={TechIcon} />
+                          {tech}
+                        </motion.span>
+                      );
+                    })}
+                  </div>
+                </div>
 
                 <div className="achievements">
                   <h4>Key Achievements:</h4>
