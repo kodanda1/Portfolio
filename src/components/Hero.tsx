@@ -124,7 +124,7 @@ const Hero: React.FC = () => {
             <div className="profile-card">
               <div className="profile-image">
                 <img 
-                  src="/profile_pic.HEIC" 
+                  src="https://kodanda1.github.io/Portfolio/profile_pic.HEIC" 
                   alt="Varuntej Kodandapuram" 
                   className="profile-picture"
                   onError={(e) => {

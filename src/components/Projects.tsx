@@ -19,7 +19,7 @@ const Projects: React.FC = () => {
       period: "Jun 2025 - Present",
       github: "https://github.com/kodanda1/Projects",
       live: "https://student-qa-assistant.vercel.app",
-      image: "/LLM-Based Student Q&A Assistant with RAG.png",
+      image: "https://kodanda1.github.io/Portfolio/LLM-Based%20Student%20Q%26A%20Assistant%20with%20RAG.png",
       category: "AI/ML",
       icon: FaBrain
     },
@@ -30,7 +30,7 @@ const Projects: React.FC = () => {
       period: "Mar 2025 - Present",
       github: "https://github.com/kodanda1/Projects",
       live: "https://review-analysis.vercel.app",
-      image: "/AI-Powered Review Analysis Platform.png",
+      image: "https://kodanda1.github.io/Portfolio/AI-Powered%20Review%20Analysis%20Platform.png",
       category: "Full-Stack",
       icon: FaCode
     },
@@ -41,7 +41,7 @@ const Projects: React.FC = () => {
       period: "Feb 2025 - May 2025",
       github: "https://github.com/kodanda1/Projects",
       live: null,
-      image: "/COVID-19 Anomaly Detection System.png",
+      image: "https://kodanda1.github.io/Portfolio/COVID-19%20Anomaly%20Detection%20System.png",
       category: "AI/ML",
       icon: FaBrain
     },
@@ -52,7 +52,7 @@ const Projects: React.FC = () => {
       period: "Aug 2023 - May 2024",
       github: "https://github.com/kodanda1/Projects",
       live: null,
-      image: "/Credit Card Approval Model Prediction.png",
+      image: "https://kodanda1.github.io/Portfolio/Credit%20Card%20Approval%20Model%20Prediction.png",
       category: "Machine Learning",
       icon: FaBrain
     }
