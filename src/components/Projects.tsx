@@ -91,7 +91,15 @@ const Projects: React.FC = () => {
                 onClick={() => setSelectedProject(selectedProject === index ? null : index)}
               >
                 <div className="project-image">
-                  <img src={project.image} alt={project.title} />
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    onError={(e) => {
+                      console.error('Failed to load project image:', project.title, e);
+                      e.currentTarget.style.display = 'none';
+                    }}
+                    onLoad={() => console.log('Project image loaded:', project.title)}
+                  />
                   <div className="project-overlay">
                     <div className="project-category">
                       <IconWrapper icon={Icon} />

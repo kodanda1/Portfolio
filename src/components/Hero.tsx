@@ -124,9 +124,14 @@ const Hero: React.FC = () => {
             <div className="profile-card">
               <div className="profile-image">
                 <img 
-                  src="/profile_pic.jpg" 
+                  src="/profile_pic.HEIC" 
                   alt="Varuntej Kodandapuram" 
                   className="profile-picture"
+                  onError={(e) => {
+                    console.error('Failed to load profile image:', e);
+                    e.currentTarget.style.display = 'none';
+                  }}
+                  onLoad={() => console.log('Profile image loaded successfully')}
                 />
                 <div className="profile-glow"></div>
               </div>
