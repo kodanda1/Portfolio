@@ -6,19 +6,20 @@
 .timeline {
   position: relative;
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+  margin: 0 auto 80px;
+  padding: 40px 0;
 }
 
 .timeline::before {
   content: '';
   position: absolute;
-  left: 50%;
   top: 0;
-  bottom: 0;
-  width: 2px;
-  background: linear-gradient(180deg, transparent, rgba(100, 255, 218, 0.3), transparent);
+  left: 50%;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(45deg, #64ffda, #00d4ff);
   transform: translateX(-50%);
+  border-radius: 2px;
 }
 
 .timeline-item {
@@ -28,27 +29,27 @@
 }
 
 .timeline-item.left {
-  padding-right: 45%;
+  padding-right: 50%;
 }
 
 .timeline-item.right {
-  padding-left: 45%;
+  padding-left: 50%;
 }
 
 /* Tech Stack Section */
 .tech-stack-section {
   position: absolute;
   top: 0;
-  width: 180px;
+  width: 160px;
   z-index: 10;
 }
 
 .timeline-item.left .tech-stack-section {
-  right: -200px;
+  right: -180px;
 }
 
 .timeline-item.right .tech-stack-section {
-  left: -200px;
+  left: -180px;
 }
 
 .tech-stack-section h4 {
@@ -58,19 +59,19 @@
 .tech-stack-grid {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 
 .tech-card {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 12px;
+  gap: 8px;
+  padding: 8px 10px;
   background: rgba(100, 255, 218, 0.1);
   border: 1px solid rgba(100, 255, 218, 0.3);
-  border-radius: 10px;
+  border-radius: 8px;
   color: #64ffda;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 500;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
@@ -88,13 +89,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   flex-shrink: 0;
 }
 
 .tech-icon svg {
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: #64ffda;
 }
 
