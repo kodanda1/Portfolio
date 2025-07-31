@@ -14,7 +14,7 @@
   content: '';
   position: absolute;
   top: 0;
-  left: 45%;
+  left: 50%;
   width: 4px;
   height: 100%;
   background: linear-gradient(45deg, #64ffda, #00d4ff);
@@ -29,11 +29,11 @@
 }
 
 .timeline-item.left {
-  padding-right: 45%;
+  padding-right: 50%;
 }
 
 .timeline-item.right {
-  padding-left: 45%;
+  padding-left: 50%;
 }
 
 /* Tech Stack Section */
@@ -46,11 +46,11 @@
 }
 
 .timeline-item.left .tech-stack-section {
-  right: -80px;
+  right: -1px;
 }
 
 .timeline-item.right .tech-stack-section {
-  left: -80px;
+  left: -1px;
 }
 
 .tech-stack-section h4 {
