@@ -189,9 +189,11 @@ const Contact: React.FC = () => {
             </div>
 
             <motion.a
-              href="/resume.pdf"
+              href="https://kodanda1.github.io/Portfolio/resume.pdf"
               className="download-resume"
               download
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.8 }}
