@@ -40,16 +40,16 @@
 .tech-stack-section {
   position: absolute;
   top: 0;
-  width: 120px;
+  width: 180px;
   z-index: 10;
 }
 
 .timeline-item.left .tech-stack-section {
-  right: -130px;
+  right: -100px;
 }
 
 .timeline-item.right .tech-stack-section {
-  left: -130px;
+  left: -100px;
 }
 
 .tech-stack-section h4 {
@@ -59,49 +59,51 @@
 .tech-stack-grid {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 10px;
 }
 
 .tech-card {
   display: flex;
   align-items: center;
-  gap: 5px;
-  padding: 5px 7px;
+  gap: 12px;
+  padding: 12px 15px;
   background: rgba(100, 255, 218, 0.1);
   border: 1px solid rgba(100, 255, 218, 0.3);
-  border-radius: 5px;
+  border-radius: 12px;
   color: #64ffda;
-  font-size: 0.65rem;
+  font-size: 0.85rem;
   font-weight: 500;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
   cursor: pointer;
+  box-shadow: 0 2px 8px rgba(100, 255, 218, 0.1);
 }
 
 .tech-card:hover {
   background: rgba(100, 255, 218, 0.2);
   border-color: rgba(100, 255, 218, 0.6);
-  box-shadow: 0 4px 12px rgba(100, 255, 218, 0.2);
-  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(100, 255, 218, 0.3);
+  transform: translateY(-3px);
 }
 
 .tech-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 12px;
-  height: 12px;
+  width: 20px;
+  height: 20px;
   flex-shrink: 0;
 }
 
 .tech-icon svg {
-  font-size: 0.7rem;
+  font-size: 1.1rem;
   color: #64ffda;
 }
 
 .tech-name {
   font-weight: 500;
   white-space: nowrap;
+  letter-spacing: 0.5px;
 }
 
 .timeline-content {
