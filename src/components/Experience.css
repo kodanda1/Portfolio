@@ -387,7 +387,7 @@
 /* Responsive Design */
 @media (max-width: 968px) {
   .timeline::before {
-    left: 50%;
+    display: none;
   }
 
   .timeline-item.left,
