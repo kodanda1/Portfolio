@@ -17,12 +17,12 @@ const Skills: React.FC = () => {
       name: 'Programming Languages',
       icon: FaCode,
       skills: [
-        { name: 'Python', level: 95, color: '#3776AB' },
+        { name: 'Python', level: 90, color: '#3776AB' },
         { name: 'JavaScript', level: 90, color: '#F7DF1E' },
-        { name: 'C++', level: 85, color: '#00599C' },
-        { name: 'SQL', level: 88, color: '#336791' },
-        { name: 'React', level: 92, color: '#61DAFB' },
-        { name: 'Flask', level: 87, color: '#000000' }
+        { name: 'C++', level: 80, color: '#00599C' },
+        { name: 'SQL', level: 80, color: '#336791' },
+        { name: 'React', level: 90, color: '#61DAFB' },
+        { name: 'Flask', level: 80, color: '#000000' }
       ]
     },
     {
@@ -31,11 +31,11 @@ const Skills: React.FC = () => {
       icon: FaBrain,
       skills: [
         { name: 'TensorFlow', level: 90, color: '#FF6F00' },
-        { name: 'PyTorch', level: 88, color: '#EE4C2C' },
-        { name: 'scikit-learn', level: 92, color: '#F7931E' },
-        { name: 'pandas', level: 95, color: '#130654' },
-        { name: 'NumPy', level: 93, color: '#4DABCF' },
-        { name: 'Keras', level: 85, color: '#D00000' }
+        { name: 'PyTorch', level: 80, color: '#EE4C2C' },
+        { name: 'scikit-learn', level: 90, color: '#F7931E' },
+        { name: 'pandas', level: 90, color: '#130654' },
+        { name: 'NumPy', level: 90, color: '#4DABCF' },
+        { name: 'Keras', level: 80, color: '#D00000' }
       ]
     },
     {
@@ -43,9 +43,9 @@ const Skills: React.FC = () => {
       name: 'Cloud & DevOps',
       icon: FaCloud,
       skills: [
-        { name: 'AWS', level: 88, color: '#FF9900' },
-        { name: 'Azure', level: 82, color: '#0078D4' },
-        { name: 'Docker', level: 85, color: '#2496ED' },
+        { name: 'AWS', level: 80, color: '#FF9900' },
+        { name: 'Azure', level: 80, color: '#0078D4' },
+        { name: 'Docker', level: 80, color: '#2496ED' },
         { name: 'Git', level: 90, color: '#F05032' },
         { name: 'Salesforce', level: 80, color: '#00A1E0' }
       ]
@@ -55,10 +55,10 @@ const Skills: React.FC = () => {
       name: 'Data Visualization',
       icon: FaChartBar,
       skills: [
-        { name: 'Power BI', level: 85, color: '#F2C811' },
-        { name: 'Matplotlib', level: 88, color: '#11557C' },
-        { name: 'Seaborn', level: 85, color: '#7A5195' },
-        { name: 'Plotly', level: 82, color: '#3F4F75' },
+        { name: 'Power BI', level: 80, color: '#F2C811' },
+        { name: 'Matplotlib', level: 80, color: '#11557C' },
+        { name: 'Seaborn', level: 80, color: '#7A5195' },
+        { name: 'Plotly', level: 80, color: '#3F4F75' },
         { name: 'Excel', level: 90, color: '#217346' }
       ]
     },
@@ -67,11 +67,11 @@ const Skills: React.FC = () => {
       name: 'Development Tools',
       icon: FaTools,
       skills: [
-        { name: 'UIPath', level: 85, color: '#FF4400' },
-        { name: 'Jira', level: 88, color: '#0052CC' },
+        { name: 'UIPath', level: 80, color: '#FF4400' },
+        { name: 'Jira', level: 80, color: '#0052CC' },
         { name: 'Trello', level: 90, color: '#0079BF' },
-        { name: 'Agile', level: 92, color: '#FF6B6B' },
-        { name: 'Scrum', level: 88, color: '#4ECDC4' }
+        { name: 'Agile', level: 90, color: '#FF6B6B' },
+        { name: 'Scrum', level: 80, color: '#4ECDC4' }
       ]
     }
   ];

@@ -5,7 +5,6 @@
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, auto);
   gap: 30px;
   margin-bottom: 80px;
   max-width: 800px;
@@ -22,6 +21,8 @@
   transition: all 0.3s ease;
   cursor: pointer;
   position: relative;
+  height: fit-content;
+  align-self: start;
 }
 
 .project-card::before {
@@ -123,6 +124,29 @@
   line-height: 1.6;
   margin-bottom: 20px;
   font-size: 0.95rem;
+  white-space: pre-line;
+}
+
+.project-description ul {
+  list-style: none;
+  padding: 0;
+}
+
+.project-description li {
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 12px;
+  color: #8892b0;
+  line-height: 1.6;
+}
+
+.project-description li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: #64ffda;
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 
 .project-technologies {
@@ -315,5 +339,21 @@
   .project-category {
     font-size: 0.8rem;
     padding: 6px 12px;
+  }
+  
+  .project-content {
+    padding: 15px;
+  }
+  
+  .project-period {
+    font-size: 0.8rem;
+  }
+  
+  .stat-number {
+    font-size: 1.8rem;
+  }
+  
+  .stat-label {
+    font-size: 0.8rem;
   }
 } 

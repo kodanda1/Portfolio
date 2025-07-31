@@ -5,7 +5,6 @@ import {
   FaCalendar, 
   FaMapMarkerAlt,
   FaPython,
-  FaAws,
   FaGithub,
   FaDocker,
   FaDatabase,
@@ -240,7 +239,6 @@ const techStackIcons: { [key: string]: any } = {
   "C": FaCode,
   "ARM": FaCogs,
   "LLMs": FaBrain,
-  "Discrete Mathematics": FaCode,
   "Power BI": FaChartLine,
   "UIPath": FaRobot,
   "VB.net": FaCode,
@@ -268,7 +266,7 @@ const Experience: React.FC = () => {
       company: "Michigan State University",
       location: "East Lansing, MI",
       period: "Feb 2025 - May 2025",
-      technologies: ["Python", "TensorFlow", "PyTorch", "Statistical Modeling", "Data Analysis", "AWS"],
+      technologies: ["Python", "TensorFlow", "PyTorch", "Statistical Modeling", "Data Analysis"],
       achievements: [
         "Built and deployed Random Forest and transformer-based few-shot models on large-scale Google Trends + clinical datasets to detect anomalous COVID-19 incidence patterns, improving early warning accuracy by 20%.",
         "Built Spark-Python pipelines to balance skewed data using oversampling and custom loss, improving model robustness by 10%.",
@@ -280,7 +278,7 @@ const Experience: React.FC = () => {
       company: "Michigan State University",
       location: "East Lansing, MI",
       period: "Aug 2023 - Dec 2024",
-      technologies: ["C++", "Linux", "C", "ARM", "LLMs", "Discrete Mathematics"],
+      technologies: ["C++", "Linux", "Python", "ARM", "LLMs"],
       achievements: [
         "Directed interactive C++ & Python programming labs for 100+ undergraduates and collaborated with faculty to design curriculum materials, boosting assignment completion rates by 30% and exam scores by 10%.",
         "Facilitated weekly code review sessions, sharpening debugging skills and increasing code quality among students."

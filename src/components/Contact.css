@@ -253,6 +253,29 @@
   transform: none;
 }
 
+/* Status Messages */
+.success-message {
+  background: rgba(76, 175, 80, 0.1);
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  color: #4caf50;
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.error-message {
+  background: rgba(244, 67, 54, 0.1);
+  border: 1px solid rgba(244, 67, 54, 0.3);
+  color: #f44336;
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 500;
+}
+
 /* Contact Footer */
 .contact-footer {
   text-align: center;
@@ -288,6 +311,12 @@
   
   .social-grid {
     justify-content: center;
+  }
+  
+  .success-message,
+  .error-message {
+    font-size: 0.9rem;
+    padding: 12px;
   }
 }
 
@@ -375,5 +404,22 @@
   
   .contact-footer p {
     font-size: 1rem;
+  }
+  
+  .success-message,
+  .error-message {
+    font-size: 0.85rem;
+    padding: 10px;
+  }
+  
+  .form-input,
+  .form-textarea {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+  
+  .submit-btn {
+    padding: 10px 15px;
+    font-size: 0.9rem;
   }
 } 
