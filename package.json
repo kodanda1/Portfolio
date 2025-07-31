@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@emailjs/browser": "^4.4.1",
     "@types/react-icons": "^2.2.7",
     "cra-template-typescript": "1.3.0",
     "framer-motion": "^12.23.12",
@@ -12,7 +11,7 @@
     "react-icons": "^5.5.0",
     "react-scripts": "5.0.1"
   },
-  "homepage": "http://varunportfolio.com",
+  "homepage": "https://kodanda1.github.io/Portfolio",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
