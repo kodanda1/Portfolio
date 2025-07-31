@@ -6,20 +6,19 @@
 .timeline {
   position: relative;
   max-width: 1200px;
-  margin: 0 auto 80px;
-  padding: 40px 0;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .timeline::before {
   content: '';
   position: absolute;
-  top: 0;
   left: 50%;
-  width: 4px;
-  height: 100%;
-  background: linear-gradient(45deg, #64ffda, #00d4ff);
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, transparent, rgba(100, 255, 218, 0.3), transparent);
   transform: translateX(-50%);
-  border-radius: 2px;
 }
 
 .timeline-item {
@@ -29,35 +28,31 @@
 }
 
 .timeline-item.left {
-  padding-right: 50%;
+  padding-right: 45%;
 }
 
 .timeline-item.right {
-  padding-left: 50%;
+  padding-left: 45%;
 }
 
 /* Tech Stack Section */
 .tech-stack-section {
   position: absolute;
   top: 0;
-  width: 200px;
+  width: 180px;
   z-index: 10;
 }
 
 .timeline-item.left .tech-stack-section {
-  right: -220px;
+  right: -200px;
 }
 
 .timeline-item.right .tech-stack-section {
-  left: -220px;
+  left: -200px;
 }
 
 .tech-stack-section h4 {
-  color: #64ffda;
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-bottom: 15px;
-  text-align: center;
+  display: none; /* Remove the "Tech Stack" title */
 }
 
 .tech-stack-grid {
@@ -70,12 +65,12 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 12px 15px;
+  padding: 10px 12px;
   background: rgba(100, 255, 218, 0.1);
   border: 1px solid rgba(100, 255, 218, 0.3);
-  border-radius: 12px;
+  border-radius: 10px;
   color: #64ffda;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 500;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
@@ -93,13 +88,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   flex-shrink: 0;
 }
 
 .tech-icon svg {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #64ffda;
 }
 
@@ -376,33 +371,32 @@
     right: auto;
     left: auto;
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
 
   .tech-stack-section h4 {
-    text-align: left;
-    margin-bottom: 10px;
+    display: none;
   }
 
   .tech-stack-grid {
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 6px;
   }
 
   .tech-card {
     flex: 0 0 auto;
-    padding: 8px 12px;
-    font-size: 0.8rem;
+    padding: 6px 10px;
+    font-size: 0.75rem;
   }
 
   .tech-icon {
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
   }
 
   .tech-icon svg {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 }
 
