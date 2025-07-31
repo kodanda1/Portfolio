@@ -46,11 +46,11 @@
 }
 
 .timeline-item.left .tech-stack-section {
-  right: -300px;
+  right: -500px;
 }
 
 .timeline-item.right .tech-stack-section {
-  left: -300px;
+  left: -500px;
 }
 
 .tech-stack-section h4 {
