@@ -96,13 +96,13 @@ const Contact: React.FC = () => {
     {
       icon: FaLinkedin,
       label: 'LinkedIn',
-      url: 'https://linkedin.com/in/yourusername',
+              url: 'https://www.linkedin.com/in/varuntejk/',
       color: '#0077B5'
     },
     {
       icon: FaGithub,
       label: 'GitHub',
-      url: 'https://github.com/yourusername',
+              url: 'https://github.com/kodanda1',
       color: '#333'
     }
   ];
