@@ -266,6 +266,26 @@ body {
   .card {
     padding: 12px;
   }
+  
+  /* Enhanced mobile touch support */
+  .btn {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    min-height: 44px; /* iOS minimum touch target */
+  }
+  
+  /* Better text rendering on mobile */
+  body {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+  
+  /* Improved scrolling on mobile */
+  .main-content {
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+  }
 }
 
 /* Scrollbar Styling */

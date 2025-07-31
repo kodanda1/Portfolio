@@ -415,4 +415,31 @@
   .stat-number {
     font-size: 1.6rem;
   }
+  
+  /* Enhanced mobile touch support */
+  .project-card {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .project-image {
+    height: 120px;
+  }
+  
+  .project-overlay {
+    padding: 10px;
+  }
+  
+  .project-category {
+    font-size: 0.75rem;
+    padding: 4px 8px;
+  }
+  
+  .project-technologies {
+    gap: 4px;
+  }
+  
+  .full-technologies {
+    gap: 4px;
+  }
 } 

@@ -449,4 +449,30 @@
     padding: 10px 15px;
     font-size: 0.9rem;
   }
+  
+  /* Enhanced mobile touch support */
+  .contact-item {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .social-link {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .download-resume {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .submit-btn {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .form-input,
+  .form-textarea {
+    touch-action: manipulation;
+  }
 } 
