@@ -210,7 +210,7 @@ The contact form is configured to send emails to `kodandapuramvaruntej@gmail.com
 
 ### Current Configuration
 
-* **Homepage**: http://varunportfolio.com
+* **Homepage**: https://kodanda1.github.io/Portfolio
 * **Repository**: https://github.com/kodanda1/Portfolio
 
 ### Deployment Options
