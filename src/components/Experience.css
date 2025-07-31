@@ -141,20 +141,35 @@
 }
 
 .tech-tag {
-  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
   background: rgba(100, 255, 218, 0.1);
   border: 1px solid rgba(100, 255, 218, 0.3);
-  border-radius: 15px;
+  border-radius: 20px;
   color: #64ffda;
   font-size: 0.8rem;
   font-weight: 500;
   transition: all 0.3s ease;
   cursor: default;
+  backdrop-filter: blur(10px);
+}
+
+.tech-tag svg {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.tech-tag span {
+  white-space: nowrap;
 }
 
 .tech-tag:hover {
   background: rgba(100, 255, 218, 0.2);
   transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(100, 255, 218, 0.2);
+  border-color: rgba(100, 255, 218, 0.5);
 }
 
 /* Achievements */

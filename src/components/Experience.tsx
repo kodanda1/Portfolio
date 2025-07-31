@@ -1,11 +1,256 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaBriefcase, FaCalendar, FaMapMarkerAlt } from 'react-icons/fa';
+import { 
+  FaBriefcase, 
+  FaCalendar, 
+  FaMapMarkerAlt,
+  FaPython,
+  FaAws,
+  FaReact,
+  FaGithub,
+  FaDocker,
+  FaDatabase,
+  FaServer,
+  FaCloud,
+  FaCode,
+  FaBrain,
+  FaChartLine,
+  FaRobot,
+  FaNetworkWired,
+  FaShieldAlt,
+  FaCogs,
+  FaLaptopCode,
+  FaMobile,
+  FaGlobe,
+  FaLock,
+  FaBolt,
+  FaRocket
+} from 'react-icons/fa';
+import { 
+  SiTensorflow, 
+  SiPytorch, 
+  SiJavascript, 
+  SiTypescript, 
+  SiHtml5, 
+  SiCss3, 
+  SiNodeDotJs, 
+  SiMongodb, 
+  SiPostgresql, 
+  SiRedis, 
+  SiKubernetes, 
+  SiJenkins, 
+  SiGitlab, 
+  SiJira, 
+  SiConfluence,
+  SiSlack,
+  SiZoom,
+  SiMicrosoftoffice,
+  SiPowerbi,
+  SiTableau,
+  SiJupyter,
+  SiAnaconda,
+  SiPandas,
+  SiNumpy,
+  SiScikit,
+  SiOpencv,
+  SiNltk,
+  SiSpacy,
+  SiHuggingface,
+  SiStreamlit,
+  SiFlask,
+  SiDjango,
+  SiFastapi,
+  SiGraphql,
+  SiApollographql,
+  SiWebpack,
+  SiBabel,
+  SiEslint,
+  SiPrettier,
+  SiJest,
+  SiCypress,
+  SiSelenium,
+  SiPostman,
+  SiInsomnia,
+  SiVscode,
+  SiIntellijidea,
+  SiPycharm,
+  SiAtom,
+  SiSublimetext,
+  SiVim,
+  SiEmacs,
+  SiTerminal,
+  SiUbuntu,
+  SiCentos,
+  SiRedhat,
+  SiAmazonaws,
+  SiGooglecloud,
+  SiMicrosoftazure,
+  SiDigitalocean,
+  SiHeroku,
+  SiVercel,
+  SiNetlify,
+  SiFirebase,
+  SiSupabase,
+  SiStripe,
+  SiPaypal,
+  SiTwilio,
+  SiSendgrid,
+  SiMailchimp,
+  SiHubspot,
+  SiSalesforce,
+  SiZendesk,
+  SiIntercom,
+  SiMixpanel,
+  SiAmplitude,
+  SiSegment,
+  SiRudderstack,
+  SiSnowflake,
+  SiDatabricks,
+  SiApachekafka,
+  SiApachespark,
+  SiElasticsearch,
+  SiKibana,
+  SiLogstash,
+  SiBeats,
+  SiGrafana,
+  SiPrometheus,
+  SiInfluxdb,
+  SiTelegraf,
+  SiJaeger,
+  SiZipkin,
+  SiIstio,
+  SiLinkerd,
+  SiConsul,
+  SiVault,
+  SiTerraform,
+  SiAnsible,
+  SiChef,
+  SiPuppet,
+  SiSaltstack,
+  SiVagrant,
+  SiVirtualbox,
+  SiVmware,
+  SiParallels
+} from 'react-icons/si';
 import './Experience.css';
 
 // Icon wrapper component to handle type issues
 const IconWrapper: React.FC<{ icon: any }> = ({ icon: Icon }) => {
   return <Icon />;
+};
+
+// Tech stack mapping with icons
+const techStackIcons: { [key: string]: any } = {
+  // Programming Languages
+  "Python": SiPython,
+  "JavaScript": SiJavascript,
+  "TypeScript": SiTypescript,
+  "C++": FaCode,
+  "C": FaCode,
+  "Java": FaCode,
+  "Go": FaCode,
+  "Rust": FaCode,
+  "Swift": FaCode,
+  "Kotlin": FaCode,
+  "Scala": FaCode,
+  "PHP": FaCode,
+  "Ruby": FaCode,
+  "C#": FaCode,
+  "VB.net": FaCode,
+  
+  // Web Technologies
+  "HTML": SiHtml5,
+  "CSS": SiCss3,
+  "React": FaReact,
+  "Node.js": SiNodeDotJs,
+  "Angular": FaCode,
+  "Vue.js": FaCode,
+  "Svelte": FaCode,
+  "Next.js": FaCode,
+  "Nuxt.js": FaCode,
+  "Gatsby": FaCode,
+  
+  // AI/ML
+  "TensorFlow": SiTensorflow,
+  "PyTorch": SiPytorch,
+  "NLP": FaBrain,
+  "Machine Learning": FaBrain,
+  "Deep Learning": FaBrain,
+  "Computer Vision": FaBrain,
+  "Data Science": FaChartLine,
+  "Statistical Modeling": FaChartLine,
+  "Data Analysis": FaChartLine,
+  "LLMs": FaRobot,
+  "RAG": FaBrain,
+  
+  // Cloud & DevOps
+  "AWS": SiAmazonaws,
+  "GCP": SiGooglecloud,
+  "Azure": SiMicrosoftazure,
+  "Docker": SiDocker,
+  "Kubernetes": SiKubernetes,
+  "Jenkins": SiJenkins,
+  "GitLab": SiGitlab,
+  "GitHub": FaGithub,
+  
+  // Databases
+  "SQL": FaDatabase,
+  "MongoDB": SiMongodb,
+  "PostgreSQL": SiPostgresql,
+  "Redis": SiRedis,
+  "MySQL": FaDatabase,
+  "SQLite": FaDatabase,
+  
+  // Tools & Platforms
+  "Power BI": SiPowerbi,
+  "Tableau": SiTableau,
+  "Jupyter": SiJupyter,
+  "Anaconda": SiAnaconda,
+  "Pandas": SiPandas,
+  "NumPy": SiNumpy,
+  "Scikit-learn": SiScikit,
+  "OpenCV": SiOpencv,
+  "NLTK": SiNltk,
+  "spaCy": SiSpacy,
+  "Hugging Face": SiHuggingface,
+  "Streamlit": SiStreamlit,
+  "Flask": SiFlask,
+  "Django": SiDjango,
+  "FastAPI": SiFastapi,
+  
+  // Other Technologies
+  "Web Scraping": FaNetworkWired,
+  "Linux": SiUbuntu,
+  "ARM": FaCogs,
+  "Discrete Mathematics": FaChartLine,
+  "UIPath": FaRobot,
+  "GraphQL": SiGraphql,
+  "REST API": FaServer,
+  "Microservices": FaServer,
+  "Serverless": FaCloud,
+  "CI/CD": FaRocket,
+  "Agile": FaCogs,
+  "Scrum": FaCogs,
+  "Kanban": FaCogs,
+  "JIRA": SiJira,
+  "Confluence": SiConfluence,
+  "Slack": SiSlack,
+  "Zoom": SiZoom,
+  "Microsoft Office": SiMicrosoftoffice,
+  
+  // Security & Performance
+  "Security": FaShieldAlt,
+  "Performance": FaBolt,
+  "Scalability": FaRocket,
+  "Monitoring": FaChartLine,
+  "Logging": FaChartLine,
+  "Testing": FaCode,
+  "Unit Testing": FaCode,
+  "Integration Testing": FaCode,
+  "E2E Testing": FaCode,
+  
+  // Default icon for unmatched technologies
+  "default": FaCode
 };
 
 const Experience: React.FC = () => {
@@ -121,18 +366,22 @@ const Experience: React.FC = () => {
                 </motion.div>
 
                 <div className="technologies">
-                  {exp.technologies.map((tech, techIndex) => (
-                    <motion.span
-                      key={techIndex}
-                      className="tech-tag"
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.3, delay: index * 0.2 + techIndex * 0.1 }}
-                      whileHover={{ scale: 1.1 }}
-                    >
-                      {tech}
-                    </motion.span>
-                  ))}
+                  {exp.technologies.map((tech, techIndex) => {
+                    const TechIcon = techStackIcons[tech] || techStackIcons["default"];
+                    return (
+                      <motion.div
+                        key={techIndex}
+                        className="tech-tag"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.3, delay: index * 0.2 + techIndex * 0.1 }}
+                        whileHover={{ scale: 1.1 }}
+                      >
+                        <IconWrapper icon={TechIcon} />
+                        <span>{tech}</span>
+                      </motion.div>
+                    );
+                  })}
                 </div>
 
                 <div className="achievements">
