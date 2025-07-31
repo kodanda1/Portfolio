@@ -239,7 +239,6 @@ const techStackIcons: { [key: string]: any } = {
   "C": FaCode,
   "ARM": FaCogs,
   "LLMs": FaBrain,
-  "Discrete Mathematics": FaCode,
   "Power BI": FaChartLine,
   "UIPath": FaRobot,
   "VB.net": FaCode,
@@ -279,7 +278,7 @@ const Experience: React.FC = () => {
       company: "Michigan State University",
       location: "East Lansing, MI",
       period: "Aug 2023 - Dec 2024",
-      technologies: ["C++", "Linux", "C", "ARM", "LLMs", "Discrete Mathematics"],
+      technologies: ["C++", "Linux", "Python", "ARM", "LLMs"],
       achievements: [
         "Directed interactive C++ & Python programming labs for 100+ undergraduates and collaborated with faculty to design curriculum materials, boosting assignment completion rates by 30% and exam scores by 10%.",
         "Facilitated weekly code review sessions, sharpening debugging skills and increasing code quality among students."
@@ -290,7 +289,7 @@ const Experience: React.FC = () => {
       company: "United Airlines",
       location: "East Lansing, MI",
       period: "Sep 2022 - Dec 2022",
-      technologies: ["Python", "Power BI", "AWS", "NLP"],
+      technologies: ["Python", "Power BI", "NLP", "SQL", "WAN", "Agile", "Jira"],
       achievements: [
         "Led ML engineering team at United Airlines to build algorithms assessing course and instructor effectiveness for technician training.",
         "Leveraged data visualization tools to enable quick identification of performance trends, thus reducing data analysis time by 40%.",
@@ -303,7 +302,7 @@ const Experience: React.FC = () => {
       company: "Delta Dental of Michigan",
       location: "Okemos, MI",
       period: "Nov 2021 - Aug 2022",
-      technologies: ["UIPath", "VB.net", "C++", "SQL"],
+      technologies: ["UIPath", "VB.net", "C++", "SQL", "Jira"],
       achievements: [
         "Built & deployed virtual bots using C++, UiPath to automate certain ongoing business tasks in the company.",
         "Automated the alignment of Delta Dental's agent lists with government records, achieving a 95% accuracy improvement.",
@@ -395,7 +394,11 @@ const Experience: React.FC = () => {
 
                 <div className="achievements">
                   <h4>Key Achievements:</h4>
-                  <ul>
+                  <motion.ul
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.6, delay: index * 0.2 + 0.3 }}
+                  >
                     {exp.achievements.map((achievement, achievementIndex) => (
                       <motion.li
                         key={achievementIndex}
@@ -406,7 +409,7 @@ const Experience: React.FC = () => {
                         {achievement}
                       </motion.li>
                     ))}
-                  </ul>
+                  </motion.ul>
                 </div>
               </div>
             </motion.div>

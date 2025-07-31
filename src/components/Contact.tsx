@@ -22,7 +22,7 @@ const Contact: React.FC = () => {
 
   // Initialize EmailJS
   useEffect(() => {
-    emailjs.init("YOUR_EMAILJS_PUBLIC_KEY"); // You'll need to replace this with your actual EmailJS public key
+    emailjs.init("Z8vS6B8jdjCC5OAsc"); // Your EmailJS public key
   }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -43,14 +43,14 @@ const Contact: React.FC = () => {
         to_email: 'kodandapuramvaruntej@gmail.com',
         from_name: formData.name,
         from_email: formData.email,
-        subject: formData.subject,
-        message: formData.message,
+        subject: `Contact Form: ${formData.subject}`,
+        message: `Name: ${formData.name}\nEmail: ${formData.email}\nSubject: ${formData.subject}\n\nMessage:\n${formData.message}`,
         reply_to: formData.email
       };
 
       const result = await emailjs.send(
-        'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
-        'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+        'service_hle9py1', // Your EmailJS service ID
+        'template_h73tzw9', // Your EmailJS template ID
         templateParams
       );
 

@@ -9,12 +9,13 @@ const IconWrapper: React.FC<{ icon: any }> = ({ icon: Icon }) => {
 };
 
 const Projects: React.FC = () => {
-  const [selectedProject, setSelectedProject] = useState<number | null>(null);
+  const [expandedProject, setExpandedProject] = useState<number | null>(null);
 
   const projects = [
     {
       title: "LLM-Based Student Q&A Assistant with RAG",
-      description: "Built a React front end and integrated Vertex AI Search for RAG-based Q&A on course materials. Coordinated with MSU IT for deployment, user access, and cost-efficient hosting within university systems.",
+      overview: "CAD GPT is a domain-specific AI-powered assistant designed to support students in the School of Packaging at Michigan State University.",
+      fullDescription: "<h4>Overview</h4>CAD GPT is a domain-specific AI-powered assistant designed to support students in the School of Packaging at Michigan State University. The goal is to reduce repetitive Q&A workload for instructors by enabling students to ask natural language questions related to packaging course materials (slides, PDFs, assignments).\n\n<h4>Key Contributions</h4><ul><li>Built an interactive React-based frontend tailored to educational use cases.</li><li>Integrated Google's Vertex AI Search to enable RAG-based document retrieval, allowing the assistant to provide precise, contextual answers grounded in course content.</li><li>Coordinated with university IT to deploy the system securely on MSU infrastructure using cost-optimized configurations.</li><li>Designed the system to be scalable to other departments and potentially support dynamic training in the future.</li></ul>\n\n<h4>Impact</h4>Reduced student confusion during self-study, enhanced accessibility to learning materials, and demonstrated the feasibility of department-level deployments in higher education.",
       technologies: ["React", "Python", "GCP Vertex AI", "RAG", "NLP"],
       period: "Jun 2025 - Present",
       github: "https://github.com/kodanda1/Projects",
@@ -25,7 +26,8 @@ const Projects: React.FC = () => {
     },
     {
       title: "AI-Powered Review Analysis Platform",
-      description: "Full-stack AI platform for analyzing customer reviews with sentiment analysis, keyword extraction, and trend identification. Processes 10K+ reviews monthly with 60% efficiency improvement.",
+      overview: "PackSense is a full-stack AI platform that automatically scrapes and analyzes Amazon product reviews to identify packaging-related issues (e.g., damaged, leaking).",
+      fullDescription: "<h4>Overview</h4>PackSense is a full-stack AI platform that automatically scrapes and analyzes Amazon product reviews to identify packaging-related issues (e.g., damaged, leaking). The system uses natural language processing and visualization tools to extract actionable insights for brands and packaging researchers.\n\n<h4>Key Contributions</h4><ul><li>Developed a Flask-based backend to automate scraping of over 10,000 reviews per month using Selenium.</li><li>Enhanced keyword extraction using TF-IDF and frequent pattern mining (FP-Growth), boosting accuracy by 25% over basic keyword matching.</li><li>Built a dynamic UI to visualize issue frequency, sentiment trends, and image-based defect markers using PIL and CSS/JS.</li><li>Implemented pagination, keyword filtering, and a \"Product Overview\" page for user-friendly navigation.</li></ul>\n\n<h4>Impact</h4>Cut manual review time by 60%, provided a research-grade dashboard for packaging analysis, and laid the groundwork for academic publications on e-commerce packaging defects.",
       technologies: ["Python", "Flask", "TensorFlow", "NLP", "AWS", "JavaScript"],
       period: "Mar 2025 - Present",
       github: "https://github.com/kodanda1/Projects",
@@ -36,7 +38,8 @@ const Projects: React.FC = () => {
     },
     {
       title: "COVID-19 Anomaly Detection System",
-      description: "Built and deployed Random Forest and transformer-based few-shot models on large-scale Google Trends + clinical datasets to detect anomalous COVID-19 incidence patterns.",
+      overview: "Built and deployed Random Forest and transformer-based few-shot models on large-scale Google Trends + clinical datasets to detect anomalous COVID-19 incidence patterns.",
+      fullDescription: "<h4>Overview</h4>Built and deployed Random Forest and transformer-based few-shot models on large-scale Google Trends + clinical datasets to detect anomalous COVID-19 incidence patterns.\n\n<h4>Key Contributions</h4><ul><li>Developed Random Forest models for anomaly detection in COVID-19 data patterns.</li><li>Implemented transformer-based few-shot learning models for improved detection accuracy.</li><li>Processed large-scale Google Trends and clinical datasets for comprehensive analysis.</li><li>Deployed models in production environment for real-time anomaly detection.</li></ul>\n\n<h4>Impact</h4>Enhanced early detection capabilities for COVID-19 outbreaks, improved public health monitoring, and demonstrated the effectiveness of ML models in epidemiological research.",
       technologies: ["Python", "TensorFlow", "PyTorch", "Spark", "Statistical Modeling"],
       period: "Feb 2025 - May 2025",
       github: "https://github.com/kodanda1/Projects",
@@ -47,7 +50,8 @@ const Projects: React.FC = () => {
     },
     {
       title: "Credit Card Approval Model Prediction",
-      description: "Designed and benchmarked ML models (Logistic Regression, Decision Trees, SVM, Perceptron), achieving 84.71% accuracy with SVM for credit card approval prediction using UCI dataset.",
+      overview: "Designed and benchmarked ML models (Logistic Regression, Decision Trees, SVM, Perceptron), achieving 84.71% accuracy with SVM for credit card approval prediction using UCI dataset.",
+      fullDescription: "<h4>Overview</h4>Designed and benchmarked ML models (Logistic Regression, Decision Trees, SVM, Perceptron), achieving 84.71% accuracy with SVM for credit card approval prediction using UCI dataset.\n\n<h4>Key Contributions</h4><ul><li>Implemented multiple ML algorithms including Logistic Regression, Decision Trees, SVM, and Perceptron.</li><li>Achieved 84.71% accuracy using SVM model for credit card approval prediction.</li><li>Utilized UCI dataset for comprehensive model training and validation.</li><li>Conducted thorough benchmarking and comparison of different ML approaches.</li></ul>\n\n<h4>Impact</h4>Demonstrated the effectiveness of machine learning in financial decision-making, improved credit card approval prediction accuracy, and provided insights into model selection for financial applications.",
       technologies: ["Python", "MATLAB", "Machine Learning", "GenAI", "SVM", "Decision Trees"],
       period: "Aug 2023 - May 2024",
       github: "https://github.com/kodanda1/Projects",
@@ -88,7 +92,7 @@ const Projects: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ scale: 1.02 }}
-                onClick={() => setSelectedProject(selectedProject === index ? null : index)}
+                onClick={() => setExpandedProject(expandedProject === index ? null : index)}
               >
                 <div className="project-image">
                   <img 
@@ -111,46 +115,20 @@ const Projects: React.FC = () => {
                 <div className="project-content">
                   <h3>{project.title}</h3>
                   <p className="project-period">{project.period}</p>
-                  <p className="project-description">
-                    {selectedProject === index 
-                      ? project.description 
-                      : `${project.description.substring(0, 120)}...`
-                    }
-                  </p>
+                  <div 
+                    className="project-description"
+                    dangerouslySetInnerHTML={{ 
+                      __html: expandedProject === index ? project.fullDescription : project.overview 
+                    }}
+                  />
 
                   <div className="project-technologies">
-                    {project.technologies.slice(0, 4).map((tech, techIndex) => (
+                    {project.technologies.map((tech, techIndex) => (
                       <span key={techIndex} className="tech-tag">
                         {tech}
                       </span>
                     ))}
-                    {project.technologies.length > 4 && (
-                      <span className="tech-tag more">
-                        +{project.technologies.length - 4} more
-                      </span>
-                    )}
                   </div>
-
-
-
-                  {selectedProject === index && (
-                    <motion.div
-                      className="project-details"
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <h4>Technologies Used:</h4>
-                      <div className="full-technologies">
-                        {project.technologies.map((tech, techIndex) => (
-                          <span key={techIndex} className="tech-tag">
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </motion.div>
-                  )}
                 </div>
               </motion.div>
             );
