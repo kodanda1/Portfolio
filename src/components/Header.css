@@ -255,32 +255,16 @@
   box-shadow: 0 0 25px rgba(100, 255, 218, 0.4);
 }
 
-.mobile-logo .logo-v {
+.mobile-logo .logo-v,
+.mobile-logo .logo-k {
   font-size: 1.4rem;
   font-weight: 900;
   background: linear-gradient(45deg, #64ffda, #00d4ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  position: absolute;
-  top: 6px;
-  left: 6px;
-  transform: scale(0.9);
+  position: relative;
   text-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
-}
-
-.mobile-logo .logo-k {
-  font-size: 1.4rem;
-  font-weight: 900;
-  background: linear-gradient(45deg, #00d4ff, #64ffda);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  position: absolute;
-  bottom: 6px;
-  right: 6px;
-  transform: scale(0.9);
-  text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
 }
 
 .mobile-logo .logo-glow {
