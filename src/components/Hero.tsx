@@ -17,11 +17,11 @@ const AITypingAnimation: React.FC = () => {
   useEffect(() => {
     const aiTexts = [
       "AI/ML Engineer",
-      "Neural Network Architect", 
-      "Deep Learning Specialist",
-      "Computer Vision Expert",
+      "Software Developer", 
+      "Technical Project Manager",
       "NLP Practitioner",
-      "Data Science Innovator"
+      "Data Analyst",
+      "Product Manager"
     ];
 
     const typeSpeed = isDeleting ? 50 : 100;
@@ -67,10 +67,12 @@ const AITypingAnimation: React.FC = () => {
 const Hero: React.FC = () => {
 
   const roles = [
-    "Software Developer",
-    "ML Engineer",
-    "AI Enthusiast",
-    "Technical Project Manager"
+    "AI/ML Engineer",
+    "Software Developer", 
+    "Technical Project Manager",
+    "NLP Practitioner",
+    "Data Analyst",
+    "Product Manager"
   ];
 
   useEffect(() => {

@@ -42,7 +42,7 @@ const AIChatbot: React.FC = () => {
       return aiResponses.projects;
     } else if (input.includes('skill') || input.includes('technology') || input.includes('tech')) {
       return aiResponses.skills;
-    } else if (input.includes('experience') || input.includes('background') || input.includes('work')) {
+    } else if (input.includes('experience') || input.includes('background')) {
       return aiResponses.experience;
     } else if (input.includes('contact') || input.includes('email') || input.includes('reach')) {
       return aiResponses.contact;
@@ -56,11 +56,11 @@ const AIChatbot: React.FC = () => {
       return aiResponses.linkedin;
     } else if (input.includes('location') || input.includes('where') || input.includes('based') || input.includes('michigan')) {
       return aiResponses.location;
-    } else if (input.includes('available') || input.includes('opportunity') || input.includes('job') || input.includes('hire')) {
+    } else if (input.includes('available') || input.includes('opportunity') || input.includes('job') || input.includes('hire') || input.includes('availability')) {
       return aiResponses.availability;
-    } else if (input.includes('interest') || input.includes('looking') || input.includes('seeking') || input.includes('want')) {
+    } else if (input.includes('interest') || input.includes('looking') || input.includes('seeking') || input.includes('want') || input.includes('role')) {
       return aiResponses.interests;
-    } else if (input.includes('role') || input.includes('position') || input.includes('title') || input.includes('job title')) {
+    } else if (input.includes('position') || input.includes('title') || input.includes('job title')) {
       return aiResponses.roles;
     } else {
       return aiResponses.default;
@@ -91,7 +91,7 @@ const AIChatbot: React.FC = () => {
         if (currentIndex < words.length) {
           setTypingText(words.slice(0, currentIndex + 1).join(' '));
           currentIndex++;
-          setTimeout(typeWord, 100 + Math.random() * 50); // Random delay for natural typing
+          setTimeout(typeWord, 80 + Math.random() * 40); // Faster typing
         } else {
           // Finished typing
           setMessages(prev => prev.map(msg => 
@@ -100,8 +100,8 @@ const AIChatbot: React.FC = () => {
         }
       };
       
-      setTimeout(typeWord, 500);
-    }, 1000);
+      setTimeout(typeWord, 300);
+    }, 800);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -158,13 +158,24 @@ const AIChatbot: React.FC = () => {
                 transition={{ duration: 0.3 }}
               >
                 <div className="ai-message-content">
-                  {message.isTyping ? typingText : message.text.split('\n').map((line, i) => (
-                    <React.Fragment key={i}>
-                      {line}
-                      {i < message.text.split('\n').length - 1 && <br />}
-                    </React.Fragment>
-                  ))}
-                  {message.isTyping && <span className="ai-cursor">|</span>}
+                  {message.isTyping ? (
+                    <>
+                      {typingText.split('\n').map((line, i) => (
+                        <React.Fragment key={i}>
+                          {line}
+                          {i < typingText.split('\n').length - 1 && <br />}
+                        </React.Fragment>
+                      ))}
+                      <span className="ai-cursor">|</span>
+                    </>
+                  ) : (
+                    message.text.split('\n').map((line, i) => (
+                      <React.Fragment key={i}>
+                        {line}
+                        {i < message.text.split('\n').length - 1 && <br />}
+                      </React.Fragment>
+                    ))
+                  )}
                 </div>
                 <div className="ai-message-time">
                   {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
