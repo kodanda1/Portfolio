@@ -30,8 +30,8 @@ const AIChatbot: React.FC = () => {
     linkedin: "Connect with Varuntej on LinkedIn at https://www.linkedin.com/in/varuntejk/ for professional networking.",
     location: "Varuntej is based in East Lansing, Michigan, and is open to remote opportunities and collaborations worldwide.",
     availability: "Varuntej is currently available for new opportunities and collaborations. He's particularly interested in AI/ML, full-stack development, and innovative tech projects.",
-    interests: "Varuntej is actively looking for roles in:\n\n• AI/ML Engineer\n• Software Developer\n• Technical Project Manager\n• NLP Practitioner\n• Data Analyst\n• Product Manager\n\nHe's passionate about AI/ML, full-stack development, and innovative technology solutions.",
-    roles: "Varuntej is actively seeking opportunities as:\n\n• AI/ML Engineer - Building intelligent systems and models\n• Software Developer - Full-stack development with modern technologies\n• Technical Project Manager - Leading technical teams and projects\n• NLP Practitioner - Natural language processing and AI applications\n• Data Analyst - Data-driven insights and analytics\n• Product Manager - Product strategy and technical leadership",
+    interests: "Varuntej is actively looking for roles in:\n\n• AI/ML Engineering\n• Software Development\n• Project/Program Management\n• Data Analyst\n• Product Management\n\nHe's passionate about AI/ML, full-stack development, Project management and innovative technology solutions.",
+    roles: "Varuntej is actively seeking opportunities as:\n\n• AI/ML Engineering - Building intelligent systems and models\n• Software Development - Full-stack development with modern technologies\n• Project/Program Management - Leading technical teams and projects\n• Data Analyst - Data-driven insights and analytics\n• Product Management - Product strategy and technical leadership",
     default: "I can help you learn about Varuntej's projects, skills, experience, education, resume, social links, location, availability, interests, roles, or how to contact him. What would you like to know?"
   };
 

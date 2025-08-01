@@ -67,12 +67,11 @@ const AITypingAnimation: React.FC = () => {
 const Hero: React.FC = () => {
 
   const roles = [
-    "AI/ML Engineer",
-    "Software Developer", 
-    "Technical Project Manager",
-    "NLP Practitioner",
+    "AI/ML Engineering",
+    "Software Development", 
+    "Project/Program Management",
     "Data Analyst",
-    "Product Manager"
+    "Product Management"
   ];
 
   useEffect(() => {
