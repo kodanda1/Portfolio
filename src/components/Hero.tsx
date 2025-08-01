@@ -18,8 +18,9 @@ const AITypingAnimation: React.FC = () => {
     const aiTexts = [
       "AI/ML Engineering",
       "Software Development", 
-      "Project/Program Management",
-      "Data Analyst",
+      "Technical Project Management",
+      "Full Stack Development",
+      "Data Analysis",
       "Product Management"
     ];
 
@@ -120,7 +121,7 @@ const Hero: React.FC = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.8 }}
             >
-              <span className="role-prefix">I'm a </span>
+              <span className="role-prefix">I'm into </span>
               <AITypingAnimation />
             </motion.div>
 
