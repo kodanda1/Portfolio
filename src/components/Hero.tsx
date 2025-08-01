@@ -103,10 +103,12 @@ const Hero: React.FC = () => {
               </motion.a>
               
               <motion.a
-                href="/resume.pdf"
+                href="https://kodanda1.github.io/Portfolio/resume.pdf"
                 className="btn btn-secondary"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                target="_blank"
+                rel="noopener noreferrer"
                 download
               >
                 <IconWrapper icon={FaDownload} />
