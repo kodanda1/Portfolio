@@ -20,8 +20,8 @@ const AIChatbot: React.FC = () => {
   const [typingText, setTypingText] = useState('');
 
   const aiResponses = {
-    projects: "Varuntej has worked on several AI/ML projects including: 1) LLM-Based Student Q&A Assistant with RAG, 2) AI-Powered Review Analysis Platform, 3) COVID-19 Anomaly Detection System, and 4) Credit Card Approval Model Prediction. Would you like to know more about any specific project?",
-    skills: "Varuntej specializes in Python, TensorFlow, PyTorch, React, AWS, and many other technologies. His expertise spans from machine learning and AI to full-stack development and cloud computing.",
+    projects: "Varuntej has worked on several AI/ML projects including:\n\n• LLM-Based Student Q&A Assistant with RAG\n• AI-Powered Review Analysis Platform\n• COVID-19 Anomaly Detection System\n• Credit Card Approval Model Prediction\n\nWould you like to know more about any specific project?",
+    skills: "Varuntej specializes in:\n\n• Programming: Python, JavaScript, C++, React, Flask\n• Machine Learning: TensorFlow, PyTorch, scikit-learn, pandas, NumPy\n• Cloud & DevOps: AWS, Azure, Docker, Git, Salesforce\n• Data Visualization: Power BI, Matplotlib, Seaborn, Plotly, Excel\n• Development Tools: UIPath, Jira, VS Code, Postman, Tableau\n\nHis expertise spans from machine learning and AI to full-stack development and cloud computing.",
     experience: "Varuntej has experience at Michigan State University working on AI/ML projects, and has developed several production-ready applications. He's currently working on cutting-edge AI solutions.",
     contact: "You can reach Varuntej via email at kodandapuramvaruntej@gmail.com, LinkedIn, or GitHub. Feel free to connect!",
     education: "Varuntej holds a Master's degree in Computer Science from Michigan State University with a 3.81 GPA, and a Bachelor's degree in Computer Science (Honors) with a 3.82 GPA and a minor in Business.",
@@ -30,7 +30,9 @@ const AIChatbot: React.FC = () => {
     linkedin: "Connect with Varuntej on LinkedIn at https://www.linkedin.com/in/varuntejk/ for professional networking.",
     location: "Varuntej is based in East Lansing, Michigan, and is open to remote opportunities and collaborations worldwide.",
     availability: "Varuntej is currently available for new opportunities and collaborations. He's particularly interested in AI/ML, full-stack development, and innovative tech projects.",
-    default: "I can help you learn about Varuntej's projects, skills, experience, education, resume, social links, location, availability, or how to contact him. What would you like to know?"
+    interests: "Varuntej is actively looking for roles in:\n\n• AI/ML Engineer\n• Software Developer\n• Technical Project Manager\n• NLP Practitioner\n• Data Analyst\n• Product Manager\n\nHe's passionate about AI/ML, full-stack development, and innovative technology solutions.",
+    roles: "Varuntej is actively seeking opportunities as:\n\n• AI/ML Engineer - Building intelligent systems and models\n• Software Developer - Full-stack development with modern technologies\n• Technical Project Manager - Leading technical teams and projects\n• NLP Practitioner - Natural language processing and AI applications\n• Data Analyst - Data-driven insights and analytics\n• Product Manager - Product strategy and technical leadership",
+    default: "I can help you learn about Varuntej's projects, skills, experience, education, resume, social links, location, availability, interests, roles, or how to contact him. What would you like to know?"
   };
 
   const getAIResponse = (userInput: string): string => {
@@ -56,6 +58,10 @@ const AIChatbot: React.FC = () => {
       return aiResponses.location;
     } else if (input.includes('available') || input.includes('opportunity') || input.includes('job') || input.includes('hire')) {
       return aiResponses.availability;
+    } else if (input.includes('interest') || input.includes('looking') || input.includes('seeking') || input.includes('want')) {
+      return aiResponses.interests;
+    } else if (input.includes('role') || input.includes('position') || input.includes('title') || input.includes('job title')) {
+      return aiResponses.roles;
     } else {
       return aiResponses.default;
     }
@@ -74,7 +80,7 @@ const AIChatbot: React.FC = () => {
       const aiResponse = getAIResponse(inputText);
       const aiMessage = { text: aiResponse, isUser: false, timestamp: new Date(), isTyping: true };
       setMessages(prev => [...prev, aiMessage]);
-      setTypingText(aiResponse);
+      setTypingText('');
       setIsTyping(false);
       
       // Start word-by-word typing
@@ -152,7 +158,12 @@ const AIChatbot: React.FC = () => {
                 transition={{ duration: 0.3 }}
               >
                 <div className="ai-message-content">
-                  {message.isTyping ? typingText : message.text}
+                  {message.isTyping ? typingText : message.text.split('\n').map((line, i) => (
+                    <React.Fragment key={i}>
+                      {line}
+                      {i < message.text.split('\n').length - 1 && <br />}
+                    </React.Fragment>
+                  ))}
                   {message.isTyping && <span className="ai-cursor">|</span>}
                 </div>
                 <div className="ai-message-time">

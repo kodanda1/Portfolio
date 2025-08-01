@@ -13,7 +13,6 @@ import ParticleBackground from './components/ParticleBackground';
 function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [isLoading, setIsLoading] = useState(true);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     // Simulate loading time
@@ -43,9 +42,7 @@ function App() {
     setActiveSection(section);
   };
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
+
 
   if (isLoading) {
     return (
@@ -70,8 +67,6 @@ function App() {
       <Header 
         activeSection={activeSection} 
         onSectionChange={handleSectionChange}
-        isMobileMenuOpen={isMobileMenuOpen}
-        toggleMobileMenu={toggleMobileMenu}
       />
       
       <main className="main-content">
