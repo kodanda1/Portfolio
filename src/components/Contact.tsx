@@ -12,12 +12,14 @@ const IconWrapper: React.FC<{ icon: any }> = ({ icon: Icon }) => {
 // AI Chatbot Component
 const AIChatbot: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<Array<{ text: string; isUser: boolean; timestamp: Date; isTyping?: boolean }>>([
+  const [messages, setMessages] = useState<Array<{ text: string; isUser: boolean; timestamp: Date; isTyping?: boolean; context?: string }>>([
     { text: "Hi! I'm your AI assistant. Ask me about Varuntej's projects, skills, or experience!", isUser: false, timestamp: new Date() }
   ]);
   const [inputText, setInputText] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [typingText, setTypingText] = useState('');
+  const [conversationContext, setConversationContext] = useState<string>('');
+  const [showSuggestions, setShowSuggestions] = useState(true);
 
   const aiResponses = {
     projects: "Varuntej has worked on several AI/ML projects including:\n\n• LLM-Based Student Q&A Assistant with RAG\n• AI-Powered Review Analysis Platform\n• COVID-19 Anomaly Detection System\n• Credit Card Approval Model Prediction\n\nWould you like to know more about any specific project?",
@@ -34,33 +36,69 @@ const AIChatbot: React.FC = () => {
     default: "I can help you learn about Varuntej's projects, skills, experience, education, resume, social links, location, availability, interests, or how to contact him. What would you like to know?"
   };
 
-  const getAIResponse = (userInput: string): string => {
+  // Smart suggestion buttons
+  const suggestionButtons = [
+    { text: "Projects", action: "projects", icon: "🚀" },
+    { text: "Skills", action: "skills", icon: "⚡" },
+    { text: "Experience", action: "experience", icon: "💼" },
+    { text: "Contact", action: "contact", icon: "📧" },
+    { text: "Resume", action: "resume", icon: "📄" },
+    { text: "GitHub", action: "github", icon: "🐙" },
+    { text: "LinkedIn", action: "linkedin", icon: "💼" },
+    { text: "Availability", action: "availability", icon: "✅" }
+  ];
+
+  const getContextualSuggestions = (context: string) => {
+    const contextLower = context.toLowerCase();
+    if (contextLower.includes('project')) {
+      return [
+        { text: "Tell me more", action: "projects", icon: "🔍" },
+        { text: "Skills used", action: "skills", icon: "⚡" },
+        { text: "GitHub link", action: "github", icon: "🐙" }
+      ];
+    } else if (contextLower.includes('skill')) {
+      return [
+        { text: "Projects using these", action: "projects", icon: "🚀" },
+        { text: "Experience", action: "experience", icon: "💼" },
+        { text: "Resume", action: "resume", icon: "📄" }
+      ];
+    } else if (contextLower.includes('experience')) {
+      return [
+        { text: "Projects", action: "projects", icon: "🚀" },
+        { text: "Skills", action: "skills", icon: "⚡" },
+        { text: "Contact", action: "contact", icon: "📧" }
+      ];
+    }
+    return suggestionButtons.slice(0, 4);
+  };
+
+  const getAIResponse = (userInput: string): { response: string; context: string } => {
     const input = userInput.toLowerCase();
     
     if (input.includes('project') || input.includes('work')) {
-      return aiResponses.projects;
+      return { response: aiResponses.projects, context: 'projects' };
     } else if (input.includes('skill') || input.includes('technology') || input.includes('tech')) {
-      return aiResponses.skills;
+      return { response: aiResponses.skills, context: 'skills' };
     } else if (input.includes('experience') || input.includes('background')) {
-      return aiResponses.experience;
+      return { response: aiResponses.experience, context: 'experience' };
     } else if (input.includes('contact') || input.includes('email') || input.includes('reach')) {
-      return aiResponses.contact;
+      return { response: aiResponses.contact, context: 'contact' };
     } else if (input.includes('education') || input.includes('degree') || input.includes('gpa') || input.includes('university')) {
-      return aiResponses.education;
+      return { response: aiResponses.education, context: 'education' };
     } else if (input.includes('resume') || input.includes('cv') || input.includes('download')) {
-      return aiResponses.resume;
+      return { response: aiResponses.resume, context: 'resume' };
     } else if (input.includes('github') || input.includes('code') || input.includes('repository')) {
-      return aiResponses.github;
+      return { response: aiResponses.github, context: 'github' };
     } else if (input.includes('linkedin') || input.includes('social') || input.includes('network')) {
-      return aiResponses.linkedin;
+      return { response: aiResponses.linkedin, context: 'linkedin' };
     } else if (input.includes('location') || input.includes('where') || input.includes('based') || input.includes('michigan')) {
-      return aiResponses.location;
+      return { response: aiResponses.location, context: 'location' };
     } else if (input.includes('available') || input.includes('opportunity') || input.includes('job') || input.includes('hire') || input.includes('availability')) {
-      return aiResponses.availability;
+      return { response: aiResponses.availability, context: 'availability' };
     } else if (input.includes('interest') || input.includes('looking') || input.includes('seeking') || input.includes('want') || input.includes('role') || input.includes('position') || input.includes('title') || input.includes('job title')) {
-      return aiResponses.interests;
+      return { response: aiResponses.interests, context: 'interests' };
     } else {
-      return aiResponses.default;
+      return { response: aiResponses.default, context: 'general' };
     }
   };
 
@@ -74,14 +112,21 @@ const AIChatbot: React.FC = () => {
 
     // Simulate AI thinking
     setTimeout(() => {
-      const aiResponse = getAIResponse(inputText);
-      const aiMessage = { text: aiResponse, isUser: false, timestamp: new Date(), isTyping: true };
+      const aiResponseData = getAIResponse(inputText);
+      const aiMessage = { 
+        text: aiResponseData.response, 
+        isUser: false, 
+        timestamp: new Date(), 
+        isTyping: true,
+        context: aiResponseData.context 
+      };
       setMessages(prev => [...prev, aiMessage]);
+      setConversationContext(aiResponseData.context);
       setTypingText('');
       setIsTyping(false);
       
       // Start word-by-word typing
-      const words = aiResponse.split(' ');
+      const words = aiResponseData.response.split(' ');
       let currentIndex = 0;
       
       const typeWord = () => {
@@ -94,6 +139,7 @@ const AIChatbot: React.FC = () => {
           setMessages(prev => prev.map(msg => 
             msg.isTyping ? { ...msg, isTyping: false } : msg
           ));
+          setShowSuggestions(true);
         }
       };
       
@@ -105,6 +151,24 @@ const AIChatbot: React.FC = () => {
     if (e.key === 'Enter') {
       handleSendMessage();
     }
+  };
+
+  const handleSuggestionClick = (action: string) => {
+    const actionMap: { [key: string]: string } = {
+      'projects': 'Tell me about your projects',
+      'skills': 'What skills do you have?',
+      'experience': 'Tell me about your experience',
+      'contact': 'How can I contact you?',
+      'resume': 'Can I see your resume?',
+      'github': 'Show me your GitHub',
+      'linkedin': 'What\'s your LinkedIn?',
+      'availability': 'Are you available for opportunities?'
+    };
+    
+    const message = actionMap[action] || `Tell me about ${action}`;
+    setInputText(message);
+    handleSendMessage();
+    setShowSuggestions(false);
   };
 
   return (
@@ -189,6 +253,35 @@ const AIChatbot: React.FC = () => {
                   <span></span>
                   <span></span>
                   <span></span>
+                </div>
+              </motion.div>
+            )}
+            
+            {/* Smart Suggestion Buttons */}
+            {showSuggestions && !isTyping && messages.length > 1 && (
+              <motion.div
+                className="ai-suggestions"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: 0.5 }}
+              >
+                <div className="suggestions-title">Quick Actions:</div>
+                <div className="suggestions-grid">
+                  {getContextualSuggestions(conversationContext).map((suggestion, index) => (
+                    <motion.button
+                      key={index}
+                      className="suggestion-button"
+                      onClick={() => handleSuggestionClick(suggestion.action)}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.2, delay: index * 0.1 }}
+                    >
+                      <span className="suggestion-icon">{suggestion.icon}</span>
+                      <span className="suggestion-text">{suggestion.text}</span>
+                    </motion.button>
+                  ))}
                 </div>
               </motion.div>
             )}
