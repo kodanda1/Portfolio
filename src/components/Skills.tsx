@@ -22,7 +22,7 @@ const Skills: React.FC = () => {
         { name: 'C++', level: 80, color: '#00599C' },
         { name: 'SQL', level: 80, color: '#336791' },
         { name: 'React', level: 90, color: '#61DAFB' },
-        { name: 'Flask', level: 80, color: '#000000' }
+        { name: 'Flask', level: 80, color: '#FFFFFF' }
       ]
     },
     {
