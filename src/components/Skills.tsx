@@ -192,19 +192,22 @@ const Skills: React.FC = () => {
           <h3>Certifications & Achievements</h3>
           <div className="certifications-grid">
             <div className="certification-item">
-              <h4>AWS Certified Solutions Architect</h4>
+              <div className="cert-icon">🏆</div>
+              <h4>AWS Certified Solution Architect</h4>
               <p>Amazon Web Services</p>
-              <span className="certification-date">2024</span>
+              <span className="cert-date">Oct 2024</span>
             </div>
             <div className="certification-item">
-              <h4>Microsoft Azure Fundamentals</h4>
-              <p>Microsoft</p>
-              <span className="certification-date">2024</span>
+              <div className="cert-icon">🤖</div>
+              <h4>Salesforce Certified AI Associate</h4>
+              <p>Salesforce (Trailhead)</p>
+              <span className="cert-date">Oct 2024</span>
             </div>
             <div className="certification-item">
-              <h4>Google Cloud Professional Data Engineer</h4>
-              <p>Google Cloud</p>
-              <span className="certification-date">2023</span>
+              <div className="cert-icon">📋</div>
+              <h4>Project Management Professional Training</h4>
+              <p>TIA Education Group</p>
+              <span className="cert-date">Jan 2025</span>
             </div>
           </div>
         </motion.div>

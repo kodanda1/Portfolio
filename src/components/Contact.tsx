@@ -12,11 +12,12 @@ const IconWrapper: React.FC<{ icon: any }> = ({ icon: Icon }) => {
 // AI Chatbot Component
 const AIChatbot: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<Array<{ text: string; isUser: boolean; timestamp: Date }>>([
+  const [messages, setMessages] = useState<Array<{ text: string; isUser: boolean; timestamp: Date; isTyping?: boolean }>>([
     { text: "Hi! I'm your AI assistant. Ask me about Varuntej's projects, skills, or experience!", isUser: false, timestamp: new Date() }
   ]);
   const [inputText, setInputText] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const [typingText, setTypingText] = useState('');
 
   const aiResponses = {
     projects: "Varuntej has worked on several AI/ML projects including: 1) LLM-Based Student Q&A Assistant with RAG, 2) AI-Powered Review Analysis Platform, 3) COVID-19 Anomaly Detection System, and 4) Credit Card Approval Model Prediction. Would you like to know more about any specific project?",
@@ -71,9 +72,29 @@ const AIChatbot: React.FC = () => {
     // Simulate AI thinking
     setTimeout(() => {
       const aiResponse = getAIResponse(inputText);
-      const aiMessage = { text: aiResponse, isUser: false, timestamp: new Date() };
+      const aiMessage = { text: aiResponse, isUser: false, timestamp: new Date(), isTyping: true };
       setMessages(prev => [...prev, aiMessage]);
+      setTypingText(aiResponse);
       setIsTyping(false);
+      
+      // Start word-by-word typing
+      const words = aiResponse.split(' ');
+      let currentIndex = 0;
+      
+      const typeWord = () => {
+        if (currentIndex < words.length) {
+          setTypingText(words.slice(0, currentIndex + 1).join(' '));
+          currentIndex++;
+          setTimeout(typeWord, 100 + Math.random() * 50); // Random delay for natural typing
+        } else {
+          // Finished typing
+          setMessages(prev => prev.map(msg => 
+            msg.isTyping ? { ...msg, isTyping: false } : msg
+          ));
+        }
+      };
+      
+      setTimeout(typeWord, 500);
     }, 1000);
   };
 
@@ -131,7 +152,8 @@ const AIChatbot: React.FC = () => {
                 transition={{ duration: 0.3 }}
               >
                 <div className="ai-message-content">
-                  {message.text}
+                  {message.isTyping ? typingText : message.text}
+                  {message.isTyping && <span className="ai-cursor">|</span>}
                 </div>
                 <div className="ai-message-time">
                   {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
