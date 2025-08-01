@@ -1,11 +1,122 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { FaCode, FaCloud, FaBrain, FaTools, FaChartBar } from 'react-icons/fa';
+import { FaCode, FaBrain, FaCloud, FaChartBar, FaTools, FaNetworkWired } from 'react-icons/fa';
 import './Skills.css';
 
 // Icon wrapper component to handle type issues
 const IconWrapper: React.FC<{ icon: any }> = ({ icon: Icon }) => {
   return <Icon />;
+};
+
+// AI Neural Network Visualization Component
+const AINeuralNetwork: React.FC<{ skills: Array<{ name: string; level: number; color: string }> }> = ({ skills }) => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (canvasRef.current) {
+      observer.observe(canvasRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible || !canvasRef.current) return;
+
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+
+    const nodes = skills.map((skill, index) => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      radius: (skill.level / 100) * 8 + 4,
+      color: skill.color,
+      name: skill.name,
+      level: skill.level,
+      vx: (Math.random() - 0.5) * 0.5,
+      vy: (Math.random() - 0.5) * 0.5
+    }));
+
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Update node positions
+      nodes.forEach(node => {
+        node.x += node.vx;
+        node.y += node.vy;
+
+        // Bounce off edges
+        if (node.x < node.radius || node.x > canvas.width - node.radius) node.vx *= -1;
+        if (node.y < node.radius || node.y > canvas.height - node.radius) node.vy *= -1;
+
+        // Draw connections
+        nodes.forEach(otherNode => {
+          const distance = Math.sqrt((node.x - otherNode.x) ** 2 + (node.y - otherNode.y) ** 2);
+          if (distance < 150 && distance > 0) {
+            ctx.beginPath();
+            ctx.moveTo(node.x, node.y);
+            ctx.lineTo(otherNode.x, otherNode.y);
+            ctx.strokeStyle = `rgba(102, 126, 234, ${0.3 - distance / 500})`;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+        });
+
+        // Draw nodes
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+        ctx.fillStyle = node.color;
+        ctx.fill();
+
+        // Draw node glow
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, node.radius + 2, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(102, 126, 234, 0.3)`;
+        ctx.lineWidth = 2;
+        ctx.stroke();
+      });
+
+      requestAnimationFrame(animate);
+    };
+
+    animate();
+  }, [isVisible, skills]);
+
+  return (
+    <div className="ai-neural-container">
+      <canvas
+        ref={canvasRef}
+        className="ai-neural-canvas"
+        style={{ width: '100%', height: '200px' }}
+      />
+      <div className="ai-neural-overlay">
+        <div className="ai-stats">
+          <div className="ai-stat">
+            <span className="ai-stat-number">{skills.length}</span>
+            <span className="ai-stat-label">Skills Connected</span>
+          </div>
+          <div className="ai-stat">
+            <span className="ai-stat-number">{Math.round(skills.reduce((acc, skill) => acc + skill.level, 0) / skills.length)}%</span>
+            <span className="ai-stat-label">Average Proficiency</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 const Skills: React.FC = () => {
@@ -157,6 +268,20 @@ const Skills: React.FC = () => {
                   </motion.div>
                 ))}
               </div>
+
+              {/* AI Neural Network Visualization */}
+              <motion.div
+                className="ai-neural-section"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
+                <h4 className="ai-neural-title">
+                  <IconWrapper icon={FaNetworkWired} />
+                  Neural Network Visualization
+                </h4>
+                <AINeuralNetwork skills={currentCategory.skills} />
+              </motion.div>
             </>
           )}
         </motion.div>

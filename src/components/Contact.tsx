@@ -1,12 +1,161 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaGithub, FaLinkedin, FaDownload } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaDownload, FaRobot, FaBrain, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
 import emailjs from '@emailjs/browser';
 import './Contact.css';
 
 // Icon wrapper component to handle type issues
 const IconWrapper: React.FC<{ icon: any }> = ({ icon: Icon }) => {
   return <Icon />;
+};
+
+// AI Chatbot Component
+const AIChatbot: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [messages, setMessages] = useState<Array<{ text: string; isUser: boolean; timestamp: Date }>>([
+    { text: "Hi! I'm your AI assistant. Ask me about Varuntej's projects, skills, or experience!", isUser: false, timestamp: new Date() }
+  ]);
+  const [inputText, setInputText] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
+
+  const aiResponses = {
+    projects: "Varuntej has worked on several AI/ML projects including: 1) LLM-Based Student Q&A Assistant with RAG, 2) AI-Powered Review Analysis Platform, 3) COVID-19 Anomaly Detection System, and 4) Credit Card Approval Model Prediction. Would you like to know more about any specific project?",
+    skills: "Varuntej specializes in Python, TensorFlow, PyTorch, React, AWS, and many other technologies. His expertise spans from machine learning and AI to full-stack development and cloud computing.",
+    experience: "Varuntej has experience at Michigan State University working on AI/ML projects, and has developed several production-ready applications. He's currently working on cutting-edge AI solutions.",
+    contact: "You can reach Varuntej via email at kodandapuramvaruntej@gmail.com, LinkedIn, or GitHub. Feel free to connect!",
+    default: "I can help you learn about Varuntej's projects, skills, experience, or how to contact him. What would you like to know?"
+  };
+
+  const getAIResponse = (userInput: string): string => {
+    const input = userInput.toLowerCase();
+    
+    if (input.includes('project') || input.includes('work')) {
+      return aiResponses.projects;
+    } else if (input.includes('skill') || input.includes('technology') || input.includes('tech')) {
+      return aiResponses.skills;
+    } else if (input.includes('experience') || input.includes('background') || input.includes('work')) {
+      return aiResponses.experience;
+    } else if (input.includes('contact') || input.includes('email') || input.includes('reach')) {
+      return aiResponses.contact;
+    } else {
+      return aiResponses.default;
+    }
+  };
+
+  const handleSendMessage = () => {
+    if (!inputText.trim()) return;
+
+    const userMessage = { text: inputText, isUser: true, timestamp: new Date() };
+    setMessages(prev => [...prev, userMessage]);
+    setInputText('');
+    setIsTyping(true);
+
+    // Simulate AI thinking
+    setTimeout(() => {
+      const aiResponse = getAIResponse(inputText);
+      const aiMessage = { text: aiResponse, isUser: false, timestamp: new Date() };
+      setMessages(prev => [...prev, aiMessage]);
+      setIsTyping(false);
+    }, 1000);
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      handleSendMessage();
+    }
+  };
+
+  return (
+    <>
+      {/* Chatbot Toggle Button */}
+      <motion.button
+        className="ai-chatbot-toggle"
+        onClick={() => setIsOpen(!isOpen)}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5, delay: 1 }}
+      >
+        <IconWrapper icon={FaRobot} />
+        <span className="ai-chatbot-label">AI Assistant</span>
+      </motion.button>
+
+      {/* Chatbot Interface */}
+      {isOpen && (
+        <motion.div
+          className="ai-chatbot-container"
+          initial={{ opacity: 0, y: 20, scale: 0.9 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: 20, scale: 0.9 }}
+          transition={{ duration: 0.3 }}
+        >
+          <div className="ai-chatbot-header">
+            <div className="ai-chatbot-title">
+              <IconWrapper icon={FaBrain} />
+              <span>AI Portfolio Assistant</span>
+            </div>
+            <button 
+              className="ai-chatbot-close"
+              onClick={() => setIsOpen(false)}
+            >
+              ×
+            </button>
+          </div>
+
+          <div className="ai-chatbot-messages">
+            {messages.map((message, index) => (
+              <motion.div
+                key={index}
+                className={`ai-message ${message.isUser ? 'user' : 'ai'}`}
+                initial={{ opacity: 0, x: message.isUser ? 20 : -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="ai-message-content">
+                  {message.text}
+                </div>
+                <div className="ai-message-time">
+                  {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                </div>
+              </motion.div>
+            ))}
+            {isTyping && (
+              <motion.div
+                className="ai-message ai"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+              >
+                <div className="ai-typing-indicator">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </motion.div>
+            )}
+          </div>
+
+          <div className="ai-chatbot-input">
+            <input
+              type="text"
+              value={inputText}
+              onChange={(e) => setInputText(e.target.value)}
+              onKeyPress={handleKeyPress}
+              placeholder="Ask about projects, skills, experience..."
+              className="ai-input-field"
+            />
+            <button
+              onClick={handleSendMessage}
+              className="ai-send-button"
+              disabled={!inputText.trim()}
+            >
+              <IconWrapper icon={FaEnvelope} />
+            </button>
+          </div>
+        </motion.div>
+      )}
+    </>
+  );
 };
 
 const Contact: React.FC = () => {
@@ -308,6 +457,9 @@ const Contact: React.FC = () => {
           </p>
         </motion.div>
       </div>
+
+      {/* AI Chatbot */}
+      <AIChatbot />
     </section>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FaEnvelope, FaDownload, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaDownload } from 'react-icons/fa';
 import './Hero.css';
 
 // Icon wrapper component to handle type issues
@@ -8,18 +8,74 @@ const IconWrapper: React.FC<{ icon: any }> = ({ icon: Icon }) => {
   return <Icon />;
 };
 
+// AI Typing Animation Component
+const AITypingAnimation: React.FC = () => {
+  const [currentText, setCurrentText] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const aiTexts = [
+      "AI/ML Engineer",
+      "Neural Network Architect", 
+      "Deep Learning Specialist",
+      "Computer Vision Expert",
+      "NLP Practitioner",
+      "Data Science Innovator"
+    ];
+
+    const typeSpeed = isDeleting ? 50 : 100;
+    const deleteSpeed = 30;
+    const pauseTime = 2000;
+
+    const typeText = () => {
+      const currentFullText = aiTexts[currentIndex];
+      
+      if (isDeleting) {
+        setCurrentText(currentFullText.substring(0, currentText.length - 1));
+        if (currentText === '') {
+          setIsDeleting(false);
+          setCurrentIndex((prev) => (prev + 1) % aiTexts.length);
+        }
+      } else {
+        setCurrentText(currentFullText.substring(0, currentText.length + 1));
+        if (currentText === currentFullText) {
+          setTimeout(() => setIsDeleting(true), pauseTime);
+        }
+      }
+    };
+
+    const timer = setTimeout(typeText, isDeleting ? deleteSpeed : typeSpeed);
+    return () => clearTimeout(timer);
+  }, [currentText, isDeleting, currentIndex]);
+
+  return (
+    <div className="ai-typing-container">
+      <span className="ai-typing-text">
+        {currentText}
+        <span className="ai-cursor">|</span>
+      </span>
+      <div className="ai-neural-dots">
+        <span className="neural-dot"></span>
+        <span className="neural-dot"></span>
+        <span className="neural-dot"></span>
+      </div>
+    </div>
+  );
+};
+
 const Hero: React.FC = () => {
-  const [currentTextIndex, setCurrentTextIndex] = useState(0);
+
   const roles = [
     "Software Developer",
-    "ML Engineer", 
+    "ML Engineer",
     "AI Enthusiast",
     "Technical Project Manager"
   ];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentTextIndex((prev) => (prev + 1) % roles.length);
+  
     }, 2000);
     return () => clearInterval(interval);
   }, [roles.length]);
@@ -65,16 +121,7 @@ const Hero: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.8 }}
             >
               <span className="role-prefix">I'm a </span>
-              <motion.span
-                key={currentTextIndex}
-                className="role-text"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5 }}
-              >
-                {roles[currentTextIndex]}
-              </motion.span>
+              <AITypingAnimation />
             </motion.div>
 
             <motion.p
