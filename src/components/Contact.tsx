@@ -31,8 +31,7 @@ const AIChatbot: React.FC = () => {
     location: "Varuntej is based in East Lansing, Michigan, and is open to remote opportunities and collaborations worldwide.",
     availability: "Varuntej is currently available for new opportunities and collaborations. He's particularly interested in AI/ML, full-stack development, and innovative tech projects.",
     interests: "Varuntej is actively looking for roles in:\n\n• AI/ML Engineering\n• Software Development\n• Project/Program Management\n• Data Analyst\n• Product Management\n\nHe's passionate about AI/ML, full-stack development, Project management and innovative technology solutions.",
-    roles: "Varuntej is actively seeking opportunities as:\n\n• AI/ML Engineering - Building intelligent systems and models\n• Software Development - Full-stack development with modern technologies\n• Project/Program Management - Leading technical teams and projects\n• Data Analyst - Data-driven insights and analytics\n• Product Management - Product strategy and technical leadership",
-    default: "I can help you learn about Varuntej's projects, skills, experience, education, resume, social links, location, availability, interests, roles, or how to contact him. What would you like to know?"
+    default: "I can help you learn about Varuntej's projects, skills, experience, education, resume, social links, location, availability, interests, or how to contact him. What would you like to know?"
   };
 
   const getAIResponse = (userInput: string): string => {
@@ -58,10 +57,8 @@ const AIChatbot: React.FC = () => {
       return aiResponses.location;
     } else if (input.includes('available') || input.includes('opportunity') || input.includes('job') || input.includes('hire') || input.includes('availability')) {
       return aiResponses.availability;
-    } else if (input.includes('interest') || input.includes('looking') || input.includes('seeking') || input.includes('want') || input.includes('role')) {
+    } else if (input.includes('interest') || input.includes('looking') || input.includes('seeking') || input.includes('want') || input.includes('role') || input.includes('position') || input.includes('title') || input.includes('job title')) {
       return aiResponses.interests;
-    } else if (input.includes('position') || input.includes('title') || input.includes('job title')) {
-      return aiResponses.roles;
     } else {
       return aiResponses.default;
     }

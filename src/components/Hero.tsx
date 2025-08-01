@@ -16,12 +16,11 @@ const AITypingAnimation: React.FC = () => {
 
   useEffect(() => {
     const aiTexts = [
-      "AI/ML Engineer",
-      "Software Developer", 
-      "Technical Project Manager",
-      "NLP Practitioner",
+      "AI/ML Engineering",
+      "Software Development", 
+      "Project/Program Management",
       "Data Analyst",
-      "Product Manager"
+      "Product Management"
     ];
 
     const typeSpeed = isDeleting ? 50 : 100;
