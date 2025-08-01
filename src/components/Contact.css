@@ -296,20 +296,20 @@
   position: fixed;
   bottom: 30px;
   right: 30px;
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border: none;
   color: white;
-  font-size: 1.5rem;
+  font-size: 2rem;
   cursor: pointer;
   box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2px;
+  gap: 4px;
   z-index: 1000;
   transition: all 0.3s ease;
 }
@@ -320,8 +320,10 @@
 }
 
 .ai-chatbot-label {
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   font-weight: 500;
+  text-align: center;
+  line-height: 1.2;
 }
 
 .ai-chatbot-container {
@@ -532,13 +534,13 @@
   .ai-chatbot-toggle {
     right: 20px;
     bottom: 20px;
-    width: 50px;
-    height: 50px;
-    font-size: 1.2rem;
+    width: 70px;
+    height: 70px;
+    font-size: 1.8rem;
   }
   
   .ai-chatbot-label {
-    font-size: 0.5rem;
+    font-size: 0.6rem;
   }
 }
 

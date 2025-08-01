@@ -103,23 +103,22 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .skill-name {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #ffffff;
+  color: #64ffda;
 }
 
 .skill-level {
   font-size: 0.9rem;
-  color: #64ffda;
+  color: #8892b0;
   font-weight: 500;
 }
 
 .skill-bar {
-  width: 100%;
   height: 8px;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 4px;
@@ -130,8 +129,8 @@
 .skill-progress {
   height: 100%;
   border-radius: 4px;
-  position: relative;
   transition: width 1s ease;
+  position: relative;
 }
 
 .skill-progress::after {
@@ -159,7 +158,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 30px;
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -168,11 +167,11 @@
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 15px;
-  padding: 25px;
+  padding: 30px;
   text-align: center;
-  transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  transition: all 0.3s ease;
 }
 
 .summary-card::before {
@@ -181,25 +180,26 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 3px;
-  background: linear-gradient(45deg, #64ffda, #00d4ff);
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent, rgba(100, 255, 218, 0.1), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
 }
 
 .summary-card:hover::before {
-  transform: scaleX(1);
+  transform: translateX(100%);
 }
 
 .summary-card:hover {
   transform: translateY(-5px);
   border-color: rgba(100, 255, 218, 0.3);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
 }
 
 .summary-card h4 {
   font-size: 1.3rem;
-  margin-bottom: 15px;
   color: #64ffda;
+  margin-bottom: 15px;
   font-weight: 600;
 }
 
@@ -216,250 +216,74 @@
 
 .certifications h3 {
   font-size: 2rem;
-  margin-bottom: 40px;
   color: #64ffda;
+  margin-bottom: 40px;
   font-weight: 600;
 }
 
 .certifications-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
-.certification-card {
+.certification-item {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  padding: 30px;
+  border-radius: 15px;
+  padding: 25px;
   text-align: center;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
 }
 
-.certification-card::before {
+.certification-item::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: conic-gradient(
-    from 0deg,
-    transparent,
-    rgba(100, 255, 218, 0.1),
-    transparent,
-    rgba(0, 212, 255, 0.1),
-    transparent
-  );
-  animation: rotate 10s linear infinite;
-  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent, rgba(100, 255, 218, 0.1), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
 }
 
-@keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.certification-item:hover::before {
+  transform: translateX(100%);
 }
 
-.certification-card:hover {
-  transform: translateY(-8px);
+.certification-item:hover {
+  transform: translateY(-5px);
   border-color: rgba(100, 255, 218, 0.3);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
 }
 
-.cert-icon {
-  font-size: 3rem;
-  margin-bottom: 20px;
-  display: block;
-}
-
-.certification-card h4 {
+.certification-item h4 {
   font-size: 1.2rem;
+  color: #64ffda;
   margin-bottom: 10px;
-  color: #ffffff;
   font-weight: 600;
-  line-height: 1.3;
 }
 
-.certification-card p {
-  color: #64ffda;
+.certification-item p {
+  color: #8892b0;
+  margin-bottom: 10px;
   font-size: 0.9rem;
-  margin-bottom: 15px;
-  font-weight: 500;
 }
 
-.cert-date {
+.certification-date {
   display: inline-block;
-  padding: 6px 15px;
-  background: rgba(100, 255, 218, 0.1);
-  border: 1px solid rgba(100, 255, 218, 0.3);
-  border-radius: 15px;
-  color: #64ffda;
+  background: linear-gradient(45deg, #64ffda, #00d4ff);
+  color: #0f0f23;
+  padding: 5px 15px;
+  border-radius: 20px;
   font-size: 0.8rem;
-  font-weight: 500;
-}
-
-/* AI Neural Network Visualization Styles */
-.ai-neural-section {
-  margin-top: 2rem;
-  padding: 1.5rem;
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
-  border-radius: 15px;
-  border: 1px solid rgba(102, 126, 234, 0.1);
-  position: relative;
-  overflow: hidden;
-}
-
-.ai-neural-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    radial-gradient(circle at 20% 80%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(118, 75, 162, 0.1) 0%, transparent 50%);
-  animation: neuralPulse 4s ease-in-out infinite;
-  pointer-events: none;
-}
-
-@keyframes neuralPulse {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.6; }
-}
-
-.ai-neural-title {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 1.2rem;
   font-weight: 600;
-  color: var(--primary-color);
-  margin-bottom: 1rem;
-  position: relative;
-  z-index: 1;
-}
-
-.ai-neural-title svg {
-  color: var(--accent-color);
-  animation: neuralRotate 3s linear infinite;
-}
-
-@keyframes neuralRotate {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.ai-neural-container {
-  position: relative;
-  width: 100%;
-  height: 200px;
-  border-radius: 10px;
-  overflow: hidden;
-  background: rgba(0, 0, 0, 0.02);
-  border: 1px solid rgba(102, 126, 234, 0.1);
-}
-
-.ai-neural-canvas {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-.ai-neural-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-}
-
-.ai-stats {
-  display: flex;
-  gap: 2rem;
-  background: rgba(255, 255, 255, 0.9);
-  padding: 1rem 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
-}
-
-.ai-stat {
-  text-align: center;
-}
-
-.ai-stat-number {
-  display: block;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--primary-color);
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.ai-stat-label {
-  display: block;
-  font-size: 0.8rem;
-  color: var(--text-secondary);
-  margin-top: 0.25rem;
-}
-
-/* AI-Enhanced Skill Bars */
-.skill-bar {
-  position: relative;
-  overflow: hidden;
-}
-
-.skill-bar::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  animation: skillShine 2s ease-in-out infinite;
-  pointer-events: none;
-}
-
-@keyframes skillShine {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-.skill-progress {
-  position: relative;
-  z-index: 1;
-  box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
-}
-
-/* AI Data Flow Animation */
-.skills-section::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
-  animation: dataFlow 4s linear infinite;
-  opacity: 0.5;
-}
-
-@keyframes dataFlow {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
 }
 
 /* Responsive Design */
@@ -467,20 +291,20 @@
   .skills-categories {
     gap: 10px;
   }
-  
+
   .category-btn {
     padding: 10px 15px;
     font-size: 0.8rem;
   }
-  
+
   .category-btn span {
     display: none;
   }
-  
+
   .category-header h3 {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
   }
-  
+
   .summary-grid,
   .certifications-grid {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -490,115 +314,78 @@
 
 @media (max-width: 768px) {
   .skills-categories {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .category-btn {
+    width: 200px;
     justify-content: center;
   }
-  
-  .category-btn {
-    padding: 12px 20px;
-  }
-  
+
   .category-btn span {
-    display: inline;
+    display: block;
   }
-  
+
   .skills-grid {
     gap: 20px;
   }
-  
+
   .skill-item {
     padding: 15px;
   }
-  
+
   .skill-name {
     font-size: 1rem;
   }
-  
+
   .summary-card,
-  .certification-card {
+  .certification-item {
     padding: 20px;
   }
-  
+
   .certifications h3 {
-    font-size: 1.6rem;
-  }
-  
-  .cert-icon {
-    font-size: 2.5rem;
-  }
-  
-  .certification-card h4 {
-    font-size: 1.1rem;
+    font-size: 1.5rem;
   }
 
-  /* Responsive AI Neural Network */
-  .ai-neural-section {
-    padding: 1rem;
-  }
-  
-  .ai-neural-container {
-    height: 150px;
-  }
-  
-  .ai-stats {
-    gap: 1rem;
-    padding: 0.75rem 1rem;
-  }
-  
-  .ai-stat-number {
-    font-size: 1.2rem;
-  }
-  
-  .ai-stat-label {
-    font-size: 0.7rem;
+  .certification-item h4 {
+    font-size: 1.1rem;
   }
 }
 
 @media (max-width: 480px) {
   .skills-categories {
-    flex-direction: column;
-    align-items: center;
+    gap: 8px;
   }
-  
+
   .category-btn {
-    width: 100%;
-    max-width: 250px;
-    justify-content: center;
+    width: 180px;
+    padding: 8px 12px;
+    font-size: 0.75rem;
   }
-  
+
   .category-header {
     flex-direction: column;
     gap: 10px;
   }
-  
+
   .category-header h3 {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
   }
-  
+
   .summary-grid,
   .certifications-grid {
     grid-template-columns: 1fr;
+    gap: 15px;
   }
-  
+
   .skill-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 5px;
   }
-  
-  .skill-level {
-    align-self: flex-end;
-  }
 
-  .ai-neural-container {
-    height: 120px;
-  }
-  
-  .ai-stats {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  
-  .ai-stat-number {
-    font-size: 1rem;
+  .skill-level {
+    font-size: 0.8rem;
   }
 } 

@@ -23,7 +23,13 @@ const AIChatbot: React.FC = () => {
     skills: "Varuntej specializes in Python, TensorFlow, PyTorch, React, AWS, and many other technologies. His expertise spans from machine learning and AI to full-stack development and cloud computing.",
     experience: "Varuntej has experience at Michigan State University working on AI/ML projects, and has developed several production-ready applications. He's currently working on cutting-edge AI solutions.",
     contact: "You can reach Varuntej via email at kodandapuramvaruntej@gmail.com, LinkedIn, or GitHub. Feel free to connect!",
-    default: "I can help you learn about Varuntej's projects, skills, experience, or how to contact him. What would you like to know?"
+    education: "Varuntej holds a Master's degree in Computer Science from Michigan State University with a 3.81 GPA, and a Bachelor's degree in Computer Science (Honors) with a 3.82 GPA and a minor in Business.",
+    resume: "You can download Varuntej's resume from the contact section or hero section of this portfolio. It contains detailed information about his experience, skills, and projects.",
+    github: "Check out Varuntej's GitHub at https://github.com/kodanda1 to see his code repositories and projects.",
+    linkedin: "Connect with Varuntej on LinkedIn at https://www.linkedin.com/in/varuntejk/ for professional networking.",
+    location: "Varuntej is based in East Lansing, Michigan, and is open to remote opportunities and collaborations worldwide.",
+    availability: "Varuntej is currently available for new opportunities and collaborations. He's particularly interested in AI/ML, full-stack development, and innovative tech projects.",
+    default: "I can help you learn about Varuntej's projects, skills, experience, education, resume, social links, location, availability, or how to contact him. What would you like to know?"
   };
 
   const getAIResponse = (userInput: string): string => {
@@ -37,6 +43,18 @@ const AIChatbot: React.FC = () => {
       return aiResponses.experience;
     } else if (input.includes('contact') || input.includes('email') || input.includes('reach')) {
       return aiResponses.contact;
+    } else if (input.includes('education') || input.includes('degree') || input.includes('gpa') || input.includes('university')) {
+      return aiResponses.education;
+    } else if (input.includes('resume') || input.includes('cv') || input.includes('download')) {
+      return aiResponses.resume;
+    } else if (input.includes('github') || input.includes('code') || input.includes('repository')) {
+      return aiResponses.github;
+    } else if (input.includes('linkedin') || input.includes('social') || input.includes('network')) {
+      return aiResponses.linkedin;
+    } else if (input.includes('location') || input.includes('where') || input.includes('based') || input.includes('michigan')) {
+      return aiResponses.location;
+    } else if (input.includes('available') || input.includes('opportunity') || input.includes('job') || input.includes('hire')) {
+      return aiResponses.availability;
     } else {
       return aiResponses.default;
     }
