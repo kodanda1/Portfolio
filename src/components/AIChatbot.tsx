@@ -213,6 +213,7 @@ const AIChatbot: React.FC = () => {
             e.currentTarget.style.display = 'none';
           }}
         />
+        <span style={{ position: 'absolute', color: 'white', fontSize: '12px', bottom: '-20px' }}>AI Assistant</span>
         
         {/* Cloud Dialog on Hover */}
         {showCloudDialog && (
