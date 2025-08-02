@@ -14,7 +14,7 @@ const AIChatbot: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showCloudDialog, setShowCloudDialog] = useState(false);
   const [messages, setMessages] = useState<Array<{ text: string; isUser: boolean; timestamp: Date; isTyping?: boolean; context?: string; image?: string }>>([
-    { text: "Hi! I'm your AI assistant. Ask me about Varuntej's projects, skills, or experience!", isUser: false, timestamp: new Date(), image: "https://kodanda1.github.io/Portfolio/hi.jpg" }
+    { text: "Hi! I'm your AI assistant. Ask me about Varuntej's projects, skills, or experience!", isUser: false, timestamp: new Date(), image: "https://kodanda1.github.io/Portfolio/ai_assistant.png" }
   ]);
   const [inputText, setInputText] = useState('');
   const [isTyping, setIsTyping] = useState(false);
@@ -81,34 +81,34 @@ const AIChatbot: React.FC = () => {
       return { 
         response: "Hello! 👋 I'm your AI assistant. I can help you learn about Varuntej's projects, skills, experience, and more. What would you like to know?", 
         context: 'greeting',
-        image: "https://kodanda1.github.io/Portfolio/hi.jpg"
+        image: "https://kodanda1.github.io/Portfolio/ai_assistant.png"
       };
     }
     
     if (input.includes('project') || input.includes('work')) {
-      return { response: aiResponses.projects, context: 'projects', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
+      return { response: aiResponses.projects, context: 'projects', image: "https://kodanda1.github.io/Portfolio/ai_assistant.png" };
     } else if (input.includes('skill') || input.includes('technology') || input.includes('tech')) {
-      return { response: aiResponses.skills, context: 'skills', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
+      return { response: aiResponses.skills, context: 'skills', image: "https://kodanda1.github.io/Portfolio/ai_assistant.png" };
     } else if (input.includes('experience') || input.includes('background')) {
-      return { response: aiResponses.experience, context: 'experience', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
+      return { response: aiResponses.experience, context: 'experience', image: "https://kodanda1.github.io/Portfolio/ai_assistant.png" };
     } else if (input.includes('contact') || input.includes('email') || input.includes('reach')) {
-      return { response: aiResponses.contact, context: 'contact', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
+      return { response: aiResponses.contact, context: 'contact', image: "https://kodanda1.github.io/Portfolio/ai_assistant.png" };
     } else if (input.includes('education') || input.includes('degree') || input.includes('gpa') || input.includes('university')) {
-      return { response: aiResponses.education, context: 'education', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
+      return { response: aiResponses.education, context: 'education', image: "https://kodanda1.github.io/Portfolio/ai_assistant.png" };
     } else if (input.includes('resume') || input.includes('cv') || input.includes('download')) {
-      return { response: aiResponses.resume, context: 'resume', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
+      return { response: aiResponses.resume, context: 'resume', image: "https://kodanda1.github.io/Portfolio/ai_assistant.png" };
     } else if (input.includes('github') || input.includes('code') || input.includes('repository')) {
-      return { response: aiResponses.github, context: 'github', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
+      return { response: aiResponses.github, context: 'github', image: "https://kodanda1.github.io/Portfolio/ai_assistant.png" };
     } else if (input.includes('linkedin') || input.includes('social') || input.includes('network')) {
-      return { response: aiResponses.linkedin, context: 'linkedin', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
+      return { response: aiResponses.linkedin, context: 'linkedin', image: "https://kodanda1.github.io/Portfolio/ai_assistant.png" };
     } else if (input.includes('location') || input.includes('where') || input.includes('based') || input.includes('michigan')) {
-      return { response: aiResponses.location, context: 'location', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
+      return { response: aiResponses.location, context: 'location', image: "https://kodanda1.github.io/Portfolio/ai_assistant.png" };
     } else if (input.includes('available') || input.includes('opportunity') || input.includes('job') || input.includes('hire') || input.includes('availability')) {
-      return { response: aiResponses.availability, context: 'availability', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
+      return { response: aiResponses.availability, context: 'availability', image: "https://kodanda1.github.io/Portfolio/ai_assistant.png" };
     } else if (input.includes('interest') || input.includes('looking') || input.includes('seeking') || input.includes('want') || input.includes('role') || input.includes('position') || input.includes('title') || input.includes('job title')) {
-      return { response: aiResponses.interests, context: 'interests', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
+      return { response: aiResponses.interests, context: 'interests', image: "https://kodanda1.github.io/Portfolio/ai_assistant.png" };
     } else {
-      return { response: aiResponses.default, context: 'general', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
+      return { response: aiResponses.default, context: 'general', image: "https://kodanda1.github.io/Portfolio/ai_assistant.png" };
     }
   };
 
@@ -119,6 +119,7 @@ const AIChatbot: React.FC = () => {
     setMessages(prev => [...prev, userMessage]);
     setInputText('');
     setIsTyping(true);
+    setShowSuggestions(false);
 
     // Simulate AI thinking
     setTimeout(() => {
@@ -207,7 +208,7 @@ const AIChatbot: React.FC = () => {
         >
           <div className="cloud-content">
             <img 
-              src="https://kodanda1.github.io/Portfolio/ai_assistant.jpg" 
+              src="https://kodanda1.github.io/Portfolio/ai_assistant.png" 
               alt="AI Assistant" 
               className="cloud-emoji"
               onError={(e) => {
@@ -231,7 +232,7 @@ const AIChatbot: React.FC = () => {
         transition={{ duration: 0.5, delay: 1 }}
       >
         <img 
-          src="https://kodanda1.github.io/Portfolio/ai_assistant.jpg" 
+          src="https://kodanda1.github.io/Portfolio/ai_assistant.png" 
           alt="AI Assistant" 
           className="ai-toggle-image"
           onError={(e) => {
