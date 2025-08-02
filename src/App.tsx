@@ -9,6 +9,7 @@ import Projects from './components/Projects';
 import Skills from './components/Skills';
 import Contact from './components/Contact';
 import ParticleBackground from './components/ParticleBackground';
+import AIChatbot from './components/AIChatbot';
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
@@ -94,6 +95,8 @@ function App() {
           <Contact />
         </section>
       </main>
+      
+      <AIChatbot />
     </div>
   );
 }
