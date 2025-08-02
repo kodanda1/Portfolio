@@ -14,7 +14,7 @@ const AIChatbot: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showCloudDialog, setShowCloudDialog] = useState(false);
   const [messages, setMessages] = useState<Array<{ text: string; isUser: boolean; timestamp: Date; isTyping?: boolean; context?: string; image?: string }>>([
-    { text: "Hi! I'm your AI assistant. Ask me about Varuntej's projects, skills, or experience!", isUser: false, timestamp: new Date(), image: "https://kodanda1.github.io/Portfolio/ai_assistant.png" }
+    { text: "Hi! I'm your AI assistant. Ask me about Varuntej's projects, skills, or experience!", isUser: false, timestamp: new Date(), image: "https://kodanda1.github.io/Portfolio/hi.jpg" }
   ]);
   const [inputText, setInputText] = useState('');
   const [isTyping, setIsTyping] = useState(false);
@@ -81,34 +81,34 @@ const AIChatbot: React.FC = () => {
       return { 
         response: "Hello! 👋 I'm your AI assistant. I can help you learn about Varuntej's projects, skills, experience, and more. What would you like to know?", 
         context: 'greeting',
-        image: "https://kodanda1.github.io/Portfolio/ai_assistant.png"
+        image: "https://kodanda1.github.io/Portfolio/hi.jpg"
       };
     }
     
     if (input.includes('project') || input.includes('work')) {
-      return { response: aiResponses.projects, context: 'projects', image: "https://kodanda1.github.io/Portfolio/ai_assistant.png" };
+      return { response: aiResponses.projects, context: 'projects', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
     } else if (input.includes('skill') || input.includes('technology') || input.includes('tech')) {
-      return { response: aiResponses.skills, context: 'skills', image: "https://kodanda1.github.io/Portfolio/ai_assistant.png" };
+      return { response: aiResponses.skills, context: 'skills', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
     } else if (input.includes('experience') || input.includes('background')) {
-      return { response: aiResponses.experience, context: 'experience', image: "https://kodanda1.github.io/Portfolio/ai_assistant.png" };
+      return { response: aiResponses.experience, context: 'experience', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
     } else if (input.includes('contact') || input.includes('email') || input.includes('reach')) {
-      return { response: aiResponses.contact, context: 'contact', image: "https://kodanda1.github.io/Portfolio/ai_assistant.png" };
+      return { response: aiResponses.contact, context: 'contact', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
     } else if (input.includes('education') || input.includes('degree') || input.includes('gpa') || input.includes('university')) {
-      return { response: aiResponses.education, context: 'education', image: "https://kodanda1.github.io/Portfolio/ai_assistant.png" };
+      return { response: aiResponses.education, context: 'education', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
     } else if (input.includes('resume') || input.includes('cv') || input.includes('download')) {
-      return { response: aiResponses.resume, context: 'resume', image: "https://kodanda1.github.io/Portfolio/ai_assistant.png" };
+      return { response: aiResponses.resume, context: 'resume', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
     } else if (input.includes('github') || input.includes('code') || input.includes('repository')) {
-      return { response: aiResponses.github, context: 'github', image: "https://kodanda1.github.io/Portfolio/ai_assistant.png" };
+      return { response: aiResponses.github, context: 'github', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
     } else if (input.includes('linkedin') || input.includes('social') || input.includes('network')) {
-      return { response: aiResponses.linkedin, context: 'linkedin', image: "https://kodanda1.github.io/Portfolio/ai_assistant.png" };
+      return { response: aiResponses.linkedin, context: 'linkedin', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
     } else if (input.includes('location') || input.includes('where') || input.includes('based') || input.includes('michigan')) {
-      return { response: aiResponses.location, context: 'location', image: "https://kodanda1.github.io/Portfolio/ai_assistant.png" };
+      return { response: aiResponses.location, context: 'location', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
     } else if (input.includes('available') || input.includes('opportunity') || input.includes('job') || input.includes('hire') || input.includes('availability')) {
-      return { response: aiResponses.availability, context: 'availability', image: "https://kodanda1.github.io/Portfolio/ai_assistant.png" };
+      return { response: aiResponses.availability, context: 'availability', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
     } else if (input.includes('interest') || input.includes('looking') || input.includes('seeking') || input.includes('want') || input.includes('role') || input.includes('position') || input.includes('title') || input.includes('job title')) {
-      return { response: aiResponses.interests, context: 'interests', image: "https://kodanda1.github.io/Portfolio/ai_assistant.png" };
+      return { response: aiResponses.interests, context: 'interests', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
     } else {
-      return { response: aiResponses.default, context: 'general', image: "https://kodanda1.github.io/Portfolio/ai_assistant.png" };
+      return { response: aiResponses.default, context: 'general', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
     }
   };
 
@@ -185,11 +185,7 @@ const AIChatbot: React.FC = () => {
 
   const handleToggleClick = () => {
     if (!isOpen) {
-      setShowCloudDialog(true);
-      setTimeout(() => {
-        setShowCloudDialog(false);
-        setIsOpen(true);
-      }, 1500);
+      setIsOpen(true);
     } else {
       setIsOpen(false);
     }
@@ -197,34 +193,12 @@ const AIChatbot: React.FC = () => {
 
   return (
     <>
-      {/* Cloud Dialog */}
-      {showCloudDialog && (
-        <motion.div
-          className="ai-cloud-dialog"
-          initial={{ opacity: 0, scale: 0.8, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.8, y: 20 }}
-          transition={{ duration: 0.3 }}
-        >
-          <div className="cloud-content">
-            <img 
-              src="https://kodanda1.github.io/Portfolio/ai_assistant.png" 
-              alt="AI Assistant" 
-              className="cloud-emoji"
-              onError={(e) => {
-                console.error('Failed to load AI assistant emoji:', e);
-                e.currentTarget.style.display = 'none';
-              }}
-            />
-            <span className="cloud-text">Hi, I'm your AI assistant!</span>
-          </div>
-        </motion.div>
-      )}
-
       {/* Chatbot Toggle Button */}
       <motion.button
         className="ai-chatbot-toggle"
         onClick={handleToggleClick}
+        onMouseEnter={() => setShowCloudDialog(true)}
+        onMouseLeave={() => setShowCloudDialog(false)}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         initial={{ opacity: 0, scale: 0 }}
@@ -240,7 +214,30 @@ const AIChatbot: React.FC = () => {
             e.currentTarget.style.display = 'none';
           }}
         />
-        <span className="ai-chatbot-label">AI Assistant</span>
+        
+        {/* Cloud Dialog on Hover */}
+        {showCloudDialog && (
+          <motion.div
+            className="ai-cloud-dialog"
+            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.8, y: 20 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div className="cloud-content">
+              <img 
+                src="https://kodanda1.github.io/Portfolio/ai_assistant.png" 
+                alt="AI Assistant" 
+                className="cloud-emoji"
+                onError={(e) => {
+                  console.error('Failed to load AI assistant emoji:', e);
+                  e.currentTarget.style.display = 'none';
+                }}
+              />
+              <span className="cloud-text">Hi, I'm your AI assistant!</span>
+            </div>
+          </motion.div>
+        )}
       </motion.button>
 
       {/* Chatbot Interface */}
