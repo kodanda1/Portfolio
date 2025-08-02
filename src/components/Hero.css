@@ -135,10 +135,10 @@
 .role-container {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 30px;
+  margin: 20px 0;
   font-size: 1.5rem;
   font-weight: 600;
+  color: #64ffda;
 }
 
 .role-prefix {
@@ -631,4 +631,13 @@
     width: 3px;
     height: 3px;
   }
+} 
+
+.im-into-text {
+  font-size: 1.2rem;
+  color: #64ffda;
+  font-weight: 500;
+  margin-right: 10px;
+  opacity: 0.9;
+  display: inline-block;
 } 

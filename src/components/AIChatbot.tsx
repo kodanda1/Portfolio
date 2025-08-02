@@ -12,8 +12,9 @@ const IconWrapper: React.FC<{ icon: any }> = ({ icon: Icon }) => {
 const AIChatbot: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showCloudDialog, setShowCloudDialog] = useState(false);
+  const [showAssistantImage, setShowAssistantImage] = useState(true);
   const [messages, setMessages] = useState<Array<{ text: string; isUser: boolean; timestamp: Date; isTyping?: boolean; context?: string; image?: string }>>([
-    { text: "Hi! I'm your AI assistant. Ask me about Varuntej's projects, skills, or experience!", isUser: false, timestamp: new Date(), image: "https://kodanda1.github.io/Portfolio/hi.jpg" }
+    { text: "Hi! I'm your AI assistant. Ask me about Varuntej's projects, skills, or experience!", isUser: false, timestamp: new Date(), image: "http://localhost:3000/Portfolio/hi.png" }
   ]);
   const [inputText, setInputText] = useState('');
   const [isTyping, setIsTyping] = useState(false);
@@ -22,18 +23,18 @@ const AIChatbot: React.FC = () => {
   const [showSuggestions, setShowSuggestions] = useState(true);
 
   const aiResponses = {
-    projects: "Varuntej has worked on several AI/ML projects including:\n\n• LLM-Based Student Q&A Assistant with RAG\n• AI-Powered Review Analysis Platform\n• COVID-19 Anomaly Detection System\n• Credit Card Approval Model Prediction\n\nWould you like to know more about any specific project?",
-    skills: "Varuntej specializes in:\n\n• Programming: Python, JavaScript, C++, React, Flask\n• Machine Learning: TensorFlow, PyTorch, scikit-learn, pandas, NumPy\n• Cloud & DevOps: AWS, Azure, Docker, Git, Salesforce\n• Data Visualization: Power BI, Matplotlib, Seaborn, Plotly, Excel\n• Development Tools: UIPath, Jira, VS Code, Postman, Tableau\n\nHis expertise spans from machine learning and AI to full-stack development and cloud computing.",
-    experience: "Varuntej has experience at Michigan State University working on AI/ML projects, and has developed several production-ready applications. He's currently working on cutting-edge AI solutions.",
-    contact: "You can reach Varuntej via email at kodandapuramvaruntej@gmail.com, LinkedIn, or GitHub. Feel free to connect!",
-    education: "Varuntej holds a Master's degree in Computer Science from Michigan State University with a 3.81 GPA, and a Bachelor's degree in Computer Science (Honors) with a 3.82 GPA and a minor in Business.",
-    resume: "You can download Varuntej's resume from the contact section or hero section of this portfolio. It contains detailed information about his experience, skills, and projects.",
-    github: "Check out Varuntej's GitHub at https://github.com/kodanda1 to see his code repositories and projects.",
-    linkedin: "Connect with Varuntej on LinkedIn at https://www.linkedin.com/in/varuntejk/ for professional networking.",
-    location: "Varuntej is based in East Lansing, Michigan, and is open to remote opportunities and collaborations worldwide.",
-    availability: "Varuntej is currently available for new opportunities and collaborations. He's particularly interested in AI/ML, full-stack development, and innovative tech projects.",
-    interests: "Varuntej is actively looking for roles in:\n\n• AI/ML Engineering\n• Software Development\n• Project/Program Management\n• Data Analyst\n• Product Management\n\nHe's passionate about AI/ML, full-stack development, Project management and innovative technology solutions.",
-    default: "I can help you learn about Varuntej's projects, skills, experience, education, resume, social links, location, availability, interests, or how to contact him. What would you like to know?"
+    projects: "Varuntej has worked on several cutting-edge AI/ML projects that showcase his technical expertise:\n\n🚀 **LLM-Based Student Q&A Assistant with RAG**\n• Built a sophisticated question-answering system using Large Language Models and Retrieval-Augmented Generation\n• Implemented advanced NLP techniques for educational content processing\n• Created an intuitive interface for students to get instant, accurate answers\n\n🤖 **AI-Powered Review Analysis Platform**\n• Developed a sentiment analysis system for customer reviews using machine learning\n• Integrated natural language processing to extract insights from large datasets\n• Built a scalable architecture handling thousands of reviews in real-time\n\n🔬 **COVID-19 Anomaly Detection System**\n• Created an advanced anomaly detection model for healthcare data analysis\n• Implemented statistical and machine learning algorithms for pattern recognition\n• Contributed to public health research during the pandemic\n\n💳 **Credit Card Approval Model Prediction**\n• Built a predictive model for credit card approval using machine learning\n• Implemented feature engineering and model optimization techniques\n• Achieved high accuracy in predicting approval outcomes\n\nWould you like to know more about any specific project's technical implementation, technologies used, or outcomes?",
+    skills: "Varuntej possesses a comprehensive skill set spanning multiple technology domains:\n\n💻 **Programming & Development**\n• **Languages**: Python (expert), JavaScript (advanced), C++ (proficient), Java (intermediate)\n• **Frontend**: React.js, HTML5, CSS3, TypeScript, Redux\n• **Backend**: Flask, Node.js, Express.js, RESTful APIs\n• **Databases**: SQL, MongoDB, PostgreSQL, Redis\n\n🤖 **Machine Learning & AI**\n• **Frameworks**: TensorFlow, PyTorch, scikit-learn, Keras\n• **Data Processing**: pandas, NumPy, Matplotlib, Seaborn, Plotly\n• **NLP**: NLTK, spaCy, Transformers, BERT, GPT models\n• **Computer Vision**: OpenCV, PIL, YOLO, CNN architectures\n\n☁️ **Cloud & DevOps**\n• **Cloud Platforms**: AWS (EC2, S3, Lambda, SageMaker), Azure, Google Cloud\n• **DevOps**: Docker, Kubernetes, Git, CI/CD pipelines, Jenkins\n• **Tools**: Salesforce, Jira, Confluence, VS Code, Postman\n\n📊 **Data Visualization & Analytics**\n• **BI Tools**: Power BI, Tableau, Excel (advanced)\n• **Visualization**: Matplotlib, Seaborn, Plotly, D3.js\n• **Automation**: UIPath, RPA tools\n\nHis expertise enables him to work across the full technology stack, from data science and AI to full-stack development and cloud architecture.",
+    experience: "Varuntej has built a diverse and impactful professional experience:\n\n🎓 **Academic Excellence**\n• **Michigan State University**: Master's in Computer Science with 3.81 GPA\n• **Undergraduate**: Bachelor's in Computer Science (Honors) with 3.82 GPA and Business minor\n• **Research**: Active involvement in AI/ML research projects and academic initiatives\n\n💼 **Professional Experience**\n• **AI/ML Development**: Led multiple production-ready AI applications with real-world impact\n• **Full-Stack Engineering**: Built scalable web applications and APIs\n• **Project Management**: Successfully managed cross-functional teams and technical initiatives\n• **Data Analysis**: Conducted comprehensive data analysis for business intelligence\n\n🚀 **Current Focus**\n• Working on cutting-edge AI solutions and machine learning applications\n• Developing innovative approaches to natural language processing\n• Contributing to open-source projects and technical communities\n• Seeking opportunities in AI/ML Engineering, Software Development, and Product Management\n\nHis experience demonstrates a unique blend of technical expertise and strategic thinking, making him valuable for roles requiring both deep technical knowledge and business acumen.",
+    contact: "You can connect with Varuntej through multiple channels:\n\n📧 **Email**: kodandapuramvaruntej@gmail.com\n• Primary contact for professional inquiries and collaborations\n• Quick response time for opportunities and partnerships\n\n💼 **LinkedIn**: https://www.linkedin.com/in/varuntejk/\n• Professional network and career updates\n• Connect for industry insights and opportunities\n\n🐙 **GitHub**: https://github.com/kodanda1\n• View his code repositories and projects\n• Open-source contributions and technical portfolio\n\n📱 **Phone**: +1 517-755-0737\n• Available for urgent professional matters\n• Prefer email for initial contact\n\n📍 **Location**: East Lansing, Michigan\n• Open to remote opportunities worldwide\n• Willing to relocate for the right opportunity\n\nFeel free to reach out for collaborations, job opportunities, or technical discussions!",
+    education: "Varuntej's educational background demonstrates exceptional academic achievement:\n\n🎓 **Master of Science in Computer Science**\n• **Institution**: Michigan State University\n• **GPA**: 3.81/4.00 (Outstanding Academic Performance)\n• **Focus Areas**: Artificial Intelligence, Machine Learning, Software Engineering\n• **Key Courses**: Advanced Algorithms, Machine Learning, Data Structures, Database Systems\n• **Research**: Active participation in AI/ML research projects\n\n🎓 **Bachelor of Science in Computer Science (Honors)**\n• **GPA**: 3.82/4.00 (Honors Program)\n• **Minor**: Business Administration\n• **Key Achievements**: Dean's List, Academic Excellence Awards\n• **Focus Areas**: Programming Fundamentals, Data Structures, Software Engineering\n\n📚 **Additional Certifications & Training**\n• **Machine Learning**: Coursera, edX, and other online platforms\n• **Cloud Computing**: AWS, Azure certifications\n• **Programming**: Advanced Python, JavaScript, and C++ training\n• **Project Management**: Agile methodologies and team leadership\n\nHis strong academic foundation, combined with practical experience, positions him well for advanced technical roles and research opportunities.",
+    resume: "Varuntej's comprehensive resume is available for download and contains detailed information about his professional journey:\n\n📄 **Resume Highlights**\n• **Education**: Complete academic background with GPA and achievements\n• **Experience**: Detailed work history with project descriptions and outcomes\n• **Skills**: Comprehensive technical skills assessment and proficiency levels\n• **Projects**: Portfolio of AI/ML and software development projects\n• **Certifications**: Professional certifications and training programs\n\n📥 **Download Options**\n• Available in the contact section of this portfolio\n• Also accessible from the hero section\n• PDF format with professional formatting\n\n🔍 **What's Included**\n• Technical skills matrix and proficiency levels\n• Project descriptions with technologies used and outcomes\n• Academic achievements and research contributions\n• Professional experience with measurable impacts\n• Contact information and professional references\n\nHis resume showcases a well-rounded professional with strong technical skills and proven project delivery capabilities.",
+    github: "Explore Varuntej's technical portfolio and open-source contributions:\n\n🐙 **GitHub Profile**: https://github.com/kodanda1\n\n💻 **Repository Highlights**\n• **AI/ML Projects**: Complete implementations of machine learning models\n• **Web Applications**: Full-stack projects with modern technologies\n• **Data Analysis**: Jupyter notebooks with comprehensive data insights\n• **Open Source**: Contributions to community projects and libraries\n\n🚀 **Featured Projects**\n• **Student Q&A Assistant**: LLM-based educational tool with RAG implementation\n• **Review Analysis Platform**: Sentiment analysis and NLP processing system\n• **Anomaly Detection**: Healthcare data analysis and pattern recognition\n• **Credit Card Prediction**: Machine learning model for financial applications\n\n📊 **Code Quality**\n• Well-documented code with comprehensive README files\n• Clean, maintainable code following best practices\n• Multiple programming languages and frameworks\n• Real-world applications with practical use cases\n\nHis GitHub demonstrates strong coding skills, project management abilities, and commitment to open-source development.",
+    linkedin: "Connect with Varuntej professionally and stay updated on his career journey:\n\n💼 **LinkedIn Profile**: https://www.linkedin.com/in/varuntejk/\n\n🔗 **Professional Network**\n• Connect with industry professionals and thought leaders\n• Follow updates on career developments and achievements\n• Engage with technical content and industry insights\n\n📈 **Profile Highlights**\n• **Experience**: Detailed professional background and project descriptions\n• **Skills**: Endorsed technical skills and expertise areas\n• **Recommendations**: Professional recommendations from colleagues and mentors\n• **Publications**: Technical articles and research contributions\n\n🎯 **Networking Benefits**\n• **Industry Connections**: Network with AI/ML and software development professionals\n• **Opportunity Discovery**: Access to job opportunities and collaborations\n• **Knowledge Sharing**: Participate in technical discussions and knowledge exchange\n• **Career Growth**: Stay informed about industry trends and best practices\n\nHis LinkedIn profile reflects a professional committed to continuous learning and industry engagement.",
+    location: "Varuntej is based in a vibrant academic and technology hub:\n\n📍 **Current Location**: East Lansing, Michigan\n\n🎓 **Academic Environment**\n• **Michigan State University**: Premier research institution with strong tech programs\n• **Innovation Hub**: Access to cutting-edge research and development facilities\n• **Tech Community**: Active startup ecosystem and technology meetups\n• **Industry Connections**: Proximity to major tech companies and research centers\n\n🌍 **Geographic Flexibility**\n• **Remote Work**: Fully equipped for remote collaboration and work\n• **Relocation Ready**: Willing to relocate for exceptional opportunities\n• **Global Reach**: Open to international opportunities and collaborations\n• **Travel**: Available for on-site meetings and project work\n\n🚀 **Local Advantages**\n• **Research Collaboration**: Access to university research and academic partnerships\n• **Networking**: Active participation in local tech communities and events\n• **Innovation**: Exposure to emerging technologies and research initiatives\n• **Growth**: Continuous learning opportunities in a dynamic academic environment\n\nHis location provides excellent opportunities for research collaboration, industry partnerships, and professional growth.",
+    availability: "Varuntej is actively seeking new opportunities and collaborations:\n\n✅ **Current Status**: Available for new opportunities\n\n🎯 **Seeking Roles In**\n• **AI/ML Engineering**: Machine learning model development and deployment\n• **Software Development**: Full-stack development and system architecture\n• **Data Science**: Data analysis, visualization, and insights generation\n• **Product Management**: Technical product strategy and development\n• **Research**: AI/ML research and academic collaborations\n\n💼 **Opportunity Types**\n• **Full-time Positions**: Permanent roles with growth potential\n• **Contract Work**: Project-based collaborations and consulting\n• **Research Projects**: Academic and industry research partnerships\n• **Startup Opportunities**: Early-stage company involvement\n• **Open Source**: Contributing to community projects\n\n🚀 **What He Brings**\n• **Technical Expertise**: Deep knowledge in AI/ML and software development\n• **Project Experience**: Proven track record of successful project delivery\n• **Academic Background**: Strong foundation in computer science and research\n• **Adaptability**: Quick learner with ability to work across multiple domains\n• **Collaboration**: Excellent team player with strong communication skills\n\nHe's particularly interested in roles that combine technical innovation with real-world impact.",
+    interests: "Varuntej is passionate about technology and innovation across multiple domains:\n\n🎯 **Primary Interests**\n• **AI/ML Engineering**: Building intelligent systems and machine learning models\n• **Software Development**: Creating scalable, user-friendly applications\n• **Project Management**: Leading technical teams and strategic initiatives\n• **Data Analysis**: Transforming data into actionable business insights\n• **Product Management**: Bridging technical and business requirements\n\n🚀 **Technology Focus Areas**\n• **Artificial Intelligence**: Natural language processing, computer vision, predictive modeling\n• **Full-Stack Development**: End-to-end application development and deployment\n• **Cloud Computing**: Scalable cloud architectures and DevOps practices\n• **Data Science**: Statistical analysis, visualization, and machine learning\n• **Emerging Technologies**: Blockchain, IoT, and cutting-edge innovations\n\n💡 **Industry Interests**\n• **Healthcare Technology**: AI applications in medical diagnosis and patient care\n• **Financial Technology**: Machine learning for risk assessment and fraud detection\n• **Educational Technology**: AI-powered learning platforms and tools\n• **E-commerce**: Recommendation systems and customer experience optimization\n• **Research & Development**: Academic and industry research collaborations\n\nHis interests reflect a commitment to using technology to solve real-world problems and drive innovation.",
+    default: "I'm your AI assistant, here to help you learn about Varuntej's impressive background and capabilities! I can provide detailed information about:\n\n📚 **Education & Background**\n• Academic achievements and research experience\n• Technical foundation and learning journey\n\n💼 **Professional Experience**\n• Project management and technical leadership\n• Real-world applications and outcomes\n\n🚀 **Technical Projects**\n• AI/ML implementations and software development\n• Detailed project descriptions and technologies used\n\n⚡ **Skills & Expertise**\n• Comprehensive technical skills across multiple domains\n• Proficiency levels and specializations\n\n📞 **Contact & Networking**\n• Professional contact information and social links\n• Collaboration and opportunity details\n\nWhat would you like to know more about? I can provide in-depth information on any of these areas!"
   };
 
   // Smart suggestion buttons
@@ -50,7 +51,14 @@ const AIChatbot: React.FC = () => {
 
   const getContextualSuggestions = (context: string) => {
     const contextLower = context.toLowerCase();
-    if (contextLower.includes('project')) {
+    if (contextLower.includes('dont_know')) {
+      return [
+        { text: "Projects", action: "projects", icon: "🚀" },
+        { text: "Skills", action: "skills", icon: "⚡" },
+        { text: "Experience", action: "experience", icon: "💼" },
+        { text: "Contact", action: "contact", icon: "📧" }
+      ];
+    } else if (contextLower.includes('project')) {
       return [
         { text: "Tell me more", action: "projects", icon: "🔍" },
         { text: "Skills used", action: "skills", icon: "⚡" },
@@ -75,45 +83,51 @@ const AIChatbot: React.FC = () => {
   const getAIResponse = (userInput: string): { response: string; context: string; image?: string } => {
     const input = userInput.toLowerCase();
     
-    // Special case for "hi" - use hi.jpg image
+    // Special case for "hi" - use hi.png image
     if (input === 'hi' || input === 'hello' || input === 'hey') {
       return { 
         response: "Hello! 👋 I'm your AI assistant. I can help you learn about Varuntej's projects, skills, experience, and more. What would you like to know?", 
         context: 'greeting',
-        image: "https://kodanda1.github.io/Portfolio/hi.jpg"
+        image: "http://localhost:3000/Portfolio/hi.png"
       };
     }
     
     if (input.includes('project') || input.includes('work')) {
-      return { response: aiResponses.projects, context: 'projects', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
+      return { response: aiResponses.projects, context: 'projects', image: "http://localhost:3000/Portfolio/ans.png" };
     } else if (input.includes('skill') || input.includes('technology') || input.includes('tech')) {
-      return { response: aiResponses.skills, context: 'skills', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
+      return { response: aiResponses.skills, context: 'skills', image: "http://localhost:3000/Portfolio/ans.png" };
     } else if (input.includes('experience') || input.includes('background')) {
-      return { response: aiResponses.experience, context: 'experience', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
+      return { response: aiResponses.experience, context: 'experience', image: "http://localhost:3000/Portfolio/ans.png" };
     } else if (input.includes('contact') || input.includes('email') || input.includes('reach')) {
-      return { response: aiResponses.contact, context: 'contact', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
+      return { response: aiResponses.contact, context: 'contact', image: "http://localhost:3000/Portfolio/ans.png" };
     } else if (input.includes('education') || input.includes('degree') || input.includes('gpa') || input.includes('university')) {
-      return { response: aiResponses.education, context: 'education', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
+      return { response: aiResponses.education, context: 'education', image: "http://localhost:3000/Portfolio/ans.png" };
     } else if (input.includes('resume') || input.includes('cv') || input.includes('download')) {
-      return { response: aiResponses.resume, context: 'resume', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
+      return { response: aiResponses.resume, context: 'resume', image: "http://localhost:3000/Portfolio/ans.png" };
     } else if (input.includes('github') || input.includes('code') || input.includes('repository')) {
-      return { response: aiResponses.github, context: 'github', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
+      return { response: aiResponses.github, context: 'github', image: "http://localhost:3000/Portfolio/ans.png" };
     } else if (input.includes('linkedin') || input.includes('social') || input.includes('network')) {
-      return { response: aiResponses.linkedin, context: 'linkedin', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
+      return { response: aiResponses.linkedin, context: 'linkedin', image: "http://localhost:3000/Portfolio/ans.png" };
     } else if (input.includes('location') || input.includes('where') || input.includes('based') || input.includes('michigan')) {
-      return { response: aiResponses.location, context: 'location', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
+      return { response: aiResponses.location, context: 'location', image: "http://localhost:3000/Portfolio/ans.png" };
     } else if (input.includes('available') || input.includes('opportunity') || input.includes('job') || input.includes('hire') || input.includes('availability')) {
-      return { response: aiResponses.availability, context: 'availability', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
+      return { response: aiResponses.availability, context: 'availability', image: "http://localhost:3000/Portfolio/ans.png" };
     } else if (input.includes('interest') || input.includes('looking') || input.includes('seeking') || input.includes('want') || input.includes('role') || input.includes('position') || input.includes('title') || input.includes('job title')) {
-      return { response: aiResponses.interests, context: 'interests', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
+      return { response: aiResponses.interests, context: 'interests', image: "http://localhost:3000/Portfolio/ans.png" };
     } else {
-      return { response: aiResponses.default, context: 'general', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
+      // Don't know response with dont_know.png image
+      return { 
+        response: "Hmm... 🤔 I don't know the answer to that question. You can send a message to Varuntej directly at kodandapuramvaruntej@gmail.com for more specific information.\n\nHere's what I can help you with:\n\n• Projects and work experience\n• Skills and technologies\n• Education and background\n• Contact information\n• Resume and social links\n• Location and availability\n• Job interests and roles", 
+        context: 'dont_know', 
+        image: "http://localhost:3000/Portfolio/dont_know.png" 
+      };
     }
   };
 
   const handleSendMessage = () => {
     if (!inputText.trim()) return;
 
+    console.log('User message sent:', inputText); // Debug log
     const userMessage = { text: inputText, isUser: true, timestamp: new Date() };
     setMessages(prev => [...prev, userMessage]);
     setInputText('');
@@ -136,17 +150,24 @@ const AIChatbot: React.FC = () => {
       setTypingText('');
       setIsTyping(false);
       
-      // Start word-by-word typing
-      const words = aiResponseData.response.split(' ');
+      // Start character-by-character typing for better control
+      const fullText = aiResponseData.response;
       let currentIndex = 0;
+      let typingComplete = false;
       
-      const typeWord = () => {
-        if (currentIndex < words.length) {
-          setTypingText(words.slice(0, currentIndex + 1).join(' '));
+      // Show stagnant text first
+      setTypingText("I'm into it...");
+      
+      const typeCharacter = () => {
+        if (currentIndex < fullText.length && !typingComplete) {
+          const currentText = fullText.substring(0, currentIndex + 1);
+          setTypingText(currentText);
           currentIndex++;
-          setTimeout(typeWord, 80 + Math.random() * 40); // Faster typing
+          setTimeout(typeCharacter, 50 + Math.random() * 30); // Faster, more responsive typing
         } else {
           // Finished typing
+          typingComplete = true;
+          clearTimeout(safetyTimeout); // Clear the safety timeout
           setMessages(prev => prev.map(msg => 
             msg.isTyping ? { ...msg, isTyping: false } : msg
           ));
@@ -154,7 +175,20 @@ const AIChatbot: React.FC = () => {
         }
       };
       
-      setTimeout(typeWord, 300);
+      // Add a safety timeout to ensure full text is displayed
+      const safetyTimeout = setTimeout(() => {
+        if (!typingComplete) {
+          typingComplete = true;
+          setMessages(prev => prev.map(msg => 
+            msg.isTyping ? { ...msg, isTyping: false } : msg
+          ));
+          setShowSuggestions(true);
+        }
+      }, 8000); // 8 second timeout
+      
+      setTimeout(() => {
+        typeCharacter();
+      }, 500);
     }, 800);
   };
 
@@ -185,8 +219,10 @@ const AIChatbot: React.FC = () => {
   const handleToggleClick = () => {
     if (!isOpen) {
       setIsOpen(true);
+      setShowAssistantImage(false);
     } else {
       setIsOpen(false);
+      setShowAssistantImage(true);
     }
   };
 
@@ -204,19 +240,24 @@ const AIChatbot: React.FC = () => {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5, delay: 1 }}
       >
-        <img 
-          src="https://kodanda1.github.io/Portfolio/ai_assistant.png" 
-          alt="AI Assistant" 
-          className="ai-toggle-image"
-          onError={(e) => {
-            console.error('Failed to load AI assistant image:', e);
-            e.currentTarget.style.display = 'none';
-          }}
-        />
+        {showAssistantImage && (
+          <img 
+            src="http://localhost:3000/Portfolio/ai_assistant.png" 
+            alt="AI Assistant" 
+            className="ai-toggle-image"
+            onError={(e) => {
+              console.error('Failed to load AI assistant image:', e);
+              // Don't hide the image, just log the error
+            }}
+            onLoad={() => {
+              console.log('AI assistant image loaded successfully');
+            }}
+          />
+        )}
 
         
         {/* Cloud Dialog on Hover */}
-        {showCloudDialog && (
+        {showCloudDialog && !isOpen && (
           <motion.div
             className="ai-cloud-dialog"
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
@@ -225,16 +266,7 @@ const AIChatbot: React.FC = () => {
             transition={{ duration: 0.3 }}
           >
             <div className="cloud-content">
-              <img 
-                src="https://kodanda1.github.io/Portfolio/ai_assistant.png" 
-                alt="AI Assistant" 
-                className="cloud-emoji"
-                onError={(e) => {
-                  console.error('Failed to load AI assistant emoji:', e);
-                  e.currentTarget.style.display = 'none';
-                }}
-              />
-              <span className="cloud-text">Hi, I'm your AI assistant!</span>
+              <span className="cloud-text">Hi, this is your AI assistant!</span>
             </div>
           </motion.div>
         )}
@@ -267,9 +299,9 @@ const AIChatbot: React.FC = () => {
               <motion.div
                 key={index}
                 className={`ai-message ${message.isUser ? 'user' : 'ai'}`}
-                initial={{ opacity: 0, x: message.isUser ? 20 : -20 }}
+                initial={message.isUser ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3 }}
+                transition={{ duration: message.isUser ? 0 : 0.3 }}
               >
                 {!message.isUser && message.image && (
                   <div className="ai-message-avatar">
@@ -286,17 +318,26 @@ const AIChatbot: React.FC = () => {
                 )}
                 <div className="ai-message-wrapper">
                   <div className="ai-message-content">
-                    {message.isTyping ? (
+                    {message.isUser ? (
+                      // User messages always display normally - FIXED
+                      <span style={{ 
+                        display: 'inline', 
+                        whiteSpace: 'normal', 
+                        wordBreak: 'normal',
+                        writingMode: 'horizontal-tb',
+                        textOrientation: 'mixed',
+                        lineHeight: 'normal'
+                      }}>
+                        {message.text}
+                      </span>
+                    ) : message.isTyping ? (
+                      // AI messages with typing animation - only show typing text
                       <>
-                        {typingText.split('\n').map((line, i) => (
-                          <React.Fragment key={i}>
-                            {line}
-                            {i < typingText.split('\n').length - 1 && <br />}
-                          </React.Fragment>
-                        ))}
+                        {typingText}
                         <span className="ai-cursor">|</span>
                       </>
                     ) : (
+                      // AI messages without typing animation
                       message.text.split('\n').map((line, i) => (
                         <React.Fragment key={i}>
                           {line}
@@ -319,7 +360,7 @@ const AIChatbot: React.FC = () => {
               >
                 <div className="ai-message-avatar">
                   <img 
-                    src="https://kodanda1.github.io/Portfolio/thinking.jpg" 
+                    src="http://localhost:3000/Portfolio/thinking.png" 
                     alt="AI Thinking" 
                     className="ai-avatar-image thinking"
                     onError={(e) => {

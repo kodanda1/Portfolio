@@ -121,7 +121,7 @@ const Hero: React.FC = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.8 }}
             >
-              <span className="role-prefix">I'm into </span>
+              <span className="im-into-text">I'm into </span>
               <AITypingAnimation />
             </motion.div>
 
