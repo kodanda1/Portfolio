@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaEnvelope, FaDownload, FaRobot, FaBrain, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaDownload, FaBrain, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
 import emailjs from '@emailjs/browser';
 import './Contact.css';
 
@@ -12,8 +12,8 @@ const IconWrapper: React.FC<{ icon: any }> = ({ icon: Icon }) => {
 // AI Chatbot Component
 const AIChatbot: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<Array<{ text: string; isUser: boolean; timestamp: Date; isTyping?: boolean; context?: string }>>([
-    { text: "Hi! I'm your AI assistant. Ask me about Varuntej's projects, skills, or experience!", isUser: false, timestamp: new Date() }
+  const [messages, setMessages] = useState<Array<{ text: string; isUser: boolean; timestamp: Date; isTyping?: boolean; context?: string; image?: string }>>([
+    { text: "Hi! I'm your AI assistant. Ask me about Varuntej's projects, skills, or experience!", isUser: false, timestamp: new Date(), image: "https://kodanda1.github.io/Portfolio/hi.jpg" }
   ]);
   const [inputText, setInputText] = useState('');
   const [isTyping, setIsTyping] = useState(false);
@@ -72,33 +72,42 @@ const AIChatbot: React.FC = () => {
     return suggestionButtons.slice(0, 4);
   };
 
-  const getAIResponse = (userInput: string): { response: string; context: string } => {
+  const getAIResponse = (userInput: string): { response: string; context: string; image?: string } => {
     const input = userInput.toLowerCase();
     
+    // Special case for "hi" - use hi.jpg image
+    if (input === 'hi' || input === 'hello' || input === 'hey') {
+      return { 
+        response: "Hello! 👋 I'm your AI assistant. I can help you learn about Varuntej's projects, skills, experience, and more. What would you like to know?", 
+        context: 'greeting',
+        image: "https://kodanda1.github.io/Portfolio/hi.jpg"
+      };
+    }
+    
     if (input.includes('project') || input.includes('work')) {
-      return { response: aiResponses.projects, context: 'projects' };
+      return { response: aiResponses.projects, context: 'projects', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
     } else if (input.includes('skill') || input.includes('technology') || input.includes('tech')) {
-      return { response: aiResponses.skills, context: 'skills' };
+      return { response: aiResponses.skills, context: 'skills', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
     } else if (input.includes('experience') || input.includes('background')) {
-      return { response: aiResponses.experience, context: 'experience' };
+      return { response: aiResponses.experience, context: 'experience', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
     } else if (input.includes('contact') || input.includes('email') || input.includes('reach')) {
-      return { response: aiResponses.contact, context: 'contact' };
+      return { response: aiResponses.contact, context: 'contact', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
     } else if (input.includes('education') || input.includes('degree') || input.includes('gpa') || input.includes('university')) {
-      return { response: aiResponses.education, context: 'education' };
+      return { response: aiResponses.education, context: 'education', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
     } else if (input.includes('resume') || input.includes('cv') || input.includes('download')) {
-      return { response: aiResponses.resume, context: 'resume' };
+      return { response: aiResponses.resume, context: 'resume', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
     } else if (input.includes('github') || input.includes('code') || input.includes('repository')) {
-      return { response: aiResponses.github, context: 'github' };
+      return { response: aiResponses.github, context: 'github', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
     } else if (input.includes('linkedin') || input.includes('social') || input.includes('network')) {
-      return { response: aiResponses.linkedin, context: 'linkedin' };
+      return { response: aiResponses.linkedin, context: 'linkedin', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
     } else if (input.includes('location') || input.includes('where') || input.includes('based') || input.includes('michigan')) {
-      return { response: aiResponses.location, context: 'location' };
+      return { response: aiResponses.location, context: 'location', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
     } else if (input.includes('available') || input.includes('opportunity') || input.includes('job') || input.includes('hire') || input.includes('availability')) {
-      return { response: aiResponses.availability, context: 'availability' };
+      return { response: aiResponses.availability, context: 'availability', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
     } else if (input.includes('interest') || input.includes('looking') || input.includes('seeking') || input.includes('want') || input.includes('role') || input.includes('position') || input.includes('title') || input.includes('job title')) {
-      return { response: aiResponses.interests, context: 'interests' };
+      return { response: aiResponses.interests, context: 'interests', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
     } else {
-      return { response: aiResponses.default, context: 'general' };
+      return { response: aiResponses.default, context: 'general', image: "https://kodanda1.github.io/Portfolio/ans.jpg" };
     }
   };
 
@@ -118,7 +127,8 @@ const AIChatbot: React.FC = () => {
         isUser: false, 
         timestamp: new Date(), 
         isTyping: true,
-        context: aiResponseData.context 
+        context: aiResponseData.context,
+        image: aiResponseData.image
       };
       setMessages(prev => [...prev, aiMessage]);
       setConversationContext(aiResponseData.context);
@@ -183,7 +193,15 @@ const AIChatbot: React.FC = () => {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5, delay: 1 }}
       >
-        <IconWrapper icon={FaRobot} />
+        <img 
+          src="https://kodanda1.github.io/Portfolio/ai_assistant.jpg" 
+          alt="AI Assistant" 
+          className="ai-toggle-image"
+          onError={(e) => {
+            console.error('Failed to load AI assistant image:', e);
+            e.currentTarget.style.display = 'none';
+          }}
+        />
         <span className="ai-chatbot-label">AI Assistant</span>
       </motion.button>
 
@@ -218,6 +236,19 @@ const AIChatbot: React.FC = () => {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3 }}
               >
+                {!message.isUser && message.image && (
+                  <div className="ai-message-avatar">
+                    <img 
+                      src={message.image} 
+                      alt="AI Assistant" 
+                      className="ai-avatar-image"
+                      onError={(e) => {
+                        console.error('Failed to load AI avatar image:', e);
+                        e.currentTarget.style.display = 'none';
+                      }}
+                    />
+                  </div>
+                )}
                 <div className="ai-message-content">
                   {message.isTyping ? (
                     <>
@@ -249,6 +280,17 @@ const AIChatbot: React.FC = () => {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
               >
+                <div className="ai-message-avatar">
+                  <img 
+                    src="https://kodanda1.github.io/Portfolio/thinking.jpg" 
+                    alt="AI Thinking" 
+                    className="ai-avatar-image thinking"
+                    onError={(e) => {
+                      console.error('Failed to load thinking image:', e);
+                      e.currentTarget.style.display = 'none';
+                    }}
+                  />
+                </div>
                 <div className="ai-typing-indicator">
                   <span></span>
                   <span></span>
