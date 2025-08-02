@@ -190,8 +190,29 @@ const AIChatbot: React.FC = () => {
     }
   };
 
+  console.log('AIChatbot component rendering'); // Debug log
+  
   return (
     <>
+      {/* Test div to see if component renders */}
+      <div style={{ 
+        position: 'fixed', 
+        bottom: '30px', 
+        right: '30px', 
+        width: '85px', 
+        height: '85px', 
+        backgroundColor: 'red', 
+        zIndex: 10000,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: 'white',
+        fontSize: '12px',
+        borderRadius: '50%'
+      }}>
+        AI TEST
+      </div>
+      
       {/* Chatbot Toggle Button */}
       <motion.button
         className="ai-chatbot-toggle"
@@ -203,6 +224,7 @@ const AIChatbot: React.FC = () => {
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5, delay: 1 }}
+        style={{ position: 'fixed', bottom: '30px', right: '30px', zIndex: 9999 }}
       >
         <img 
           src="https://kodanda1.github.io/Portfolio/ai_assistant.png" 
@@ -213,7 +235,7 @@ const AIChatbot: React.FC = () => {
             e.currentTarget.style.display = 'none';
           }}
         />
-        <span style={{ position: 'absolute', color: 'white', fontSize: '12px', bottom: '-20px' }}>AI Assistant</span>
+
         
         {/* Cloud Dialog on Hover */}
         {showCloudDialog && (

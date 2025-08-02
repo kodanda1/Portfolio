@@ -47,28 +47,25 @@
 }
 
 .ai-chatbot-toggle {
-  position: fixed !important;
-  bottom: 30px !important;
-  right: 30px !important;
-  width: 85px !important;
-  height: 85px !important;
-  background: transparent !important;
-  border: none !important;
-  color: white !important;
-  font-size: 2.2rem !important;
-  cursor: pointer !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 4px !important;
-  z-index: 99999 !important;
-  transition: all 0.3s ease !important;
-  overflow: visible !important;
-  position: relative !important;
-  /* Debug styles */
-  border: 2px solid red !important;
-  background-color: rgba(255, 0, 0, 0.1) !important;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 85px;
+  height: 85px;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 2.2rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  z-index: 9999;
+  transition: all 0.3s ease;
+  overflow: visible;
+  position: relative;
 }
 
 .ai-toggle-image {
