@@ -292,6 +292,55 @@
 }
 
 /* AI Chatbot Styles */
+/* Cloud Dialog Styles */
+.ai-cloud-dialog {
+  position: fixed;
+  bottom: 120px;
+  right: 30px;
+  z-index: 1001;
+  pointer-events: none;
+}
+
+.cloud-content {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border-radius: 20px;
+  padding: 15px 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 2px solid rgba(102, 126, 234, 0.2);
+  position: relative;
+  max-width: 250px;
+}
+
+.cloud-content::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  right: 20px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #ffffff;
+}
+
+.cloud-emoji {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.cloud-text {
+  color: #333;
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
 .ai-chatbot-toggle {
   position: fixed;
   bottom: 30px;
@@ -299,8 +348,8 @@
   width: 85px;
   height: 85px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-  border: 3px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+  border: 3px solid rgba(102, 126, 234, 0.3);
   color: white;
   font-size: 2.2rem;
   cursor: pointer;
@@ -471,10 +520,10 @@
 
 .ai-message {
   display: flex;
-  flex-direction: row;
-  max-width: 80%;
-  gap: 10px;
+  max-width: 85%;
+  gap: 12px;
   align-items: flex-start;
+  margin-bottom: 20px;
 }
 
 .ai-message.user {
@@ -487,15 +536,22 @@
   flex-direction: row;
 }
 
+.ai-message-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  max-width: calc(100% - 50px);
+}
+
 .ai-message-avatar {
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   overflow: hidden;
   flex-shrink: 0;
-  border: 2px solid rgba(102, 126, 234, 0.3);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  border: 2px solid rgba(102, 126, 234, 0.4);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  background: transparent;
 }
 
 .ai-avatar-image {
@@ -521,9 +577,7 @@
   line-height: 1.6;
   word-wrap: break-word;
   white-space: pre-line;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+  margin-bottom: 5px;
 }
 
 .ai-message.user .ai-message-content {
@@ -570,7 +624,6 @@
 .ai-message-time {
   font-size: 0.7rem;
   color: rgba(255, 255, 255, 0.6);
-  margin-top: 0.25rem;
   align-self: flex-end;
 }
 

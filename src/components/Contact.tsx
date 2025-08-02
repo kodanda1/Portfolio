@@ -12,6 +12,7 @@ const IconWrapper: React.FC<{ icon: any }> = ({ icon: Icon }) => {
 // AI Chatbot Component
 const AIChatbot: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [showCloudDialog, setShowCloudDialog] = useState(false);
   const [messages, setMessages] = useState<Array<{ text: string; isUser: boolean; timestamp: Date; isTyping?: boolean; context?: string; image?: string }>>([
     { text: "Hi! I'm your AI assistant. Ask me about Varuntej's projects, skills, or experience!", isUser: false, timestamp: new Date(), image: "https://kodanda1.github.io/Portfolio/hi.jpg" }
   ]);
@@ -181,12 +182,48 @@ const AIChatbot: React.FC = () => {
     setShowSuggestions(false);
   };
 
+  const handleToggleClick = () => {
+    if (!isOpen) {
+      setShowCloudDialog(true);
+      setTimeout(() => {
+        setShowCloudDialog(false);
+        setIsOpen(true);
+      }, 1500);
+    } else {
+      setIsOpen(false);
+    }
+  };
+
   return (
     <>
+      {/* Cloud Dialog */}
+      {showCloudDialog && (
+        <motion.div
+          className="ai-cloud-dialog"
+          initial={{ opacity: 0, scale: 0.8, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.8, y: 20 }}
+          transition={{ duration: 0.3 }}
+        >
+          <div className="cloud-content">
+            <img 
+              src="https://kodanda1.github.io/Portfolio/ai_assistant.jpg" 
+              alt="AI Assistant" 
+              className="cloud-emoji"
+              onError={(e) => {
+                console.error('Failed to load AI assistant emoji:', e);
+                e.currentTarget.style.display = 'none';
+              }}
+            />
+            <span className="cloud-text">Hi, I'm your AI assistant!</span>
+          </div>
+        </motion.div>
+      )}
+
       {/* Chatbot Toggle Button */}
       <motion.button
         className="ai-chatbot-toggle"
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={handleToggleClick}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         initial={{ opacity: 0, scale: 0 }}
@@ -249,28 +286,30 @@ const AIChatbot: React.FC = () => {
                     />
                   </div>
                 )}
-                <div className="ai-message-content">
-                  {message.isTyping ? (
-                    <>
-                      {typingText.split('\n').map((line, i) => (
+                <div className="ai-message-wrapper">
+                  <div className="ai-message-content">
+                    {message.isTyping ? (
+                      <>
+                        {typingText.split('\n').map((line, i) => (
+                          <React.Fragment key={i}>
+                            {line}
+                            {i < typingText.split('\n').length - 1 && <br />}
+                          </React.Fragment>
+                        ))}
+                        <span className="ai-cursor">|</span>
+                      </>
+                    ) : (
+                      message.text.split('\n').map((line, i) => (
                         <React.Fragment key={i}>
                           {line}
-                          {i < typingText.split('\n').length - 1 && <br />}
+                          {i < message.text.split('\n').length - 1 && <br />}
                         </React.Fragment>
-                      ))}
-                      <span className="ai-cursor">|</span>
-                    </>
-                  ) : (
-                    message.text.split('\n').map((line, i) => (
-                      <React.Fragment key={i}>
-                        {line}
-                        {i < message.text.split('\n').length - 1 && <br />}
-                      </React.Fragment>
-                    ))
-                  )}
-                </div>
-                <div className="ai-message-time">
-                  {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                      ))
+                    )}
+                  </div>
+                  <div className="ai-message-time">
+                    {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                  </div>
                 </div>
               </motion.div>
             ))}
