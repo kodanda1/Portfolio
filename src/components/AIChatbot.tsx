@@ -407,7 +407,11 @@ const AIChatbot: React.FC = () => {
             )}
           </div>
 
-          <div className="ai-chatbot-input">
+          <div 
+            className="ai-chatbot-input"
+            onClick={(e) => e.stopPropagation()}
+            onMouseDown={(e) => e.stopPropagation()}
+          >
             <input
               type="text"
               value={inputText}
@@ -417,9 +421,20 @@ const AIChatbot: React.FC = () => {
               className="ai-input-field"
             />
             <button
-              onClick={handleSendMessage}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                if (inputText.trim() && !isTyping) {
+                  handleSendMessage();
+                }
+              }}
+              onMouseDown={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+              }}
               disabled={!inputText.trim() || isTyping}
               className="ai-send-button"
+              style={{ pointerEvents: 'auto' }}
             >
               <IconWrapper icon={FaEnvelope} />
             </button>
