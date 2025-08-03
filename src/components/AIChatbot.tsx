@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { FaBrain, FaEnvelope } from 'react-icons/fa';
 import './AIChatbot.css';
@@ -21,6 +21,8 @@ const AIChatbot: React.FC = () => {
   const [typingText, setTypingText] = useState('');
   const [conversationContext, setConversationContext] = useState<string>('');
   const [showSuggestions, setShowSuggestions] = useState(true);
+  
+  const sendButtonRef = useRef<HTMLButtonElement>(null);
 
   const aiResponses = {
     projects: "Varuntej has worked on several cutting-edge AI/ML projects that showcase his technical expertise:\n\n🚀 **LLM-Based Student Q&A Assistant with RAG**\n• Built a sophisticated question-answering system using Large Language Models and Retrieval-Augmented Generation\n• Implemented advanced NLP techniques for educational content processing\n• Created an intuitive interface for students to get instant, accurate answers\n\n🤖 **AI-Powered Review Analysis Platform**\n• Developed a sentiment analysis system for customer reviews using machine learning\n• Integrated natural language processing to extract insights from large datasets\n• Built a scalable architecture handling thousands of reviews in real-time\n\n🔬 **COVID-19 Anomaly Detection System**\n• Created an advanced anomaly detection model for healthcare data analysis\n• Implemented statistical and machine learning algorithms for pattern recognition\n• Contributed to public health research during the pandemic\n\n💳 **Credit Card Approval Model Prediction**\n• Built a predictive model for credit card approval using machine learning\n• Implemented feature engineering and model optimization techniques\n• Achieved high accuracy in predicting approval outcomes\n\nWould you like to know more about any specific project's technical implementation, technologies used, or outcomes?",
@@ -124,8 +126,8 @@ const AIChatbot: React.FC = () => {
     }
   };
 
-  const handleSendMessage = () => {
-    if (!inputText.trim()) return;
+  const handleSendMessage = useCallback(() => {
+    if (!inputText.trim() || isTyping) return;
 
     console.log('User message sent:', inputText); // Debug log
     const userMessage = { text: inputText, isUser: true, timestamp: new Date() };
@@ -190,7 +192,7 @@ const AIChatbot: React.FC = () => {
         typeCharacter();
       }, 500);
     }, 800);
-  };
+  }, [inputText, isTyping]);
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {
@@ -225,6 +227,19 @@ const AIChatbot: React.FC = () => {
       setShowAssistantImage(true);
     }
   };
+
+  const handleSendButtonClick = useCallback((e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    e.nativeEvent.stopImmediatePropagation();
+    
+    console.log('Send button clicked!');
+    
+    if (inputText.trim() && !isTyping) {
+      console.log('Sending message:', inputText);
+      handleSendMessage();
+    }
+  }, [inputText, isTyping, handleSendMessage]);
 
   return (
     <>
@@ -421,20 +436,23 @@ const AIChatbot: React.FC = () => {
               className="ai-input-field"
             />
             <button
-              onClick={(e) => {
+              ref={sendButtonRef}
+              onClick={handleSendButtonClick}
+              onMouseDown={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                if (inputText.trim() && !isTyping) {
-                  handleSendMessage();
-                }
               }}
-              onMouseDown={(e) => {
+              onTouchStart={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
               }}
               disabled={!inputText.trim() || isTyping}
               className="ai-send-button"
-              style={{ pointerEvents: 'auto' }}
+              style={{ 
+                pointerEvents: 'auto',
+                position: 'relative',
+                zIndex: 1000
+              }}
             >
               <IconWrapper icon={FaEnvelope} />
             </button>
