@@ -14,7 +14,7 @@ const AIChatbot: React.FC = () => {
   const [showCloudDialog, setShowCloudDialog] = useState(false);
   const [showAssistantImage, setShowAssistantImage] = useState(true);
   const [messages, setMessages] = useState<Array<{ text: string; isUser: boolean; timestamp: Date; isTyping?: boolean; context?: string; image?: string }>>([
-    { text: "Hi! I'm your AI assistant. Ask me about Varuntej's projects, skills, or experience!", isUser: false, timestamp: new Date(), image: "http://localhost:3000/Portfolio/hi.png" }
+    { text: "Hi! I'm your AI assistant. Ask me about Varuntej's projects, skills, or experience!", isUser: false, timestamp: new Date(), image: "/Portfolio/hi.png" }
   ]);
   const [inputText, setInputText] = useState('');
   const [isTyping, setIsTyping] = useState(false);
@@ -88,38 +88,38 @@ const AIChatbot: React.FC = () => {
       return { 
         response: "Hello! 👋 I'm your AI assistant. I can help you learn about Varuntej's projects, skills, experience, and more. What would you like to know?", 
         context: 'greeting',
-        image: "http://localhost:3000/Portfolio/hi.png"
+        image: "/Portfolio/hi.png"
       };
     }
     
     if (input.includes('project') || input.includes('work')) {
-      return { response: aiResponses.projects, context: 'projects', image: "http://localhost:3000/Portfolio/ans.png" };
+      return { response: aiResponses.projects, context: 'projects', image: "/Portfolio/ans.png" };
     } else if (input.includes('skill') || input.includes('technology') || input.includes('tech')) {
-      return { response: aiResponses.skills, context: 'skills', image: "http://localhost:3000/Portfolio/ans.png" };
+      return { response: aiResponses.skills, context: 'skills', image: "/Portfolio/ans.png" };
     } else if (input.includes('experience') || input.includes('background')) {
-      return { response: aiResponses.experience, context: 'experience', image: "http://localhost:3000/Portfolio/ans.png" };
+      return { response: aiResponses.experience, context: 'experience', image: "/Portfolio/ans.png" };
     } else if (input.includes('contact') || input.includes('email') || input.includes('reach')) {
-      return { response: aiResponses.contact, context: 'contact', image: "http://localhost:3000/Portfolio/ans.png" };
+      return { response: aiResponses.contact, context: 'contact', image: "/Portfolio/ans.png" };
     } else if (input.includes('education') || input.includes('degree') || input.includes('gpa') || input.includes('university')) {
-      return { response: aiResponses.education, context: 'education', image: "http://localhost:3000/Portfolio/ans.png" };
+      return { response: aiResponses.education, context: 'education', image: "/Portfolio/ans.png" };
     } else if (input.includes('resume') || input.includes('cv') || input.includes('download')) {
-      return { response: aiResponses.resume, context: 'resume', image: "http://localhost:3000/Portfolio/ans.png" };
+      return { response: aiResponses.resume, context: 'resume', image: "/Portfolio/ans.png" };
     } else if (input.includes('github') || input.includes('code') || input.includes('repository')) {
-      return { response: aiResponses.github, context: 'github', image: "http://localhost:3000/Portfolio/ans.png" };
+      return { response: aiResponses.github, context: 'github', image: "/Portfolio/ans.png" };
     } else if (input.includes('linkedin') || input.includes('social') || input.includes('network')) {
-      return { response: aiResponses.linkedin, context: 'linkedin', image: "http://localhost:3000/Portfolio/ans.png" };
+      return { response: aiResponses.linkedin, context: 'linkedin', image: "/Portfolio/ans.png" };
     } else if (input.includes('location') || input.includes('where') || input.includes('based') || input.includes('michigan')) {
-      return { response: aiResponses.location, context: 'location', image: "http://localhost:3000/Portfolio/ans.png" };
+      return { response: aiResponses.location, context: 'location', image: "/Portfolio/ans.png" };
     } else if (input.includes('available') || input.includes('opportunity') || input.includes('job') || input.includes('hire') || input.includes('availability')) {
-      return { response: aiResponses.availability, context: 'availability', image: "http://localhost:3000/Portfolio/ans.png" };
+      return { response: aiResponses.availability, context: 'availability', image: "/Portfolio/ans.png" };
     } else if (input.includes('interest') || input.includes('looking') || input.includes('seeking') || input.includes('want') || input.includes('role') || input.includes('position') || input.includes('title') || input.includes('job title')) {
-      return { response: aiResponses.interests, context: 'interests', image: "http://localhost:3000/Portfolio/ans.png" };
+      return { response: aiResponses.interests, context: 'interests', image: "/Portfolio/ans.png" };
     } else {
       // Don't know response with dont_know.png image
       return { 
         response: "Hmm... 🤔 I don't know the answer to that question. You can send a message to Varuntej directly at kodandapuramvaruntej@gmail.com for more specific information.\n\nHere's what I can help you with:\n\n• Projects and work experience\n• Skills and technologies\n• Education and background\n• Contact information\n• Resume and social links\n• Location and availability\n• Job interests and roles", 
         context: 'dont_know', 
-        image: "http://localhost:3000/Portfolio/dont_know.png" 
+        image: "/Portfolio/dont_know.png" 
       };
     }
   };
@@ -242,7 +242,7 @@ const AIChatbot: React.FC = () => {
       >
         {showAssistantImage && (
           <img 
-            src="http://localhost:3000/Portfolio/ai_assistant.png" 
+            src="/Portfolio/ai_assistant.png" 
             alt="AI Assistant" 
             className="ai-toggle-image"
             onError={(e) => {
@@ -360,7 +360,7 @@ const AIChatbot: React.FC = () => {
               >
                 <div className="ai-message-avatar">
                   <img 
-                    src="http://localhost:3000/Portfolio/thinking.png" 
+                    src="/Portfolio/thinking.png" 
                     alt="AI Thinking" 
                     className="ai-avatar-image thinking"
                     onError={(e) => {
