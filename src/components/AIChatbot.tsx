@@ -241,6 +241,18 @@ const AIChatbot: React.FC = () => {
     }
   }, [inputText, isTyping, handleSendMessage]);
 
+  const handleSendButtonMouseDown = useCallback((e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    e.nativeEvent.stopImmediatePropagation();
+  }, []);
+
+  const handleSendButtonTouchStart = useCallback((e: React.TouchEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    e.nativeEvent.stopImmediatePropagation();
+  }, []);
+
   return (
     <>
       {/* Chatbot Toggle Button */}
@@ -295,6 +307,9 @@ const AIChatbot: React.FC = () => {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 20, scale: 0.9 }}
           transition={{ duration: 0.3 }}
+          onClick={(e) => e.stopPropagation()}
+          onMouseDown={(e) => e.stopPropagation()}
+          onTouchStart={(e) => e.stopPropagation()}
         >
           <div className="ai-chatbot-header">
             <div className="ai-chatbot-title">
@@ -309,7 +324,12 @@ const AIChatbot: React.FC = () => {
             </button>
           </div>
 
-          <div className="ai-chatbot-messages">
+          <div 
+            className="ai-chatbot-messages"
+            onClick={(e) => e.stopPropagation()}
+            onMouseDown={(e) => e.stopPropagation()}
+            onTouchStart={(e) => e.stopPropagation()}
+          >
             {messages.map((message, index) => (
               <motion.div
                 key={index}
@@ -435,27 +455,32 @@ const AIChatbot: React.FC = () => {
               placeholder="Ask about projects, skills, experience..."
               className="ai-input-field"
             />
-            <button
-              ref={sendButtonRef}
-              onClick={handleSendButtonClick}
-              onMouseDown={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-              }}
-              onTouchStart={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-              }}
-              disabled={!inputText.trim() || isTyping}
-              className="ai-send-button"
+            <div 
               style={{ 
-                pointerEvents: 'auto',
                 position: 'relative',
-                zIndex: 1000
+                zIndex: 10000,
+                pointerEvents: 'auto'
               }}
+              onClick={(e) => e.stopPropagation()}
+              onMouseDown={(e) => e.stopPropagation()}
+              onTouchStart={(e) => e.stopPropagation()}
             >
-              <IconWrapper icon={FaEnvelope} />
-            </button>
+              <button
+                ref={sendButtonRef}
+                onClick={handleSendButtonClick}
+                onMouseDown={handleSendButtonMouseDown}
+                onTouchStart={handleSendButtonTouchStart}
+                disabled={!inputText.trim() || isTyping}
+                className="ai-send-button"
+                style={{ 
+                  pointerEvents: 'auto',
+                  position: 'relative',
+                  zIndex: 10001
+                }}
+              >
+                <IconWrapper icon={FaEnvelope} />
+              </button>
+            </div>
           </div>
         </motion.div>
       )}
