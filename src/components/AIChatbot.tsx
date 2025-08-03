@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from 'react';
+import React, { useState, useRef, useCallback, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { FaBrain, FaEnvelope } from 'react-icons/fa';
 import './AIChatbot.css';
@@ -24,7 +24,7 @@ const AIChatbot: React.FC = () => {
   
   const sendButtonRef = useRef<HTMLButtonElement>(null);
 
-  const aiResponses = {
+  const aiResponses = useMemo(() => ({
     projects: "Varuntej has worked on several cutting-edge AI/ML projects that showcase his technical expertise:\n\n🚀 **LLM-Based Student Q&A Assistant with RAG**\n• Built a sophisticated question-answering system using Large Language Models and Retrieval-Augmented Generation\n• Implemented advanced NLP techniques for educational content processing\n• Created an intuitive interface for students to get instant, accurate answers\n\n🤖 **AI-Powered Review Analysis Platform**\n• Developed a sentiment analysis system for customer reviews using machine learning\n• Integrated natural language processing to extract insights from large datasets\n• Built a scalable architecture handling thousands of reviews in real-time\n\n🔬 **COVID-19 Anomaly Detection System**\n• Created an advanced anomaly detection model for healthcare data analysis\n• Implemented statistical and machine learning algorithms for pattern recognition\n• Contributed to public health research during the pandemic\n\n💳 **Credit Card Approval Model Prediction**\n• Built a predictive model for credit card approval using machine learning\n• Implemented feature engineering and model optimization techniques\n• Achieved high accuracy in predicting approval outcomes\n\nWould you like to know more about any specific project's technical implementation, technologies used, or outcomes?",
     skills: "Varuntej possesses a comprehensive skill set spanning multiple technology domains:\n\n💻 **Programming & Development**\n• **Languages**: Python (expert), JavaScript (advanced), C++ (proficient), Java (intermediate)\n• **Frontend**: React.js, HTML5, CSS3, TypeScript, Redux\n• **Backend**: Flask, Node.js, Express.js, RESTful APIs\n• **Databases**: SQL, MongoDB, PostgreSQL, Redis\n\n🤖 **Machine Learning & AI**\n• **Frameworks**: TensorFlow, PyTorch, scikit-learn, Keras\n• **Data Processing**: pandas, NumPy, Matplotlib, Seaborn, Plotly\n• **NLP**: NLTK, spaCy, Transformers, BERT, GPT models\n• **Computer Vision**: OpenCV, PIL, YOLO, CNN architectures\n\n☁️ **Cloud & DevOps**\n• **Cloud Platforms**: AWS (EC2, S3, Lambda, SageMaker), Azure, Google Cloud\n• **DevOps**: Docker, Kubernetes, Git, CI/CD pipelines, Jenkins\n• **Tools**: Salesforce, Jira, Confluence, VS Code, Postman\n\n📊 **Data Visualization & Analytics**\n• **BI Tools**: Power BI, Tableau, Excel (advanced)\n• **Visualization**: Matplotlib, Seaborn, Plotly, D3.js\n• **Automation**: UIPath, RPA tools\n\nHis expertise enables him to work across the full technology stack, from data science and AI to full-stack development and cloud architecture.",
     experience: "Varuntej has built a diverse and impactful professional experience:\n\n🎓 **Academic Excellence**\n• **Michigan State University**: Master's in Computer Science with 3.81 GPA\n• **Undergraduate**: Bachelor's in Computer Science (Honors) with 3.82 GPA and Business minor\n• **Research**: Active involvement in AI/ML research projects and academic initiatives\n\n💼 **Professional Experience**\n• **AI/ML Development**: Led multiple production-ready AI applications with real-world impact\n• **Full-Stack Engineering**: Built scalable web applications and APIs\n• **Project Management**: Successfully managed cross-functional teams and technical initiatives\n• **Data Analysis**: Conducted comprehensive data analysis for business intelligence\n\n🚀 **Current Focus**\n• Working on cutting-edge AI solutions and machine learning applications\n• Developing innovative approaches to natural language processing\n• Contributing to open-source projects and technical communities\n• Seeking opportunities in AI/ML Engineering, Software Development, and Product Management\n\nHis experience demonstrates a unique blend of technical expertise and strategic thinking, making him valuable for roles requiring both deep technical knowledge and business acumen.",
@@ -37,7 +37,7 @@ const AIChatbot: React.FC = () => {
     availability: "Varuntej is actively seeking new opportunities and collaborations:\n\n✅ **Current Status**: Available for new opportunities\n\n🎯 **Seeking Roles In**\n• **AI/ML Engineering**: Machine learning model development and deployment\n• **Software Development**: Full-stack development and system architecture\n• **Data Science**: Data analysis, visualization, and insights generation\n• **Product Management**: Technical product strategy and development\n• **Research**: AI/ML research and academic collaborations\n\n💼 **Opportunity Types**\n• **Full-time Positions**: Permanent roles with growth potential\n• **Contract Work**: Project-based collaborations and consulting\n• **Research Projects**: Academic and industry research partnerships\n• **Startup Opportunities**: Early-stage company involvement\n• **Open Source**: Contributing to community projects\n\n🚀 **What He Brings**\n• **Technical Expertise**: Deep knowledge in AI/ML and software development\n• **Project Experience**: Proven track record of successful project delivery\n• **Academic Background**: Strong foundation in computer science and research\n• **Adaptability**: Quick learner with ability to work across multiple domains\n• **Collaboration**: Excellent team player with strong communication skills\n\nHe's particularly interested in roles that combine technical innovation with real-world impact.",
     interests: "Varuntej is passionate about technology and innovation across multiple domains:\n\n🎯 **Primary Interests**\n• **AI/ML Engineering**: Building intelligent systems and machine learning models\n• **Software Development**: Creating scalable, user-friendly applications\n• **Project Management**: Leading technical teams and strategic initiatives\n• **Data Analysis**: Transforming data into actionable business insights\n• **Product Management**: Bridging technical and business requirements\n\n🚀 **Technology Focus Areas**\n• **Artificial Intelligence**: Natural language processing, computer vision, predictive modeling\n• **Full-Stack Development**: End-to-end application development and deployment\n• **Cloud Computing**: Scalable cloud architectures and DevOps practices\n• **Data Science**: Statistical analysis, visualization, and machine learning\n• **Emerging Technologies**: Blockchain, IoT, and cutting-edge innovations\n\n💡 **Industry Interests**\n• **Healthcare Technology**: AI applications in medical diagnosis and patient care\n• **Financial Technology**: Machine learning for risk assessment and fraud detection\n• **Educational Technology**: AI-powered learning platforms and tools\n• **E-commerce**: Recommendation systems and customer experience optimization\n• **Research & Development**: Academic and industry research collaborations\n\nHis interests reflect a commitment to using technology to solve real-world problems and drive innovation.",
     default: "I'm your AI assistant, here to help you learn about Varuntej's impressive background and capabilities! I can provide detailed information about:\n\n📚 **Education & Background**\n• Academic achievements and research experience\n• Technical foundation and learning journey\n\n💼 **Professional Experience**\n• Project management and technical leadership\n• Real-world applications and outcomes\n\n🚀 **Technical Projects**\n• AI/ML implementations and software development\n• Detailed project descriptions and technologies used\n\n⚡ **Skills & Expertise**\n• Comprehensive technical skills across multiple domains\n• Proficiency levels and specializations\n\n📞 **Contact & Networking**\n• Professional contact information and social links\n• Collaboration and opportunity details\n\nWhat would you like to know more about? I can provide in-depth information on any of these areas!"
-  };
+  }), []);
 
   // Smart suggestion buttons
   const suggestionButtons = [
@@ -82,7 +82,7 @@ const AIChatbot: React.FC = () => {
     return suggestionButtons.slice(0, 4);
   };
 
-  const getAIResponse = (userInput: string): { response: string; context: string; image?: string } => {
+  const getAIResponse = useCallback((userInput: string): { response: string; context: string; image?: string } => {
     const input = userInput.toLowerCase();
     
     // Special case for "hi" - use hi.png image
@@ -124,10 +124,14 @@ const AIChatbot: React.FC = () => {
         image: "/Portfolio/dont_know.png" 
       };
     }
-  };
+  }, [aiResponses]);
 
   const handleSendMessage = useCallback(() => {
-    if (!inputText.trim() || isTyping) return;
+    console.log('handleSendMessage called with inputText:', inputText, 'isTyping:', isTyping);
+    if (!inputText.trim() || isTyping) {
+      console.log('handleSendMessage early return - inputText:', inputText, 'isTyping:', isTyping);
+      return;
+    }
 
     console.log('User message sent:', inputText); // Debug log
     const userMessage = { text: inputText, isUser: true, timestamp: new Date() };
@@ -192,15 +196,18 @@ const AIChatbot: React.FC = () => {
         typeCharacter();
       }, 500);
     }, 800);
-  }, [inputText, isTyping]);
+  }, [inputText, isTyping, getAIResponse]);
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {
+      console.log('Enter key pressed');
+      e.preventDefault();
       handleSendMessage();
     }
   };
 
   const handleSuggestionClick = (action: string) => {
+    console.log('Suggestion clicked:', action);
     const actionMap: { [key: string]: string } = {
       'projects': 'Tell me about your projects',
       'skills': 'What skills do you have?',
@@ -213,12 +220,20 @@ const AIChatbot: React.FC = () => {
     };
     
     const message = actionMap[action] || `Tell me about ${action}`;
+    console.log('Setting input text to:', message);
     setInputText(message);
-    handleSendMessage();
+    
+    // Use setTimeout to ensure state is updated before calling handleSendMessage
+    setTimeout(() => {
+      console.log('Calling handleSendMessage from suggestion');
+      handleSendMessage();
+    }, 0);
+    
     setShowSuggestions(false);
   };
 
   const handleToggleClick = () => {
+    console.log('Toggle button clicked, current isOpen:', isOpen);
     if (!isOpen) {
       setIsOpen(true);
       setShowAssistantImage(false);
@@ -229,29 +244,26 @@ const AIChatbot: React.FC = () => {
   };
 
   const handleSendButtonClick = useCallback((e: React.MouseEvent) => {
+    console.log('Send button clicked - event:', e);
     e.preventDefault();
     e.stopPropagation();
-    e.nativeEvent.stopImmediatePropagation();
     
-    console.log('Send button clicked!');
+    // Add a visual indicator that the button was clicked
+    const button = e.currentTarget as HTMLButtonElement;
+    button.style.transform = 'scale(0.9)';
+    setTimeout(() => {
+      button.style.transform = '';
+    }, 150);
+    
+    console.log('Send button clicked! inputText:', inputText, 'isTyping:', isTyping);
     
     if (inputText.trim() && !isTyping) {
       console.log('Sending message:', inputText);
       handleSendMessage();
+    } else {
+      console.log('Cannot send message - inputText:', inputText, 'isTyping:', isTyping);
     }
   }, [inputText, isTyping, handleSendMessage]);
-
-  const handleSendButtonMouseDown = useCallback((e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    e.nativeEvent.stopImmediatePropagation();
-  }, []);
-
-  const handleSendButtonTouchStart = useCallback((e: React.TouchEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    e.nativeEvent.stopImmediatePropagation();
-  }, []);
 
   return (
     <>
@@ -307,9 +319,10 @@ const AIChatbot: React.FC = () => {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 20, scale: 0.9 }}
           transition={{ duration: 0.3 }}
-          onClick={(e) => e.stopPropagation()}
-          onMouseDown={(e) => e.stopPropagation()}
-          onTouchStart={(e) => e.stopPropagation()}
+          onClick={(e) => {
+            console.log('Chat container clicked');
+            e.stopPropagation();
+          }}
         >
           <div className="ai-chatbot-header">
             <div className="ai-chatbot-title">
@@ -318,7 +331,12 @@ const AIChatbot: React.FC = () => {
             </div>
             <button 
               className="ai-chatbot-close"
-              onClick={() => setIsOpen(false)}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('Close button clicked');
+                setIsOpen(false);
+              }}
             >
               ×
             </button>
@@ -327,8 +345,6 @@ const AIChatbot: React.FC = () => {
           <div 
             className="ai-chatbot-messages"
             onClick={(e) => e.stopPropagation()}
-            onMouseDown={(e) => e.stopPropagation()}
-            onTouchStart={(e) => e.stopPropagation()}
           >
             {messages.map((message, index) => (
               <motion.div
@@ -445,7 +461,6 @@ const AIChatbot: React.FC = () => {
           <div 
             className="ai-chatbot-input"
             onClick={(e) => e.stopPropagation()}
-            onMouseDown={(e) => e.stopPropagation()}
           >
             <input
               type="text"
@@ -455,32 +470,19 @@ const AIChatbot: React.FC = () => {
               placeholder="Ask about projects, skills, experience..."
               className="ai-input-field"
             />
-            <div 
+            <button
+              ref={sendButtonRef}
+              onClick={handleSendButtonClick}
+              disabled={!inputText.trim() || isTyping}
+              className="ai-send-button"
               style={{ 
+                pointerEvents: 'auto',
                 position: 'relative',
-                zIndex: 10000,
-                pointerEvents: 'auto'
+                zIndex: 10001
               }}
-              onClick={(e) => e.stopPropagation()}
-              onMouseDown={(e) => e.stopPropagation()}
-              onTouchStart={(e) => e.stopPropagation()}
             >
-              <button
-                ref={sendButtonRef}
-                onClick={handleSendButtonClick}
-                onMouseDown={handleSendButtonMouseDown}
-                onTouchStart={handleSendButtonTouchStart}
-                disabled={!inputText.trim() || isTyping}
-                className="ai-send-button"
-                style={{ 
-                  pointerEvents: 'auto',
-                  position: 'relative',
-                  zIndex: 10001
-                }}
-              >
-                <IconWrapper icon={FaEnvelope} />
-              </button>
-            </div>
+              <IconWrapper icon={FaEnvelope} />
+            </button>
           </div>
         </motion.div>
       )}
