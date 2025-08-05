@@ -8,14 +8,14 @@
 }
 
 .cloud-content {
-  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
   border-radius: 20px;
   padding: 15px 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid rgba(102, 126, 234, 0.2);
+  border: 2px solid rgba(100, 255, 218, 0.3);
   position: relative;
   max-width: 250px;
 }
@@ -29,7 +29,7 @@
   height: 0;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-  border-top: 10px solid #ffffff;
+  border-top: 10px solid #1a1a2e;
 }
 
 .cloud-emoji {
@@ -40,7 +40,7 @@
 }
 
 .cloud-text {
-  color: #333;
+  color: #64ffda;
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.3;
@@ -68,13 +68,13 @@
   z-index: 99999 !important; /* Very high z-index */
   transition: all 0.3s ease;
   overflow: visible;
-  filter: drop-shadow(0 0 10px rgba(102, 126, 234, 0.3));
+  filter: drop-shadow(0 0 10px rgba(100, 255, 218, 0.3));
   animation: float 3s ease-in-out infinite;
 }
 
 .ai-chatbot-toggle:hover {
   transform: scale(1.1) translateY(-5px);
-  filter: drop-shadow(0 0 20px rgba(102, 126, 234, 0.5));
+  filter: drop-shadow(0 0 20px rgba(100, 255, 218, 0.5));
 }
 
 @keyframes float {
@@ -110,14 +110,14 @@
   display: flex;
   flex-direction: column;
   z-index: 9998;
-  border: 2px solid rgba(102, 126, 234, 0.2);
+  border: 2px solid rgba(100, 255, 218, 0.2);
   overflow: hidden;
   backdrop-filter: blur(20px);
 }
 
 .ai-chatbot-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-  color: white;
+  background: linear-gradient(135deg, #64ffda 0%, #00d4ff 100%);
+  color: #0f0f23;
   padding: 1.2rem;
   display: flex;
   justify-content: space-between;
@@ -158,7 +158,7 @@
 .ai-chatbot-close {
   background: none;
   border: none;
-  color: white;
+  color: #0f0f23;
   font-size: 1.5rem;
   cursor: pointer;
   padding: 5px;
@@ -172,7 +172,7 @@
 }
 
 .ai-chatbot-close:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(15, 15, 35, 0.1);
   transform: scale(1.1);
 }
 
@@ -193,7 +193,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(180deg, transparent 0%, rgba(102, 126, 234, 0.05) 50%, transparent 100%);
+  background: linear-gradient(180deg, transparent 0%, rgba(100, 255, 218, 0.05) 50%, transparent 100%);
   pointer-events: none;
 }
 
@@ -272,10 +272,10 @@
 }
 
 .ai-message.user .ai-message-content {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-  color: white;
+  background: linear-gradient(135deg, #64ffda 0%, #00d4ff 100%);
+  color: #0f0f23;
   border-bottom-right-radius: 8px;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 15px rgba(100, 255, 218, 0.3);
   position: relative;
   overflow: visible;
   writing-mode: horizontal-tb !important;
@@ -295,6 +295,7 @@
   line-height: 1.4;
   flex-shrink: 0;
   flex-grow: 0;
+  font-weight: 500;
 }
 
 .ai-message.user .ai-message-content::before {
@@ -345,7 +346,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(45deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+  background: linear-gradient(45deg, transparent, rgba(100, 255, 218, 0.1), transparent);
   animation: shimmer 3s ease-in-out infinite;
 }
 
@@ -390,7 +391,7 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #667eea;
+  background: #64ffda;
   animation: typingBounce 1.4s ease-in-out infinite both;
 }
 
@@ -423,7 +424,7 @@
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.3), transparent);
 }
 
 .ai-input-field {
@@ -444,37 +445,84 @@
 }
 
 .ai-input-field:focus {
-  border-color: rgba(102, 126, 234, 0.5);
-  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+  border-color: rgba(100, 255, 218, 0.5);
+  box-shadow: 0 0 0 2px rgba(100, 255, 218, 0.2);
 }
 
 .ai-send-button {
-  width: 45px;
-  height: 45px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  background: linear-gradient(135deg, #64ffda 0%, #00d4ff 100%);
   border: none;
-  color: white;
+  color: #0f0f23;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 15px rgba(100, 255, 218, 0.3);
   position: relative;
   z-index: 1000;
   pointer-events: auto;
+  min-width: 50px;
+  min-height: 50px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  outline: none;
+  font-weight: bold;
+}
+
+.ai-send-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .ai-send-button:hover:not(:disabled) {
-  transform: scale(1.1);
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+  transform: scale(1.1) translateY(-2px);
+  box-shadow: 0 8px 25px rgba(100, 255, 218, 0.4);
+  background: linear-gradient(135deg, #00d4ff 0%, #64ffda 100%);
+}
+
+.ai-send-button:hover:not(:disabled)::before {
+  opacity: 1;
+}
+
+.ai-send-button:active:not(:disabled) {
+  transform: scale(0.95) translateY(0);
+  box-shadow: 0 2px 8px rgba(100, 255, 218, 0.3);
+  transition: all 0.1s ease;
+}
+
+.ai-send-button:focus:not(:disabled) {
+  outline: 2px solid rgba(100, 255, 218, 0.5);
+  outline-offset: 2px;
 }
 
 .ai-send-button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
   transform: none;
+  background: linear-gradient(135deg, #8892b0 0%, #667eea 100%);
+  box-shadow: 0 2px 8px rgba(136, 146, 176, 0.2);
+}
+
+.ai-send-button svg {
+  transition: transform 0.3s ease;
+  font-size: 1.2rem;
+}
+
+.ai-send-button:hover:not(:disabled) svg {
+  transform: translateY(-2px);
 }
 
 .ai-suggestions {
@@ -500,8 +548,8 @@
 
 .suggestion-button {
   padding: 0.5rem 0.75rem;
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
-  border: 1px solid rgba(102, 126, 234, 0.3);
+  background: linear-gradient(135deg, rgba(100, 255, 218, 0.2) 0%, rgba(0, 212, 255, 0.2) 100%);
+  border: 1px solid rgba(100, 255, 218, 0.3);
   border-radius: 10px;
   color: white;
   cursor: pointer;
@@ -514,9 +562,9 @@
 }
 
 .suggestion-button:hover {
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.3) 0%, rgba(118, 75, 162, 0.3) 100%);
+  background: linear-gradient(135deg, rgba(100, 255, 218, 0.3) 0%, rgba(0, 212, 255, 0.3) 100%);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 12px rgba(100, 255, 218, 0.3);
 }
 
 .suggestion-icon {
