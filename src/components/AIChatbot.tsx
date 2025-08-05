@@ -1,6 +1,7 @@
 import React, { useState, useRef, useCallback, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { FaBrain, FaArrowUp } from 'react-icons/fa';
+import AIChatbotParticleBackground from './AIChatbotParticleBackground';
 import './AIChatbot.css';
 
 // Icon wrapper component to handle type issues
@@ -329,6 +330,7 @@ const AIChatbot: React.FC = () => {
             e.stopPropagation();
           }}
         >
+          <AIChatbotParticleBackground />
           <div className="ai-chatbot-header">
             <div className="ai-chatbot-title">
               <IconWrapper icon={FaBrain} />

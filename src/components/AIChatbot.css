@@ -113,6 +113,7 @@
   border: 2px solid rgba(100, 255, 218, 0.2);
   overflow: hidden;
   backdrop-filter: blur(20px);
+  position: relative;
 }
 
 .ai-chatbot-header {
@@ -125,23 +126,10 @@
   border-radius: 25px 25px 0 0;
   position: relative;
   overflow: hidden;
+  z-index: 10;
 }
 
-.ai-chatbot-header::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-  animation: shimmer 3s ease-in-out infinite;
-}
 
-@keyframes shimmer {
-  0%, 100% { transform: translateX(-100%); }
-  50% { transform: translateX(100%); }
-}
 
 .ai-chatbot-title {
   display: flex;
@@ -184,6 +172,7 @@
   flex-direction: column;
   gap: 10px;
   position: relative;
+  z-index: 5;
 }
 
 .ai-chatbot-messages::before {
@@ -298,16 +287,7 @@
   font-weight: 500;
 }
 
-.ai-message.user .ai-message-content::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-  /* No animation for user messages to prevent letter-by-letter effect */
-}
+
 
 .ai-message.user .ai-message-content span {
   display: inline !important;
@@ -339,16 +319,7 @@
   white-space: pre-wrap;
 }
 
-.ai-message.ai .ai-message-content::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(45deg, transparent, rgba(100, 255, 218, 0.1), transparent);
-  animation: shimmer 3s ease-in-out infinite;
-}
+
 
 .ai-message-time {
   font-size: 0.7rem;
@@ -415,6 +386,7 @@
   align-items: center;
   position: relative;
   pointer-events: auto;
+  z-index: 10;
 }
 
 .ai-chatbot-input::before {
@@ -474,18 +446,7 @@
   font-weight: bold;
 }
 
-.ai-send-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: 50%;
-  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
+
 
 .ai-send-button:hover:not(:disabled) {
   transform: scale(1.1) translateY(-2px);
@@ -493,9 +454,7 @@
   background: linear-gradient(135deg, #00d4ff 0%, #64ffda 100%);
 }
 
-.ai-send-button:hover:not(:disabled)::before {
-  opacity: 1;
-}
+
 
 .ai-send-button:active:not(:disabled) {
   transform: scale(0.95) translateY(0);
