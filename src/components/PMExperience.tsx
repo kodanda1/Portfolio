@@ -22,7 +22,10 @@ import {
   FaGlobe,
   FaLock,
   FaBolt,
-  FaRocket
+  FaRocket,
+  FaProjectDiagram,
+  FaUsers,
+  FaHandshake
 } from 'react-icons/fa';
 import { 
   SiTensorflow, 
@@ -114,7 +117,7 @@ import {
   SiVirtualbox,
   SiVmware
 } from 'react-icons/si';
-import './Experience.css';
+import './PMExperience.css';
 
 // Icon wrapper component to handle type issues
 const IconWrapper: React.FC<{ icon: any }> = ({ icon: Icon }) => {
@@ -243,17 +246,60 @@ const techStackIcons: { [key: string]: any } = {
   "UIPath": FaRobot,
   "VB.net": FaCode,
   "SQL": FaDatabase,
+  "Agile": FaProjectDiagram,
+  "Scrum": FaUsers,
+  "SAFe": FaProjectDiagram,
+  "Project Management": FaProjectDiagram,
+  "Product Management": FaChartLine,
+  "Stakeholder Management": FaUsers,
+  "Risk Management": FaShieldAlt,
+  "Budget Planning": FaChartLine,
+  "Team Leadership": FaUsers,
+  "Portfolio Management": FaProjectDiagram,
+  "User Research": FaBrain,
+  "Data Analytics": FaChartLine,
+  "Go-to-Market": FaRocket,
+  "Customer Success": FaUsers,
+  "IoT": FaNetworkWired,
+  "Technical Leadership": FaCode,
+  "AI/ML Project Management": FaBrain,
+  "Investor Relations": FaHandshake,
+  "MVP Development": FaRocket,
+  "CI/CD": FaBolt,
+  "Strategic Planning": FaProjectDiagram,
+  "Metrics Tracking": FaChartLine,
+  "Cross-functional Leadership": FaUsers,
+  "AI/ML": FaBrain,
+  "Random Forest": FaBrain,
+  "Transformers": FaBrain,
+  "Predictive Analytics": FaChartLine,
+  "Data Fusion": FaDatabase,
+  "AI Programming": FaBrain,
+  "Student Mentoring": FaUsers,
+  "Lab Instruction": FaCode,
+  "Curriculum Development": FaProjectDiagram,
+  "Strategic Alignment": FaProjectDiagram,
+  "Performance Optimization": FaBolt,
+  "A/B Testing": FaChartLine,
+  "SLA Management": FaShieldAlt,
+  "Frontend Development": FaCode,
+  "Deployment Coordination": FaRocket,
+  "RPA": FaRobot,
+  "Automation": FaRobot,
+  "Compliance": FaShieldAlt,
+  "Workflow Optimization": FaCogs,
+  "Cross-team Coordination": FaUsers,
   "default": FaCode
 };
 
-const Experience: React.FC = () => {
+const PMExperience: React.FC = () => {
   const experiences = [
     {
       title: "Technical Consultant (ML / Computer Vision)",
       company: "Michigan State University",
       location: "East Lansing, MI",
       period: "Sept 2024 – Present",
-      technologies: ["Python", "OpenCV", "PyMuPDF", "TensorFlow", "PyTorch", "ML"],
+      technologies: ["Project Management", "Strategic Planning", "Stakeholder Management", "Risk Management", "Metrics Tracking", "Cross-functional Leadership"],
       achievements: [
         "Consulted on scaling an automated ECG extraction pipeline (OpenCV, PyMuPDF) to produce clean multi-lead waveforms",
         "Standardized multi-page PDF ingestion, lead layouts, and signal scaling to keep outputs consistent across files and devices",
@@ -266,7 +312,7 @@ const Experience: React.FC = () => {
       company: "PackSense",
       location: "East Lansing, MI",
       period: "Mar 2025 – Present",
-      technologies: ["Python", "Flask", "JavaScript", "NLP", "Web Scraping", "AWS"],
+      technologies: ["Project Management", "Strategic Planning", "Stakeholder Management", "Risk Management", "Metrics Tracking", "Cross-functional Leadership"],
       achievements: [
         "Led delivery of a Python/Flask platform to scale review analysis to 10K+ reviews/month, cutting manual work by 60%",
         "Drove performance improvements via JS-based filtering and pipeline tuning, reducing processing time by 30% at scale",
@@ -279,7 +325,7 @@ const Experience: React.FC = () => {
       company: "Michigan State University",
       location: "East Lansing, MI",
       period: "Feb 2025 – May 2025",
-      technologies: ["Python", "TensorFlow", "PyTorch", "Statistical Modeling", "Data Analysis", "AWS"],
+      technologies: ["AI/ML", "Python", "Random Forest", "Transformers", "Predictive Analytics", "Data Fusion"],
       achievements: [
         "Coordinated cross-functional efforts to build a multilingual COVID-19 forecasting model using Google Trends and clinical data",
         "Defined data specs, standardized preprocessing, and aligned modeling workflows across 75 countries and multiple language groups",
@@ -291,7 +337,7 @@ const Experience: React.FC = () => {
       company: "United Airlines",
       location: "East Lansing, MI",
       period: "Sep 2022 – Dec 2022",
-      technologies: ["Python", "Power BI", "NLP", "SQL", "Agile", "Jira"],
+      technologies: ["Strategic Alignment", "Performance Optimization", "A/B Testing", "SLA Management", "Frontend Development", "Deployment Coordination"],
       achievements: [
         "Led ML engineering team at United Airlines to build algorithms assessing course and instructor effectiveness for technician training",
         "Leveraged data visualization tools to enable quick identification of performance trends, thus reducing data analysis time by 40%",
@@ -304,7 +350,7 @@ const Experience: React.FC = () => {
       company: "Delta Dental of Michigan",
       location: "Okemos, MI",
       period: "Nov 2021 – Aug 2022",
-      technologies: ["UIPath", "VB.net", "C++", "SQL", "Jira"],
+      technologies: ["RPA", "Automation", "Compliance", "Workflow Optimization", "Risk Management", "Cross-team Coordination"],
       achievements: [
         "Built & deployed virtual bots using C++, UiPath to automate certain ongoing business tasks in the company",
         "Led RPA project initiatives and coordinated with cross-functional teams, improving project delivery speed by 20%"
@@ -321,7 +367,7 @@ const Experience: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          Work Experience
+          Professional Experience
         </motion.h2>
 
         <div className="timeline">
@@ -333,15 +379,15 @@ const Experience: React.FC = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
             >
-              {/* Tech Stack Cards - Desktop Only */}
+              {/* Tech Stack Section - Desktop */}
               <motion.div
-                className="tech-stack-section desktop-only"
-                initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
-                animate={{ opacity: 1, x: 0 }}
+                className="tech-stack-section"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: index * 0.2 + 0.3 }}
               >
-                <h4>Tech Stack</h4>
-                <div className="tech-stack-grid">
+                <h4>Tech Stack:</h4>
+                <div className="tech-grid">
                   {exp.technologies.map((tech, techIndex) => {
                     const TechIcon = techStackIcons[tech] || techStackIcons["default"];
                     return (
@@ -446,4 +492,4 @@ const Experience: React.FC = () => {
   );
 };
 
-export default Experience; 
+export default PMExperience;

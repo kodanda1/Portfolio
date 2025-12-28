@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaHome, FaUser, FaBriefcase, FaCode, FaCogs, FaEnvelope } from 'react-icons/fa';
+import { FaHome, FaUser, FaBriefcase, FaCode, FaCogs, FaEnvelope, FaStar, FaUsers } from 'react-icons/fa';
 import './Header.css';
 
 // Icon wrapper component to handle type issues
@@ -15,6 +15,8 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ activeSection, onSectionChange }) => {
   const navItems = [
+    { id: 'landing', label: 'Landing', icon: FaStar },
+    { id: 'profiles', label: 'Profiles', icon: FaUsers },
     { id: 'home', label: 'Home', icon: FaHome },
     { id: 'about', label: 'About', icon: FaUser },
     { id: 'experience', label: 'Experience', icon: FaBriefcase },

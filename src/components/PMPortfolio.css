@@ -1,0 +1,258 @@
+.pm-portfolio {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+  position: relative;
+}
+
+.pm-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 1000;
+  padding: 1rem 0;
+}
+
+.pm-header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  padding: 0.75rem 1.5rem;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateX(-5px);
+}
+
+.back-icon {
+  font-size: 1rem;
+}
+
+.pm-logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.pm-logo-container {
+  position: relative;
+}
+
+.pm-logo-circle {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #4caf50, #45a049);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(76, 175, 80, 0.3);
+}
+
+.pm-logo-v {
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: #ffffff;
+  position: absolute;
+  top: 8px;
+  left: 12px;
+}
+
+.pm-logo-k {
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: #ffffff;
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+}
+
+.pm-logo-glow {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #4caf50, #45a049, #4caf50);
+  border-radius: 50%;
+  z-index: -1;
+  animation: pmGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes pmGlow {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.pm-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #4caf50;
+  text-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+}
+
+.pm-nav {
+  display: flex;
+  align-items: center;
+}
+
+.pm-nav-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 1rem;
+}
+
+.pm-nav-item {
+  position: relative;
+}
+
+.pm-nav-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  position: relative;
+  min-width: 60px;
+}
+
+.pm-nav-link:hover {
+  color: #4caf50;
+  background: rgba(76, 175, 80, 0.1);
+}
+
+.pm-nav-link.active {
+  color: #4caf50;
+  background: rgba(76, 175, 80, 0.15);
+}
+
+.pm-nav-icon {
+  font-size: 1.2rem;
+}
+
+.pm-nav-label {
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.pm-active-indicator {
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 3px;
+  background: #4caf50;
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+}
+
+.pm-main-content {
+  padding-top: 100px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .pm-header-container {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+  
+  .pm-nav-list {
+    gap: 0.5rem;
+  }
+  
+  .pm-nav-link {
+    min-width: 50px;
+    padding: 0.4rem;
+  }
+  
+  .pm-nav-icon {
+    font-size: 1rem;
+  }
+  
+  .pm-nav-label {
+    font-size: 0.6rem;
+  }
+  
+  .pm-title {
+    font-size: 1rem;
+  }
+  
+  .back-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .pm-header-container {
+    padding: 0 0.5rem;
+  }
+  
+  .pm-nav-list {
+    gap: 0.25rem;
+  }
+  
+  .pm-nav-link {
+    min-width: 40px;
+    padding: 0.3rem;
+  }
+  
+  .pm-nav-icon {
+    font-size: 0.9rem;
+  }
+  
+  .pm-nav-label {
+    font-size: 0.5rem;
+  }
+  
+  .pm-logo-circle {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .pm-logo-v, .pm-logo-k {
+    font-size: 1rem;
+  }
+}
