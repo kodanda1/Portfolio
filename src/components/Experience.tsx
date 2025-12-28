@@ -287,20 +287,20 @@ const Experience: React.FC = () => {
       ]
     },
     {
-      title: "Software Developer",
+      title: "Technical Project Manager",
       company: "United Airlines",
       location: "East Lansing, MI",
       period: "Sep 2022 – Dec 2022",
       technologies: ["Python", "Power BI", "NLP", "SQL", "Agile", "Jira"],
       achievements: [
-        "Led ML engineering team at United Airlines to build algorithms assessing course and instructor effectiveness for technician training",
-        "Leveraged data visualization tools to enable quick identification of performance trends, thus reducing data analysis time by 40%",
-        "Created a user-friendly User Interface for United Airlines LMS, enhancing accessibility and increasing user engagement by 35%",
-        "Streamlined data processing scripts, cutting report generation time by 50% for the client"
+        "Led cross-functional student team to design and prototype a training effectiveness dashboard for United Airlines LMS",
+        "Created machine learning models to evaluate instructor impact and training outcomes, reducing data review cycles by 40%",
+        "Re-imagined LMS interface for technician training using user-centered design, increasing engagement by 35%",
+        "Delivered final product demo and stakeholder briefing, securing high satisfaction ratings from airline leadership"
       ]
     },
     {
-      title: "Software Developer",
+      title: "Robotic Process Automation Developer",
       company: "Delta Dental of Michigan",
       location: "Okemos, MI",
       period: "Nov 2021 – Aug 2022",
