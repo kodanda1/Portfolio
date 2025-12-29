@@ -194,7 +194,7 @@ const Contact: React.FC = () => {
             </div>
 
             <motion.a
-              href="https://kodanda1.github.io/Portfolio/resume.pdf"
+              href="/resume.pdf"
               className="download-resume"
               target="_blank"
               rel="noopener noreferrer"
